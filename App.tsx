@@ -1,11 +1,250 @@
-import { View, Text, SafeAreaView, StyleSheet,Alert } from 'react-native';
-import React from 'react';
+// import { View, Text, SafeAreaView, StyleSheet,Alert } from 'react-native';
+// import React from 'react';
+
+
+
+// const App = () => {
+//   let styles = StyleSheet.create({
+//     container: {
+      
+//       backgroundColor:"",
+//       height: '100%',
+//       width: '100%',
+//       marginTop: 10,
+//       padding: 10,
+//       fontFamily: 'SFProDisplay-Regular',
+//     },
+//     viewbox: {
+//       borderBottomColor: '#006CFF',
+//       borderBottomWidth: 0.2,
+//       marginBottom: 30,
+//       display: 'flex',
+//       flexDirection: 'row',
+//       justifyContent: 'space-between',
+//       alignItems: 'center',
+//       paddingBottom: 0,
+
+//       padding: 20,
+//       height: 100,
+//     },
+//     TextStyle: {
+      
+//       fontWeight: '500',
+//       letterSpacing: 0,
+//       fontSize: 30,
+//       color: 'black',
+//     },
+//     ADD: {
+//       fontSize: 30,
+//       fontWeight: '400',
+//       borderWidth: 3,
+//       color: '#006CFF',
+//       paddingHorizontal: 12,
+//       paddingVertical: 0,
+//       borderColor: '#006CFF',
+//       borderRadius: 50,
+//     },
+
+//     taskContainer: {
+//       padding: 15,
+//       paddingBottom:18,
+//       display: 'flex',
+//       flexDirection: 'row',
+//       borderBottomWidth:1,
+//       borderBottomColor: '#a6a6a6',
+//       alignItems: 'center',
+//       justifyContent: 'space-between',
+//     },
+
+//     tick:{
+//       height:30,
+//       width:30,
+//       borderRadius: 50,
+//       borderWidth: 2,
+//       borderColor: '#006CFF',
+//     },
+    
+//     texttodo:{
+//       fontSize: 20,
+//       letterSpacing: 1,
+//       color: 'black',
+//       fontWeight: '400',
+     
+//     },
+//     dot:{
+//       height: 13,
+//       width: 13,
+//       borderRadius: 50,
+//       backgroundColor: 'red',
+//       marginLeft: 10,
+//     },
+
+//     // Here View starts
+//     AddTask:{
+//       shadowOffset: { width: 0, height: 2 },
+//       shadowColor : 'black',
+      
+//       borderWidth: .9,
+//       borderRadius: 20,
+//       padding: 20,
+//       borderColor: '#a6a6a6',
+//       marginHorizontal: "auto",
+//      marginTop: 30,
+//      display: 'flex',
+//      flexDirection: 'column',
+//      gap: 10,
+//     },
+//      Addtasktext:{
+//         fontSize: 30,
+//         fontWeight: '700',
+//         letterSpacing: 1,
+//         color: 'black',
+        
+//       },
+//       Addtaskmsgbx:{
+//        height: 250,
+//        width: 350,
+//        borderColor: '#a6a6a6',
+//        borderWidth: .9,
+//        borderRadius: 20,
+//       },
+//       Addtaskcd:{
+//        display: 'flex',
+//        flexDirection: 'row',
+//        justifyContent: 'space-between',
+//        marginHorizontal: 12,
+//       },
+//       AddtaskDone:{
+//         fontSize: 25,
+        
+//         color: '#006CFF',
+//         fontWeight: 600,
+//         marginRight: 10,
+//       },
+//       AddtaskCreate:{
+//         fontSize: 25,
+//         fontWeight: '400',
+
+//         color: '#006CFF',
+//       },
+//       lastone:{
+//         marginTop: 10,
+//         textAlign: 'center',
+//         fontSize: 20,
+//         color: '#a6a6a6',
+//       }
+//   });
+
+//   let harsh = "✔"
+
+  
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <View style={styles.viewbox}>
+//         <Text style={styles.TextStyle}>Today's Tasks ⛅︎</Text>
+//         <Text
+//         onPress={() => {
+//           Alert.alert("Here you can add a new task")}
+//         }
+//         style={styles.ADD}>+</Text>
+//       </View>
+      
+//       {/* Tasks */}
+//       <View style = {[styles.taskContainer]}>
+//        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
+//         <Text style={styles.tick}
+//         >{harsh}</Text>
+//          <View>
+//        <Text  style={styles.texttodo}>Pay for rent 💸</Text>
+//         <Text>⏰ 8:00 AM</Text>
+//         </View>
+//        </View>
+//        <View style={styles.dot}></View>
+//       </View>
+
+//       <View style = {[styles.taskContainer,{marginTop: 10}]}>
+//        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
+//         <View style={styles.tick}></View>
+//         <View>
+//         <Text style={styles.texttodo}>Buy a milk 🥛</Text>
+//         <Text>⏰ 9:30 AM</Text>
+//         </View>
+//        </View>
+//        <View style={[styles.dot,{backgroundColor:"#B6F500"}]}></View>
+//       </View>
+
+//       <View style = {[styles.taskContainer,{marginTop: 10}]}>
+//        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
+//         <View style={styles.tick}></View>
+//          <View>
+//         <Text style={styles.texttodo}>Pickup Mickael 📍</Text>
+//         <Text>⏰ 5:30 PM</Text>
+//         </View>
+//        </View>
+//        <View style={[styles.dot,{backgroundColor:"#56DFCF"}]}></View>
+//       </View>
+
+//       <View style = {[styles.taskContainer,{marginTop: 10}]}>
+//        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
+//         <View style={styles.tick}></View>
+//          <View>
+//        <Text style={styles.texttodo}>Buy a chocolate 🍫 for Charlotte</Text>
+//         <Text>⏰ 6:00 PM</Text>
+//         </View>
+//        </View>
+//        <View style={[styles.dot,{backgroundColor:"#C68EFD"}]}></View>
+//       </View>
+
+
+//      {/* ADD TODO */}
+
+//      <View style={styles.AddTask}>
+//       <Text style={styles.Addtasktext}>Add Todo ☇</Text>
+//       <View style={styles.Addtaskmsgbx}></View>
+//       <View style={styles.Addtaskcd}>
+//         <Text style={styles.AddtaskCreate}>Cancel</Text>
+//         <Text style={styles.AddtaskDone}>Done</Text>
+//       </View>
+//      </View>
+
+
+//      <Text style={styles.lastone}>Created By Harsh</Text>
+      
+
+
+//     </SafeAreaView>
+//   );
+// };
+
+// export default App;
+
+
+
+//Here++++++++++++++
+import { View, Text, SafeAreaView, StyleSheet, Alert, Pressable } from 'react-native';
+import React, { useState } from 'react';
+
+const initialTasks = [
+  { id: 1, title: "Pay for rent 💸", time: "8:00 AM", color: "red", checked: true },
+  { id: 2, title: "Buy a milk 🥛", time: "9:30 AM", color: "#B6F500", checked: false },
+  { id: 3, title: "Pickup Mickael 📍", time: "5:30 PM", color: "#56DFCF", checked: false },
+  { id: 4, title: "Buy a chocolate 🍫 for Charlotte", time: "6:00 PM", color: "#C68EFD", checked: false },
+];
 
 const App = () => {
-  let styles = StyleSheet.create({
+  const [tasks, setTasks] = useState(initialTasks);
+
+  const toggleTask = (id) => {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, checked: !task.checked } : task
+      )
+    );
+  };
+
+  const styles = StyleSheet.create({
     container: {
-      
-      backgroundColor:"",
+      backgroundColor: "",
       height: '100%',
       width: '100%',
       marginTop: 10,
@@ -21,12 +260,10 @@ const App = () => {
       justifyContent: 'space-between',
       alignItems: 'center',
       paddingBottom: 0,
-
       padding: 20,
       height: 100,
     },
     TextStyle: {
-      
       fontWeight: '500',
       letterSpacing: 0,
       fontSize: 30,
@@ -44,90 +281,90 @@ const App = () => {
     },
     taskContainer: {
       padding: 15,
-      paddingBottom:18,
+      paddingBottom: 18,
       display: 'flex',
       flexDirection: 'row',
-      borderBottomWidth:1,
+      borderBottomWidth: 1,
       borderBottomColor: '#a6a6a6',
       alignItems: 'center',
       justifyContent: 'space-between',
     },
-    tick:{
-      height:30,
-      width:30,
+    tick: {
+      height: 30,
+      width: 30,
       borderRadius: 50,
       borderWidth: 2,
       borderColor: '#006CFF',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
-    texttodo:{
+    tickText: {
+      fontSize: 20,
+      color: '#006CFF',
+      textAlign: 'center',
+    },
+    texttodo: {
       fontSize: 20,
       letterSpacing: 1,
       color: 'black',
       fontWeight: '400',
-     
     },
-    dot:{
+    dot: {
       height: 13,
       width: 13,
       borderRadius: 50,
       backgroundColor: 'red',
       marginLeft: 10,
     },
-
-    // Here View starts
-    AddTask:{
+    AddTask: {
       shadowOffset: { width: 0, height: 2 },
-      shadowColor : 'black',
-      
-      borderWidth: .9,
+      shadowColor: 'black',
+      borderWidth: 0.9,
       borderRadius: 20,
       padding: 20,
       borderColor: '#a6a6a6',
-      marginHorizontal: "auto",
-     marginTop: 30,
-     display: 'flex',
-     flexDirection: 'column',
-     gap: 10,
+      marginHorizontal: 'auto',
+      marginTop: 30,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 10,
     },
-     Addtasktext:{
-        fontSize: 30,
-        fontWeight: '700',
-        letterSpacing: 1,
-        color: 'black',
-        
-      },
-      Addtaskmsgbx:{
-       height: 250,
-       width: 350,
-       borderColor: '#a6a6a6',
-       borderWidth: .9,
-       borderRadius: 20,
-      },
-      Addtaskcd:{
-       display: 'flex',
-       flexDirection: 'row',
-       justifyContent: 'space-between',
-       marginHorizontal: 12,
-      },
-      AddtaskDone:{
-        fontSize: 25,
-        
-        color: '#006CFF',
-        fontWeight: 600,
-        marginRight: 10,
-      },
-      AddtaskCreate:{
-        fontSize: 25,
-        fontWeight: '400',
-
-        color: '#006CFF',
-      },
-      lastone:{
-        marginTop: 10,
-        textAlign: 'center',
-        fontSize: 20,
-        color: '#a6a6a6',
-      }
+    Addtasktext: {
+      fontSize: 30,
+      fontWeight: '700',
+      letterSpacing: 1,
+      color: 'black',
+    },
+    Addtaskmsgbx: {
+      height: 250,
+      width: 350,
+      borderColor: '#a6a6a6',
+      borderWidth: 0.9,
+      borderRadius: 20,
+    },
+    Addtaskcd: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginHorizontal: 12,
+    },
+    AddtaskDone: {
+      fontSize: 25,
+      color: '#006CFF',
+      fontWeight: '600',
+      marginRight: 10,
+    },
+    AddtaskCreate: {
+      fontSize: 25,
+      fontWeight: '400',
+      color: '#006CFF',
+    },
+    lastone: {
+      marginTop: 10,
+      textAlign: 'center',
+      fontSize: 20,
+      color: '#a6a6a6',
+    },
   });
 
   return (
@@ -135,75 +372,601 @@ const App = () => {
       <View style={styles.viewbox}>
         <Text style={styles.TextStyle}>Today's Tasks ⛅︎</Text>
         <Text
-        onPress={() => {
-          Alert.alert("Here you can add a new task")}
-        }
-        style={styles.ADD}>+</Text>
+          onPress={() => {
+            Alert.alert("Here you can add a new task");
+          }}
+          style={styles.ADD}
+        >
+          +
+        </Text>
       </View>
-      
-      <View style = {[styles.taskContainer]}>
-       <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
-        <View style={styles.tick}></View>
-         <View>
-       <Text  style={styles.texttodo}>Pay for rent 💸</Text>
-        <Text>⏰ 8:00 AM</Text>
+
+      {/* Render tasks with toggleable tick */}
+      {tasks.map((task) => (
+        <View key={task.id} style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Pressable style={styles.tick} onPress={() => toggleTask(task.id)}>
+              {task.checked && <Text style={styles.tickText}>✔</Text>}
+            </Pressable>
+            <View>
+              <Text style={styles.texttodo}>{task.title}</Text>
+              <Text>⏰ {task.time}</Text>
+            </View>
+          </View>
+          <View style={[styles.dot, { backgroundColor: task.color }]}></View>
         </View>
-       </View>
-       <View style={styles.dot}></View>
-      </View>
+      ))}
 
-      <View style = {[styles.taskContainer,{marginTop: 10}]}>
-       <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
-        <View style={styles.tick}></View>
-        <View>
-        <Text style={styles.texttodo}>Buy a milk 🥛</Text>
-        <Text>⏰ 9:30 AM</Text>
+      {/* ADD TODO */}
+      <View style={styles.AddTask}>
+        <Text style={styles.Addtasktext}>Add Todo ☇</Text>
+        <View style={styles.Addtaskmsgbx}></View>
+        <View style={styles.Addtaskcd}>
+          <Text style={styles.AddtaskCreate}>Cancel</Text>
+          <Text style={styles.AddtaskDone}>Done</Text>
         </View>
-       </View>
-       <View style={[styles.dot,{backgroundColor:"#B6F500"}]}></View>
       </View>
 
-      <View style = {[styles.taskContainer,{marginTop: 10}]}>
-       <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
-        <View style={styles.tick}></View>
-         <View>
-        <Text style={styles.texttodo}>Pickup Mickael 📍</Text>
-        <Text>⏰ 5:30 PM</Text>
-        </View>
-       </View>
-       <View style={[styles.dot,{backgroundColor:"#56DFCF"}]}></View>
-      </View>
-
-      <View style = {[styles.taskContainer,{marginTop: 10}]}>
-       <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
-        <View style={styles.tick}></View>
-         <View>
-       <Text style={styles.texttodo}>Buy a chocolate 🍫 for Charlotte</Text>
-        <Text>⏰ 6:00 PM</Text>
-        </View>
-       </View>
-       <View style={[styles.dot,{backgroundColor:"#C68EFD"}]}></View>
-      </View>
-
-
-     {/* ADD TODO */}
-
-     <View style={styles.AddTask}>
-      <Text style={styles.Addtasktext}>Add Todo ☇</Text>
-      <View style={styles.Addtaskmsgbx}></View>
-      <View style={styles.Addtaskcd}>
-        <Text style={styles.AddtaskCreate}>Cancel</Text>
-        <Text style={styles.AddtaskDone}>Done</Text>
-      </View>
-     </View>
-
-
-     <Text style={styles.lastone}>Created By Harsh</Text>
-      
-
-
+      <Text style={styles.lastone}>Created By Harsh</Text>
     </SafeAreaView>
   );
 };
 
 export default App;
+//Here++++++++++++++
+
+// import {
+//   View,
+//   Text,
+//   SafeAreaView,
+//   StyleSheet,
+//   Alert,
+//   Pressable,
+//   Modal,
+//   TextInput,
+//   KeyboardAvoidingView,
+//   Platform,
+// } from 'react-native';
+// import React, { useState } from 'react';
+
+// const initialTasks = [
+//   { id: 1, title: "Pay for rent 💸", time: "8:00 AM", color: "red", checked: true },
+//   { id: 2, title: "Buy a milk 🥛", time: "9:30 AM", color: "#B6F500", checked: false },
+//   { id: 3, title: "Pickup Mickael 📍", time: "5:30 PM", color: "#56DFCF", checked: false },
+//   { id: 4, title: "Buy a chocolate 🍫 for Charlotte", time: "6:00 PM", color: "#C68EFD", checked: false },
+  
+// ];
+
+// const App = () => {
+//   const [tasks, setTasks] = useState(initialTasks);
+//   const [modalVisible, setModalVisible] = useState(false);
+//   const [newTaskTitle, setNewTaskTitle] = useState('');
+//   const [newTaskTime, setNewTaskTime] = useState('');
+
+//   const toggleTask = (id) => {
+//     setTasks((prev) =>
+//       prev.map((task) =>
+//         task.id === id ? { ...task, checked: !task.checked } : task
+//       )
+//     );
+//   };
+
+//   const addTask = () => {
+//     if (newTaskTitle.trim() === '' || newTaskTime.trim() === '') {
+//       Alert.alert('Please enter both task title and time.');
+//       return;
+//     }
+
+//     // Create new task with unique id and default color & unchecked status
+//     const newTask = {
+//       id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
+//       title: newTaskTitle,
+//       time: newTaskTime,
+//       color: '#999', // default dot color, change as needed
+//       checked: false,
+//     };
+
+//     setTasks((prev) => [...prev, newTask]);
+//     setNewTaskTitle('');
+//     setNewTaskTime('');
+//     setModalVisible(false);
+//   };
+
+//   const styles = StyleSheet.create({
+//     container: {
+//       backgroundColor: "",
+//       height: '100%',
+//       width: '100%',
+//       marginTop: 10,
+//       padding: 10,
+//       fontFamily: 'SFProDisplay-Regular',
+//     },
+//     viewbox: {
+//       borderBottomColor: '#006CFF',
+//       borderBottomWidth: 0.2,
+//       marginBottom: 30,
+//       flexDirection: 'row',
+//       justifyContent: 'space-between',
+//       alignItems: 'center',
+//       padding: 20,
+//       height: 100,
+//     },
+//     TextStyle: {
+//       fontWeight: '500',
+//       letterSpacing: 0,
+//       fontSize: 30,
+//       color: 'black',
+//     },
+//     ADD: {
+//       fontSize: 30,
+//       fontWeight: '400',
+//       borderWidth: 3,
+//       color: '#006CFF',
+//       paddingHorizontal: 12,
+//       paddingVertical: 0,
+//       borderColor: '#006CFF',
+//       borderRadius: 50,
+//     },
+//     taskContainer: {
+//       padding: 15,
+//       paddingBottom: 18,
+//       flexDirection: 'row',
+//       borderBottomWidth: 1,
+//       borderBottomColor: '#a6a6a6',
+//       alignItems: 'center',
+//       justifyContent: 'space-between',
+//     },
+//     tick: {
+//       height: 30,
+//       width: 30,
+//       borderRadius: 50,
+//       borderWidth: 2,
+//       borderColor: '#006CFF',
+//       justifyContent: 'center',
+//       alignItems: 'center',
+//     },
+//     tickText: {
+//       fontSize: 20,
+//       color: '#006CFF',
+//       textAlign: 'center',
+//     },
+//     texttodo: {
+//       fontSize: 20,
+//       letterSpacing: 1,
+//       color: 'black',
+//       fontWeight: '400',
+//     },
+//     dot: {
+//       height: 13,
+//       width: 13,
+//       borderRadius: 50,
+//       backgroundColor: 'red',
+//       marginLeft: 10,
+//     },
+
+//     modalContainer: {
+//       flex: 1,
+//       justifyContent: 'center',
+//       backgroundColor: 'rgba(0,0,0,0.5)',
+//       padding: 20,
+//     },
+//     modalContent: {
+//       backgroundColor: 'white',
+//       borderRadius: 20,
+//       padding: 20,
+//       alignItems: 'center',
+//     },
+//     Addtasktext: {
+//       fontSize: 26,
+//       fontWeight: '700',
+//       letterSpacing: 1,
+//       color: 'black',
+//       marginBottom: 15,
+//     },
+//     Addtaskmsgbx: {
+//       height: 100,
+//       width: '100%',
+//       borderColor: '#a6a6a6',
+//       borderWidth: 0.9,
+//       borderRadius: 10,
+//       paddingHorizontal: 10,
+//       fontSize: 18,
+//       marginBottom: 15,
+//     },
+//     AddtaskTimeInput: {
+//       height: 40,
+//       width: '100%',
+//       borderColor: '#a6a6a6',
+//       borderWidth: 0.9,
+//       borderRadius: 10,
+//       paddingHorizontal: 10,
+//       fontSize: 18,
+//       marginBottom: 25,
+//     },
+//     Addtaskcd: {
+//       flexDirection: 'row',
+//       justifyContent: 'space-between',
+//       width: '100%',
+//     },
+//     AddtaskDone: {
+//       fontSize: 20,
+//       color: '#006CFF',
+//       fontWeight: '600',
+//       marginHorizontal: 10,
+//     },
+//     AddtaskCreate: {
+//       fontSize: 20,
+//       fontWeight: '400',
+//       color: '#006CFF',
+//       marginHorizontal: 10,
+//     },
+//     lastone: {
+//       marginTop: 10,
+//       textAlign: 'center',
+//       fontSize: 20,
+//       color: '#a6a6a6',
+//     },
+//   });
+
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <View style={styles.viewbox}>
+//         <Text style={styles.TextStyle}>Today's Tasks ⛅︎</Text>
+//         <Text
+//           onPress={() => setModalVisible(true)}
+//           style={styles.ADD}
+//         >
+//           +
+//         </Text>
+//       </View>
+
+//       {/* Render tasks with toggle */}
+//       {tasks.map((task) => (
+//         <View key={task.id} style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>
+//           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+//             <Pressable style={styles.tick} onPress={() => toggleTask(task.id)}>
+//               {task.checked && <Text style={styles.tickText}>✔</Text>}
+//             </Pressable>
+//             <View>
+//               <Text style={styles.texttodo}>{task.title}</Text>
+//               <Text>⏰ {task.time}</Text>
+//             </View>
+//           </View>
+//           <View style={[styles.dot, { backgroundColor: task.color }]}></View>
+//         </View>
+//       ))}
+
+//       {/* Modal for Add Todo */}
+//       <Modal
+//         animationType="slide"
+//         transparent={true}
+//         visible={modalVisible}
+//         onRequestClose={() => setModalVisible(false)} // Android back handler
+//       >
+//         <KeyboardAvoidingView
+//           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+//           style={styles.modalContainer}
+//         >
+//           <View style={styles.modalContent}>
+//             <Text style={styles.Addtasktext}>Add Todo ☇</Text>
+
+//             <TextInput
+//               placeholder="Task Title"
+//               style={styles.Addtaskmsgbx}
+//               value={newTaskTitle}
+//               onChangeText={setNewTaskTitle}
+//             />
+//             <TextInput
+//               placeholder="Task Time (e.g. 8:00 AM)"
+//               style={styles.AddtaskTimeInput}
+//               value={newTaskTime}
+//               onChangeText={setNewTaskTime}
+//             />
+
+//             <View style={styles.Addtaskcd}>
+//               <Pressable onPress={() => setModalVisible(false)}>
+//                 <Text style={styles.AddtaskCreate}>Cancel</Text>
+//               </Pressable>
+//               <Pressable onPress={addTask}>
+//                 <Text style={styles.AddtaskDone}>Done</Text>
+//               </Pressable>
+//             </View>
+//           </View>
+//         </KeyboardAvoidingView>
+//       </Modal>
+
+//       <Text style={styles.lastone}>Created By Harsh</Text>
+//     </SafeAreaView>
+//   );
+// };
+
+// export default App;
+
+//+++++++++++Here+++++++++++++++
+
+// import React, { useState } from 'react';
+// import {
+//   View,
+//   Text,
+//   SafeAreaView,
+//   StyleSheet,
+//   Alert,
+//   Pressable,
+//   Modal,
+//   TextInput,
+//   KeyboardAvoidingView,
+//   Platform,
+// } from 'react-native';
+
+// const initialTasks = [
+//   { id: 1, title: "Pay for rent 💸", time: "8:00 AM", color: "red", checked: true },
+//   { id: 2, title: "Buy a milk 🥛", time: "9:30 AM", color: "#B6F500", checked: false },
+//   { id: 3, title: "Pickup Mickael 📍", time: "5:30 PM", color: "#56DFCF", checked: false },
+//   { id: 4, title: "Buy a chocolate 🍫 for Charlotte", time: "6:00 PM", color: "#C68EFD", checked: false },
+// ];
+
+// const App = () => {
+//   const [tasks, setTasks] = useState(initialTasks);
+//   const [modalVisible, setModalVisible] = useState(false);
+//   const [newTaskTitle, setNewTaskTitle] = useState('');
+//   const [newTaskTime, setNewTaskTime] = useState('');
+
+//   const toggleTask = (id) => {
+//     setTasks((prev) =>
+//       prev.map((task) =>
+//         task.id === id ? { ...task, checked: !task.checked } : task
+//       )
+//     );
+//   };
+
+//   const addTask = () => {
+//     if (newTaskTitle.trim() === '' || newTaskTime.trim() === '') {
+//       Alert.alert('Please enter both task title and time.');
+//       return;
+//     }
+
+//     const newTask = {
+//       id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
+//       title: newTaskTitle,
+//       time: newTaskTime,
+//       color: '#999', // default dot color
+//       checked: false,
+//     };
+
+//     setTasks((prev) => [...prev, newTask]);
+//     setNewTaskTitle('');
+//     setNewTaskTime('');
+//     setModalVisible(false);
+//   };
+
+//   const deleteTask = (id) => {
+//     Alert.alert(
+//       'Delete Task',
+//       'Are you sure you want to delete this task?',
+//       [
+//         { text: 'Cancel', style: 'cancel' },
+//         { text: 'Delete', style: 'destructive', onPress: () => {
+//           setTasks((prev) => prev.filter(task => task.id !== id));
+//         } }
+//       ]
+//     );
+//   };
+
+//   const styles = StyleSheet.create({
+//     container: {
+//       backgroundColor: "",
+//       height: '100%',
+//       width: '100%',
+//       marginTop: 10,
+//       padding: 10,
+//       fontFamily: 'SFProDisplay-Regular',
+//     },
+//     viewbox: {
+//       borderBottomColor: '#006CFF',
+//       borderBottomWidth: 0.2,
+//       marginBottom: 30,
+//       flexDirection: 'row',
+//       justifyContent: 'space-between',
+//       alignItems: 'center',
+//       padding: 20,
+//       height: 100,
+//     },
+//     TextStyle: {
+//       fontWeight: '500',
+//       letterSpacing: 0,
+//       fontSize: 30,
+//       color: 'black',
+//     },
+//     ADD: {
+//       fontSize: 30,
+//       fontWeight: '400',
+//       borderWidth: 3,
+//       color: '#006CFF',
+//       paddingHorizontal: 12,
+//       paddingVertical: 0,
+//       borderColor: '#006CFF',
+//       borderRadius: 50,
+//     },
+//     taskContainer: {
+//       padding: 15,
+//       paddingBottom: 18,
+//       flexDirection: 'row',
+//       borderBottomWidth: 1,
+//       borderBottomColor: '#a6a6a6',
+//       alignItems: 'center',
+//       justifyContent: 'space-between',
+//     },
+//     tick: {
+//       height: 30,
+//       width: 30,
+//       borderRadius: 50,
+//       borderWidth: 2,
+//       borderColor: '#006CFF',
+//       justifyContent: 'center',
+//       alignItems: 'center',
+//     },
+//     tickText: {
+//       fontSize: 20,
+//       color: '#006CFF',
+//       textAlign: 'center',
+//     },
+//     texttodo: {
+//       fontSize: 20,
+//       letterSpacing: 1,
+//       color: 'black',
+//       fontWeight: '400',
+//     },
+//     dot: {
+//       height: 13,
+//       width: 13,
+//       borderRadius: 50,
+//       backgroundColor: 'red',
+//       marginLeft: 10,
+//     },
+//     deleteText: {
+//       color: 'red',
+//       fontSize: 18,
+//       paddingHorizontal: 10,
+//       fontWeight: '600',
+//     },
+//     modalContainer: {
+//       flex: 1,
+//       justifyContent: 'center',
+//       backgroundColor: 'rgba(0,0,0,0.5)',
+//       padding: 20,
+//     },
+//     modalContent: {
+//       backgroundColor: 'white',
+//       borderRadius: 20,
+//       padding: 20,
+//       alignItems: 'center',
+//     },
+//     Addtasktext: {
+//       fontSize: 26,
+//       fontWeight: '700',
+//       letterSpacing: 1,
+//       color: 'black',
+//       marginBottom: 15,
+//     },
+//     Addtaskmsgbx: {
+//       height: 100,
+//       width: '100%',
+//       borderColor: '#a6a6a6',
+//       borderWidth: 0.9,
+//       borderRadius: 10,
+//       paddingHorizontal: 10,
+//       fontSize: 18,
+//       marginBottom: 15,
+//       textAlignVertical: 'top',
+//     },
+//     AddtaskTimeInput: {
+//       height: 40,
+//       width: '100%',
+//       borderColor: '#a6a6a6',
+//       borderWidth: 0.9,
+//       borderRadius: 10,
+//       paddingHorizontal: 10,
+//       fontSize: 18,
+//       marginBottom: 25,
+//     },
+//     Addtaskcd: {
+//       flexDirection: 'row',
+//       justifyContent: 'space-between',
+//       width: '100%',
+//     },
+//     AddtaskDone: {
+//       fontSize: 20,
+//       color: '#006CFF',
+//       fontWeight: '600',
+//       marginHorizontal: 10,
+//     },
+//     AddtaskCreate: {
+//       fontSize: 20,
+//       fontWeight: '400',
+//       color: '#006CFF',
+//       marginHorizontal: 10,
+//     },
+//     lastone: {
+//       marginTop: 10,
+//       textAlign: 'center',
+//       fontSize: 20,
+//       color: '#a6a6a6',
+//     },
+//   });
+
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <View style={styles.viewbox}>
+//         <Text style={styles.TextStyle}>Today's Tasks ⛅︎</Text>
+//         <Text
+//           onPress={() => setModalVisible(true)}
+//           style={styles.ADD}
+//         >
+//           +
+//         </Text>
+//       </View>
+
+//       {/* Render tasks with toggle and delete */}
+//       {tasks.map((task) => (
+//         <View key={task.id} style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>
+//           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+//             <Pressable style={styles.tick} onPress={() => toggleTask(task.id)}>
+//               {task.checked && <Text style={styles.tickText}>✔</Text>}
+//             </Pressable>
+//             <View>
+//               <Text style={styles.texttodo}>{task.title}</Text>
+//               <Text>⏰ {task.time}</Text>
+//             </View>
+//           </View>
+//           <Pressable onPress={() => deleteTask(task.id)}>
+//             <Text style={styles.deleteText}>Delete</Text>
+//           </Pressable>
+//         </View>
+//       ))}
+
+//       {/* Modal for Add Todo */}
+//       <Modal
+//         animationType="slide"
+//         transparent={true}
+//         visible={modalVisible}
+//         onRequestClose={() => setModalVisible(false)}
+//       >
+//         <KeyboardAvoidingView
+//           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+//           style={styles.modalContainer}
+//         >
+//           <View style={styles.modalContent}>
+//             <Text style={styles.Addtasktext}>Add Todo ☇</Text>
+
+//             <TextInput
+//               placeholder="Task Title"
+//               style={styles.Addtaskmsgbx}
+//               multiline
+//               value={newTaskTitle}
+//               onChangeText={setNewTaskTitle}
+//             />
+//             <TextInput
+//               placeholder="Task Time (e.g. 8:00 AM)"
+//               style={styles.AddtaskTimeInput}
+//               value={newTaskTime}
+//               onChangeText={setNewTaskTime}
+//             />
+
+//             <View style={styles.Addtaskcd}>
+//               <Pressable onPress={() => setModalVisible(false)}>
+//                 <Text style={styles.AddtaskCreate}>Cancel</Text>
+//               </Pressable>
+//               <Pressable onPress={addTask}>
+//                 <Text style={styles.AddtaskDone}>Done</Text>
+//               </Pressable>
+//             </View>
+//           </View>
+//         </KeyboardAvoidingView>
+//       </Modal>
+
+//       <Text style={styles.lastone}>Created By Harsh</Text>
+//     </SafeAreaView>
+//   );
+// };
+
+// export default App;
