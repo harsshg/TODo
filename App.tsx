@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet,Alert } from 'react-native';
 import React from 'react';
 
 const App = () => {
@@ -134,14 +134,18 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.viewbox}>
         <Text style={styles.TextStyle}>Today's Tasks ⛅︎</Text>
-        <Text style={styles.ADD}>+</Text>
+        <Text
+        onPress={() => {
+          Alert.alert("Here you can add a new task")}
+        }
+        style={styles.ADD}>+</Text>
       </View>
       
       <View style = {[styles.taskContainer]}>
        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
         <View style={styles.tick}></View>
          <View>
-       <Text style={styles.texttodo}>Pay for rent 💸</Text>
+       <Text  style={styles.texttodo}>Pay for rent 💸</Text>
         <Text>⏰ 8:00 AM</Text>
         </View>
        </View>
