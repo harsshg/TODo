@@ -4,18 +4,24 @@ import React from 'react';
 const App = () => {
   let styles = StyleSheet.create({
     container: {
+      
       backgroundColor:"",
       height: '100%',
       width: '100%',
-      marginTop: 50,
+      marginTop: 10,
       padding: 10,
       fontFamily: 'SFProDisplay-Regular',
     },
     viewbox: {
+      borderBottomColor: '#006CFF',
+      borderBottomWidth: 0.2,
+      marginBottom: 30,
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
+      paddingBottom: 0,
+
       padding: 20,
       height: 100,
     },
@@ -37,7 +43,8 @@ const App = () => {
       borderRadius: 50,
     },
     taskContainer: {
-      padding: 20,
+      padding: 15,
+      paddingBottom:18,
       display: 'flex',
       flexDirection: 'row',
       borderBottomWidth:1,
@@ -60,8 +67,8 @@ const App = () => {
      
     },
     dot:{
-      height: 18,
-      width: 18,
+      height: 13,
+      width: 13,
       borderRadius: 50,
       backgroundColor: 'red',
       marginLeft: 10,
@@ -72,12 +79,12 @@ const App = () => {
       shadowOffset: { width: 0, height: 2 },
       shadowColor : 'black',
       
-      borderWidth: 1,
+      borderWidth: .9,
       borderRadius: 20,
       padding: 20,
       borderColor: '#a6a6a6',
       marginHorizontal: "auto",
-     marginTop: 50,
+     marginTop: 30,
      display: 'flex',
      flexDirection: 'column',
      gap: 10,
@@ -93,27 +100,33 @@ const App = () => {
        height: 250,
        width: 350,
        borderColor: '#a6a6a6',
-       borderWidth: 1,
+       borderWidth: .9,
        borderRadius: 20,
       },
       Addtaskcd:{
        display: 'flex',
        flexDirection: 'row',
        justifyContent: 'space-between',
-       marginHorizontal: 10,
+       marginHorizontal: 12,
       },
       AddtaskDone:{
         fontSize: 25,
         
         color: '#006CFF',
-        fontWeight: 800,
+        fontWeight: 600,
         marginRight: 10,
       },
       AddtaskCreate:{
         fontSize: 25,
-        fontWeight: '500',
+        fontWeight: '400',
 
         color: '#006CFF',
+      },
+      lastone:{
+        marginTop: 10,
+        textAlign: 'center',
+        fontSize: 20,
+        color: '#a6a6a6',
       }
   });
 
@@ -127,31 +140,43 @@ const App = () => {
       <View style = {[styles.taskContainer]}>
        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
         <View style={styles.tick}></View>
-        <Text style={styles.texttodo}>Pay for rent 💸</Text>
+         <View>
+       <Text style={styles.texttodo}>Pay for rent 💸</Text>
+        <Text>⏰ 8:00 AM</Text>
+        </View>
        </View>
        <View style={styles.dot}></View>
       </View>
 
-      <View style = {[styles.taskContainer,{marginTop: 20}]}>
+      <View style = {[styles.taskContainer,{marginTop: 10}]}>
        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
         <View style={styles.tick}></View>
+        <View>
         <Text style={styles.texttodo}>Buy a milk 🥛</Text>
+        <Text>⏰ 9:30 AM</Text>
+        </View>
        </View>
        <View style={[styles.dot,{backgroundColor:"#B6F500"}]}></View>
       </View>
 
-      <View style = {[styles.taskContainer,{marginTop: 20}]}>
+      <View style = {[styles.taskContainer,{marginTop: 10}]}>
        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
         <View style={styles.tick}></View>
+         <View>
         <Text style={styles.texttodo}>Pickup Mickael 📍</Text>
+        <Text>⏰ 5:30 PM</Text>
+        </View>
        </View>
        <View style={[styles.dot,{backgroundColor:"#56DFCF"}]}></View>
       </View>
 
-      <View style = {[styles.taskContainer,{marginTop: 20}]}>
+      <View style = {[styles.taskContainer,{marginTop: 10}]}>
        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
         <View style={styles.tick}></View>
-        <Text style={styles.texttodo}>Buy a chocolate 🍫 for Charlotte</Text>
+         <View>
+       <Text style={styles.texttodo}>Buy a chocolate 🍫 for Charlotte</Text>
+        <Text>⏰ 6:00 PM</Text>
+        </View>
        </View>
        <View style={[styles.dot,{backgroundColor:"#C68EFD"}]}></View>
       </View>
@@ -167,6 +192,9 @@ const App = () => {
         <Text style={styles.AddtaskDone}>Done</Text>
       </View>
      </View>
+
+
+     <Text style={styles.lastone}>Created By Harsh</Text>
       
 
 
