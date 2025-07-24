@@ -21,7 +21,8 @@ const App = () => {
     },
     TextStyle: {
       
-      fontWeight: 'bold',
+      fontWeight: '500',
+      letterSpacing: 0,
       fontSize: 30,
       color: 'black',
     },
@@ -53,6 +54,8 @@ const App = () => {
     },
     texttodo:{
       fontSize: 20,
+      letterSpacing: 1,
+      color: 'black',
       fontWeight: '400',
      
     },
@@ -82,6 +85,7 @@ const App = () => {
      Addtasktext:{
         fontSize: 30,
         fontWeight: '700',
+        letterSpacing: 1,
         color: 'black',
         
       },
@@ -116,14 +120,14 @@ const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.viewbox}>
-        <Text style={styles.TextStyle}>Today</Text>
+        <Text style={styles.TextStyle}>Today's Tasks ⛅︎</Text>
         <Text style={styles.ADD}>+</Text>
       </View>
       
       <View style = {[styles.taskContainer]}>
        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
         <View style={styles.tick}></View>
-        <Text style={styles.texttodo}>Pay for rent</Text>
+        <Text style={styles.texttodo}>Pay for rent 💸</Text>
        </View>
        <View style={styles.dot}></View>
       </View>
@@ -131,7 +135,7 @@ const App = () => {
       <View style = {[styles.taskContainer,{marginTop: 20}]}>
        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
         <View style={styles.tick}></View>
-        <Text style={styles.texttodo}>Buy a milk</Text>
+        <Text style={styles.texttodo}>Buy a milk 🥛</Text>
        </View>
        <View style={[styles.dot,{backgroundColor:"#B6F500"}]}></View>
       </View>
@@ -139,7 +143,7 @@ const App = () => {
       <View style = {[styles.taskContainer,{marginTop: 20}]}>
        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
         <View style={styles.tick}></View>
-        <Text style={styles.texttodo}>Don’t forget to pick up Mickael</Text>
+        <Text style={styles.texttodo}>Pickup Mickael 📍</Text>
        </View>
        <View style={[styles.dot,{backgroundColor:"#56DFCF"}]}></View>
       </View>
@@ -147,7 +151,7 @@ const App = () => {
       <View style = {[styles.taskContainer,{marginTop: 20}]}>
        <View style={{flexDirection: 'row', alignItems: 'center',gap: 10}}>
         <View style={styles.tick}></View>
-        <Text style={styles.texttodo}>Buy a chocolate for Charlotte</Text>
+        <Text style={styles.texttodo}>Buy a chocolate 🍫 for Charlotte</Text>
        </View>
        <View style={[styles.dot,{backgroundColor:"#C68EFD"}]}></View>
       </View>
@@ -156,7 +160,7 @@ const App = () => {
      {/* ADD TODO */}
 
      <View style={styles.AddTask}>
-      <Text style={styles.Addtasktext}>Add Todo</Text>
+      <Text style={styles.Addtasktext}>Add Todo ☇</Text>
       <View style={styles.Addtaskmsgbx}></View>
       <View style={styles.Addtaskcd}>
         <Text style={styles.AddtaskCreate}>Cancel</Text>
