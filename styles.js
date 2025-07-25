@@ -96,6 +96,13 @@ const styles = StyleSheet.create({
       borderColor: 'white',
       borderWidth: 0.9,
       borderRadius: 20,
+      color:"white",
+      backgroundColor:'rgb(255, 255, 255)',
+      padding:10,
+      alignItems:"center",
+      justifyContent:"center",
+      display:"flex",
+      gap:5
     },
     Addtaskcd: {
       display: 'flex',
@@ -120,6 +127,14 @@ const styles = StyleSheet.create({
       fontSize: 20,
       color: '#a6a6a6',
     },
+    inputs:{
+      height: 40,
+      width:"80%",
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    }
+    
   });
 
   export default styles;
