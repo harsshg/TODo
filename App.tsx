@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import styles from './styles';
 import Addtodo from './Components/Addtodo';
 import { ScrollView } from 'react-native';
+import Storyview from './Components/storyview';
 
 const initialTasks = [
   {
@@ -68,7 +69,10 @@ const App = () => {
           +
         </Text>
       </View>
-     <ScrollView>
+     <ScrollView showsVerticalScrollIndicator={false}>
+
+      {/* Storyscroll */}
+      <Storyview/>
       {/* Render tasks with toggleable tick */}
       {tasks.map(task => (
         <View
