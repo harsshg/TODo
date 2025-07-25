@@ -6,7 +6,7 @@ import styles from '../styles'
 
 const Addtodo = () => {
   return (
-    <SafeAreaView style={{position:"absolute", marginLeft:"5%",backgroundColor:'rgba(0, 0, 0, 0.78)' , borderRadius:20}}>
+    <SafeAreaView style={{position:"absolute", marginLeft:"5%",backgroundColor:'rgba(0, 0, 0, 0.82)' , borderRadius:20}}>
     <View style={styles.AddTask}>
         <Text style={styles.Addtasktext}>Add Todo ☇</Text>
         <View style={styles.Addtaskmsgbx}></View>
