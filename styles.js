@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     },
     tickText: {
       fontSize: 20,
-      color: '#F21368',
+      color: 'red',
       textAlign: 'center',
     },
     texttodo: {

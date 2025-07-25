@@ -141,7 +141,7 @@ import { ScrollView } from 'react-native';
 import Storyview from './Components/storyview';
 
 const initialTasks = [
-  { id: 1, title: "Pay for rent 💸", time: "8:00 AM", color: "red", checked: true },
+  { id: 1, title: "Pay for rent 💸", time: "8:00 AM", color: "red", checked: false },
   { id: 2, title: "Buy a milk 🥛", time: "9:30 AM", color: "#B6F500", checked: false },
   { id: 3, title: "Pickup Mickael 📍", time: "5:30 PM", color: "#56DFCF", checked: false },
   { id: 4, title: "Buy a chocolate 🍫 for Charlotte", time: "6:00 PM", color: "#C68EFD", checked: false },
@@ -240,7 +240,7 @@ const App = () => {
     },
     tickText: {
       fontSize: 20,
-      color: '#006CFF',
+      color: 'red',
       textAlign: 'center',
     },
     texttodo: {
@@ -402,6 +402,7 @@ const App = () => {
       </Modal>
 
       <Text style={styles.lastone}>Created By Harsh</Text>
+      
       </ScrollView>
     </SafeAreaView>
   );
