@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import styles from './styles';
+import Addtodo from './Components/Addtodo';
+import { ScrollView } from 'react-native';
 
 const initialTasks = [
   {
@@ -66,7 +68,7 @@ const App = () => {
           +
         </Text>
       </View>
-
+     <ScrollView>
       {/* Render tasks with toggleable tick */}
       {tasks.map(task => (
         <View
@@ -87,18 +89,11 @@ const App = () => {
       ))}
 
       {/* ADD TODO */}
-      <View style={styles.AddTask}>
-        <Text style={styles.Addtasktext}>Add Todo ☇</Text>
-        <View style={styles.Addtaskmsgbx}></View>
-        <View style={styles.Addtaskcd}>
-          <Text style={styles.AddtaskCreate}>Cancel</Text>
-          <Text style={styles.AddtaskDone}>Done</Text>
-        </View>
-      </View>
-
+      <Addtodo/>
       <Text style={[styles.lastone, { textDecorationLine: 'underline' }]}>
         Created By <Text style={{ color: 'red' }}>Harsh</Text>
       </Text>
+      </ScrollView>
     </SafeAreaView>
   );
 };
