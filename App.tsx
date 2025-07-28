@@ -33,10 +33,16 @@ const App = () => {
   const [newTaskTime, setNewTaskTime] = useState('');
   const [newColor, setNewColor] = useState('');
   const [edited,setedited]= useState("");
+  const[searching,setsearch] = useState(true);
+
 
   const deleteHandler = (id:number) => {
   setTasks(tasks.filter(task => task.id !== id));
 }
+
+const toggleSearch = prev=>setsearch(!prev)
+    
+
 
 const toggleDone=(id:number)=>{
   if (edited.trim() === '') {
@@ -96,13 +102,21 @@ const toggleEdit = (id:number) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.viewbox}>
-        <Text style={styles.TextStyle}>Today's <Text style={{color:"#ff0037"}}>Task</Text> ⛅<Text style={{color:"#ff0037"}}>☣︎</Text></Text>
+        <Text style={styles.TextStyle}>Task's <Text style={{color:"#ff0037"}}>☣︎</Text></Text>
+        <View style={{display:'flex',flexDirection:'row',gap:6,alignItems:'center'}}>
+        { searching  ?<Text onPress={()=>toggleSearch(searching)} style={{width:50,alignItems:'center',height:50,fontSize:20,borderRadius:40,padding:6,borderWidth:3, borderColor: '#ff0033',backgroundColor:'#f7f7f7'}}>🔍</Text> :<View>
+        <TextInput placeholder='Enter your Searches Here'  style={{width:200,fontSize:16,borderColor:'#b3b3b3',borderWidth:3}}></TextInput>
+       <Pressable onPress={()=>toggleSearch(searching)} style={{backgroundColor:'#878787',marginLeft:142,paddingHorizontal:6,borderRadius:8,paddingBottom:1,marginTop:2,borderColor:'#ff0033',borderWidth:1.4}}><Text style={{color:'white'}}>Search</Text></Pressable>
+        </View>}
+        
+        
         <Text
           onPress={() => setModalVisible(true)}
           style={styles.ADD}
         >
           +
         </Text>
+        </View>
       </View>
        <ScrollView
        showsVerticalScrollIndicator={false}>

@@ -3,7 +3,7 @@ import{StyleSheet}from'react-native';
   const styles = StyleSheet.create({
     container: {
       width: '100%',
-      marginTop: 10,
+      marginTop: 17,
       padding: 10,
       fontFamily: 'SFProDisplay-Regular',
     },
@@ -28,8 +28,11 @@ import{StyleSheet}from'react-native';
       color: 'black',
     },
     ADD: {
+      backgroundColor:'#f7f7f7',
+      position:'sticky',
       fontSize: 30,
       fontWeight: '400',
+      height:50,
       borderWidth: 3,
       color: '#006CFF',
       paddingHorizontal: 12,
