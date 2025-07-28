@@ -93,12 +93,9 @@ const toggleEdit = (id) => {
 
 
   return (
-   
-
-    
     <SafeAreaView style={styles.container}>
       <View style={styles.viewbox}>
-        <Text style={styles.TextStyle}>Today's <Text style={{color:"#ff0037"}}>Task</Text> ⛅✓</Text>
+        <Text style={styles.TextStyle}>Today's <Text style={{color:"#ff0037"}}>Task</Text> ⛅<Text style={{color:"#ff0037"}}>☣︎</Text></Text>
         <Text
           onPress={() => setModalVisible(true)}
           style={styles.ADD}
@@ -136,6 +133,7 @@ const toggleEdit = (id) => {
               <Text style={styles.texttodo}>{task.title}</Text>
               <View style ={styles.TexttodoView}>
               <Text>⏰ {task.time}</Text>
+              <View style={styles.editdel}>
               <Pressable
               onPress={()=>toggleEdit(task.id)}
               ><Text style={styles.edit}>Edit</Text>
@@ -147,6 +145,7 @@ const toggleEdit = (id) => {
                 
                 style={styles.delete}>Delete</Text>
                 </Pressable>
+                </View>
               </View>
             </View>
           </View>

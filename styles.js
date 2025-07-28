@@ -2,21 +2,23 @@ import{StyleSheet}from'react-native';
 
   const styles = StyleSheet.create({
     container: {
-      backgroundColor: "",
-      height: '100%',
       width: '100%',
       marginTop: 10,
       padding: 10,
       fontFamily: 'SFProDisplay-Regular',
     },
     viewbox: {
-      borderBottomColor: '#006CFF',
-      borderBottomWidth: 0.2,
-      marginBottom: 30,
+      borderBottomColor: '#ff0037',
+      borderBottomWidth: 2,
+      borderStyle:'dashed',
+      borderRadius:18,
+      marginBottom: 20,
+      marginTop:9,
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: 20,
+      paddingHorizontal:20,
+
       height: 100,
     },
     TextStyle: {
@@ -131,7 +133,9 @@ import{StyleSheet}from'react-native';
     TexttodoView:{
       display:'flex',
       flexDirection:"row",
+      justifyContent:'space-evenly',
       gap:15,
+      
     },
 
     delete:{
@@ -151,8 +155,13 @@ import{StyleSheet}from'react-native';
       borderRadius:10,
       color:"white"
     },
+    editdel:{
+      display:"flex",
+      flexDirection:'row',
+      gap:7,
+    },
     editBox:{
-      height: 45,
+      height: 45,  
       width: 320,
       borderColor: '#a6a6a6',
       borderWidth: 0.9,
