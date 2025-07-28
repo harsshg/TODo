@@ -40,6 +40,7 @@ import{StyleSheet}from'react-native';
     taskContainer: {
       padding: 15,
       paddingBottom: 18,
+      borderRadius:15,
       flexDirection: 'row',
       borderBottomWidth: 1,
       borderBottomColor: '#a6a6a6',
@@ -133,8 +134,7 @@ import{StyleSheet}from'react-native';
     TexttodoView:{
       display:'flex',
       flexDirection:"row",
-      justifyContent:'space-evenly',
-      gap:15,
+      gap:20,
       
     },
 
@@ -158,7 +158,7 @@ import{StyleSheet}from'react-native';
     editdel:{
       display:"flex",
       flexDirection:'row',
-      gap:7,
+      gap:6,
     },
     editBox:{
       height: 45,  
@@ -170,9 +170,10 @@ import{StyleSheet}from'react-native';
       fontSize: 18,
     },
     doneBtn:{
-      marginLeft:279,
-      padding:4,
-      borderRadius:8,
+      
+      paddingHorizontal:8,
+      paddingVertical:3,
+      borderRadius:12,
       backgroundColor:"#ff002f",
     }
     

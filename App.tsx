@@ -52,12 +52,13 @@ const toggleDone=(id)=>{
 
 const toggleEdit = (id) => {
   
-  setedited("")
+    
     setTasks((prev) =>
       prev.map((task) =>
         task.id === id ? { ...task, editable: !task.editable } : task
       )
     );
+    setedited('');
   };
 
   const toggleTask=(id)=>{
@@ -124,10 +125,16 @@ const toggleEdit = (id) => {
             style={styles.editBox} 
             value={edited} 
             onChangeText={setedited} />
+            <View style={{display:'flex',flexDirection:'row',gap:6,marginLeft:210}}>
             <Pressable 
             onPress={()=>toggleDone(task.id)}
             style={styles.doneBtn}><Text style={{color:"white"}} >Done</Text>
             </Pressable>
+            <Pressable 
+            onPress={()=>toggleEdit(task.id)}
+            style={[styles.doneBtn,{backgroundColor:'#3d3d3d'}]}><Text style={{color:"white"}} >Cancel</Text>
+            </Pressable>
+            </View>
             </View> }
             
               <Text style={styles.texttodo}>{task.title}</Text>
