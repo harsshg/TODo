@@ -1,6 +1,6 @@
 import{StyleSheet}from'react-native';
 
-const styles = StyleSheet.create({
+  const styles = StyleSheet.create({
     container: {
       backgroundColor: "",
       height: '100%',
@@ -13,11 +13,9 @@ const styles = StyleSheet.create({
       borderBottomColor: '#006CFF',
       borderBottomWidth: 0.2,
       marginBottom: 30,
-      display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      paddingBottom: 0,
       padding: 20,
       height: 100,
     },
@@ -40,9 +38,8 @@ const styles = StyleSheet.create({
     taskContainer: {
       padding: 15,
       paddingBottom: 18,
-      display: 'flex',
       flexDirection: 'row',
-      borderBottomWidth: 1, 
+      borderBottomWidth: 1,
       borderBottomColor: '#a6a6a6',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -64,7 +61,7 @@ const styles = StyleSheet.create({
     texttodo: {
       fontSize: 20,
       letterSpacing: 1,
-      color: 'black',
+      
       fontWeight: '400',
     },
     dot: {
@@ -74,67 +71,86 @@ const styles = StyleSheet.create({
       backgroundColor: 'red',
       marginLeft: 10,
     },
-    AddTask: {
-     
-      borderWidth: 0.9,
+
+    modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: 'rgba(0,0,0,0.5)',
+      padding: 20,
+    },
+    modalContent: {
+      backgroundColor: 'white',
       borderRadius: 20,
       padding: 20,
-      borderColor: 'white',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 10,
+      alignItems: 'center',
     },
     Addtasktext: {
-      fontSize: 30,
+      fontSize: 29,
       fontWeight: '700',
       letterSpacing: 1,
-      color: 'white',
+      color: 'black',
+      marginBottom: 15,
     },
     Addtaskmsgbx: {
-      height: 250,
-      width: 350,
-      borderColor: 'white',
+      height: 100,
+      width: '100%',
+      borderColor: '#a6a6a6',
       borderWidth: 0.9,
-      borderRadius: 20,
-      color:"white",
-      backgroundColor:'rgb(255, 255, 255)',
-      padding:10,
-      alignItems:"center",
-      justifyContent:"center",
-      display:"flex",
-      gap:5
+      borderRadius: 10,
+      paddingHorizontal: 10,
+      fontSize: 18,
+      marginBottom: 15,
+    },
+    AddtaskTimeInput: {
+      height: 40,
+      width: '100%',
+      borderColor: '#a6a6a6',
+      borderWidth: 0.9,
+      borderRadius: 10,
+      paddingHorizontal: 10,
+      fontSize: 18,
+      marginBottom: 25,
     },
     Addtaskcd: {
-      display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginHorizontal: 12,
+      width: '100%',
     },
     AddtaskDone: {
-      fontSize: 25,
+      fontSize: 20,
       color: '#006CFF',
       fontWeight: '600',
-      marginRight: 10,
+      marginHorizontal: 10,
     },
     AddtaskCreate: {
-      fontSize: 25,
+      fontSize: 20,
       fontWeight: '400',
       color: '#006CFF',
+      marginHorizontal: 10,
     },
-    lastone: {
-      marginTop: 10,
-      textAlign: 'center',
-      fontSize: 20,
-      color: '#a6a6a6',
+    TexttodoView:{
+      display:'flex',
+      flexDirection:"row",
+      gap:15,
     },
-    inputs:{
-      height: 40,
-      width:"80%",
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+
+    delete:{
+      backgroundColor:"#ff0000",
+      borderRadius:10,
+      paddingHorizontal:7,
+      paddingVertical:2,
+      color:'white',
+
+      
+      
+    },
+    edit:{
+      backgroundColor:"#3d3d3d",
+      paddingHorizontal:7,
+      paddingVertical:2,
+      borderRadius:10,
+      color:"white"
     }
     
   });
-
   export default styles;

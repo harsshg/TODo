@@ -138,7 +138,7 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
-import Storyview from './Components/storyview';
+import styles from './styles';
 
 const initialTasks = [
   { id: 1, title: "Pay for rent 💸", time: "8:00 AM", color: "red", checked: false },
@@ -185,141 +185,7 @@ const App = () => {
     setModalVisible(false);
   };
 
-  const styles = StyleSheet.create({
-    container: {
-      backgroundColor: "",
-      height: '100%',
-      width: '100%',
-      marginTop: 10,
-      padding: 10,
-      fontFamily: 'SFProDisplay-Regular',
-    },
-    viewbox: {
-      borderBottomColor: '#006CFF',
-      borderBottomWidth: 0.2,
-      marginBottom: 30,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      padding: 20,
-      height: 100,
-    },
-    TextStyle: {
-      fontWeight: '500',
-      letterSpacing: 0,
-      fontSize: 30,
-      color: 'black',
-    },
-    ADD: {
-      fontSize: 30,
-      fontWeight: '400',
-      borderWidth: 3,
-      color: '#006CFF',
-      paddingHorizontal: 12,
-      paddingVertical: 0,
-      borderColor: '#006CFF',
-      borderRadius: 50,
-    },
-    taskContainer: {
-      padding: 15,
-      paddingBottom: 18,
-      flexDirection: 'row',
-      borderBottomWidth: 1,
-      borderBottomColor: '#a6a6a6',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-    },
-    tick: {
-      height: 30,
-      width: 30,
-      borderRadius: 50,
-      borderWidth: 2,
-      borderColor: '#006CFF',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    tickText: {
-      fontSize: 20,
-      color: 'red',
-      textAlign: 'center',
-    },
-    texttodo: {
-      fontSize: 20,
-      letterSpacing: 1,
-      color: 'black',
-      fontWeight: '400',
-    },
-    dot: {
-      height: 13,
-      width: 13,
-      borderRadius: 50,
-      backgroundColor: 'red',
-      marginLeft: 10,
-    },
 
-    modalContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      padding: 20,
-    },
-    modalContent: {
-      backgroundColor: 'white',
-      borderRadius: 20,
-      padding: 20,
-      alignItems: 'center',
-    },
-    Addtasktext: {
-      fontSize: 26,
-      fontWeight: '700',
-      letterSpacing: 1,
-      color: 'black',
-      marginBottom: 15,
-    },
-    Addtaskmsgbx: {
-      height: 100,
-      width: '100%',
-      borderColor: '#a6a6a6',
-      borderWidth: 0.9,
-      borderRadius: 10,
-      paddingHorizontal: 10,
-      fontSize: 18,
-      marginBottom: 15,
-    },
-    AddtaskTimeInput: {
-      height: 40,
-      width: '100%',
-      borderColor: '#a6a6a6',
-      borderWidth: 0.9,
-      borderRadius: 10,
-      paddingHorizontal: 10,
-      fontSize: 18,
-      marginBottom: 25,
-    },
-    Addtaskcd: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      width: '100%',
-    },
-    AddtaskDone: {
-      fontSize: 20,
-      color: '#006CFF',
-      fontWeight: '600',
-      marginHorizontal: 10,
-    },
-    AddtaskCreate: {
-      fontSize: 20,
-      fontWeight: '400',
-      color: '#006CFF',
-      marginHorizontal: 10,
-    },
-    lastone: {
-      marginTop: 10,
-      textAlign: 'center',
-      fontSize: 20,
-      color: '#a6a6a6',
-    },
-  });
 
   return (
    
@@ -349,7 +215,11 @@ const App = () => {
             </Pressable>
             <View>
               <Text style={styles.texttodo}>{task.title}</Text>
+              <View style ={styles.TexttodoView}>
               <Text>⏰ {task.time}</Text>
+              <Pressable ><Text style={styles.edit}>Edit</Text></Pressable>
+              <Pressable ><Text style={styles.delete}>Delete</Text></Pressable>
+              </View>
             </View>
           </View>
           <View style={[styles.dot, { backgroundColor: task.color }]}></View>
@@ -401,7 +271,7 @@ const App = () => {
         </KeyboardAvoidingView>
       </Modal>
 
-      <Text style={styles.lastone}>Created By Harsh</Text>
+      
       
       </ScrollView>
     </SafeAreaView>
