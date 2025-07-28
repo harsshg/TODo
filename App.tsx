@@ -40,7 +40,7 @@ const App = () => {
   setTasks(tasks.filter(task => task.id !== id));
 }
 
-const toggleSearch = prev=>setsearch(!prev)
+const toggleSearch = (prev:boolean)=>setsearch(!prev)
     
 
 

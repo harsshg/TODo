@@ -3,7 +3,7 @@ import{StyleSheet}from'react-native';
   const styles = StyleSheet.create({
     container: {
       width: '100%',
-      marginTop: 17,
+      marginTop: 50,
       padding: 10,
       fontFamily: 'SFProDisplay-Regular',
     },
@@ -13,13 +13,11 @@ import{StyleSheet}from'react-native';
       borderStyle:'dashed',
       borderRadius:18,
       marginBottom: 20,
-      marginTop:9,
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      paddingHorizontal:20,
-
-      height: 100,
+      padding:8,
+      height:90,
     },
     TextStyle: {
       fontWeight: '500',
@@ -35,7 +33,7 @@ import{StyleSheet}from'react-native';
       height:50,
       borderWidth: 3,
       color: '#006CFF',
-      paddingHorizontal: 12,
+      paddingHorizontal: 14,
       paddingVertical: 0,
       borderColor: '#006CFF',
       borderRadius: 50,
@@ -167,6 +165,7 @@ import{StyleSheet}from'react-native';
     editBox:{
       height: 45,  
       width: 320,
+      color:'black',
       borderColor: '#a6a6a6',
       borderWidth: 0.9,
       borderRadius: 10,
