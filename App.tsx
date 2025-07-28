@@ -19,10 +19,10 @@ const initialTasks = [
   { id: 2, title: "Buy a milk 🥛", time: "9:30 AM", color: "#B6F500", checked: false ,editable:false  },
   { id: 3, title: "Pickup Mickael 📍", time: "5:30 PM", color: "#56DFCF", checked: false,editable:false  },
   { id: 4, title: "Buy a chocolate 🍫", time: "6:00 PM", color: "#C68EFD", checked: false,editable:false  },
-  { id: 5, title: "Go to Office 🏢", time: "10:00 AM", color: "#0011ff", checked: false , editable:false },
+  { id: 5, title: "OFFICE 📌", time: "10:00 AM", color: "#0011ff", checked: false , editable:false },
   { id: 6, title: "Music 🎶", time: "8:30 PM", color: "#ff00ff", checked: false ,editable:false  },
   { id: 7, title: "Travel ✈️", time: "4:30 AM", color: "#15ff00", checked: false,editable:false  },
-  { id: 8, title: "Coding 🆘", time: "12:00 PM", color: "#ff8000", checked: false,editable:false  },
+  { id: 8, title: "Coding 📲", time: "12:00 PM", color: "#ff8000", checked: false,editable:false  },
   
 ];
 
@@ -34,11 +34,11 @@ const App = () => {
   const [newColor, setNewColor] = useState('');
   const [edited,setedited]= useState("");
 
-  const deleteHandler = (id) => {
+  const deleteHandler = (id:number) => {
   setTasks(tasks.filter(task => task.id !== id));
 }
 
-const toggleDone=(id)=>{
+const toggleDone=(id:number)=>{
   if (edited.trim() === '') {
       Alert.alert('Please enter a Task');
       return;
@@ -50,7 +50,7 @@ const toggleDone=(id)=>{
   );
 }
 
-const toggleEdit = (id) => {
+const toggleEdit = (id:number) => {
   
     
     setTasks((prev) =>
@@ -61,7 +61,7 @@ const toggleEdit = (id) => {
     setedited('');
   };
 
-  const toggleTask=(id)=>{
+  const toggleTask=(id:number)=>{
      setTasks((prev) =>
       prev.map((task) =>
         task.id === id ? { ...task, checked: !task.checked } : task
@@ -139,7 +139,7 @@ const toggleEdit = (id) => {
             
               <Text style={styles.texttodo}>{task.title}</Text>
               <View style ={styles.TexttodoView}>
-              <Text>⏰ {task.time}</Text>
+              <Text style ={styles.timediv}>⏰ {task.time}</Text>
               <View style={styles.editdel}>
               <Pressable
               onPress={()=>toggleEdit(task.id)}

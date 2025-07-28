@@ -145,9 +145,9 @@ import{StyleSheet}from'react-native';
       paddingHorizontal:7,
       paddingVertical:2,
       color:'white',
-
-      
-      
+    },
+    timediv:{
+      width:120
     },
     edit:{
       backgroundColor:"#3d3d3d",
