@@ -86,6 +86,7 @@ import{StyleSheet}from'react-native';
       borderRadius: 20,
       padding: 20,
       alignItems: 'center',
+      marginBottom:430
     },
     Addtasktext: {
       fontSize: 29,
