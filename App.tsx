@@ -338,7 +338,7 @@ const App = () => {
        <ScrollView
        showsVerticalScrollIndicator={false}>
         
-       <Storyview/>
+       {/* <Storyview/> */}
 
       {/* Render tasks with toggle */}
       {tasks.map((task) => (
@@ -358,7 +358,7 @@ const App = () => {
 
       {/* Modal for Add Todo */}
       <Modal
-        animationType="fade"
+        animationType="slide"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)} // Android back handler
