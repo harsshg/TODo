@@ -1,129 +1,3 @@
-// import {
-//   View,
-//   Text,
-//   SafeAreaView,
-//   StyleSheet,
-//   Alert,
-//   Pressable,
-//   TextInput,
-// } from 'react-native';
-// import React, { useState } from 'react';
-// import styles from './styles';
-
-// import Addtodo from './Components/Addtodo';
-// import { ScrollView } from 'react-native';
-// import Storyview from './Components/storyview';
-
-
-
-// // const initialTasks = [
-// //   // {
-// //   //   id: 1,
-// //   //   title: 'Pay for rent 💸',
-// //   //   time: '8:00 AM',
-// //   //   color: '#F6416C',
-// //   //   checked: true,
-// //   // },
-// //   // {
-// //   //   id: 2,
-// //   //   title: 'Buy a milk 🥛',
-// //   //   time: '9:30 AM',
-// //   //   color: '#B6F500',
-// //   //   checked: false,
-// //   // },
-// //   // {
-// //   //   id: 3,
-// //   //   title: 'Pickup Mickael 📍',
-// //   //   time: '5:30 PM',
-// //   //   color: '#56DFCF',
-// //   //   checked: false,
-// //   // },
-// //   // {
-// //   //   id: 4,
-// //   //   title: 'Buy a chocolate 🍫 for Charlotte',
-// //   //   time: '6:00 PM',
-// //   //   color: '#C68EFD',
-// //   //   checked: false,
-// //   // },
-// // ];
-
-
-
-// const App = () => {
-//   const [initialTasks,setinitialTasks]=useState([]);
-//   let addtask = <></>;
-//    const [addTrue, setAddTrue] = useState(false); 
-//    const toggleAddTask = () => {
-//     setAddTrue(prev => !prev);  // toggle boolean state
-// };
-// if(addTrue == true){
-//    addtask = <Addtodo toggleAddTask={toggleAddTask} setinitialTasks ={setinitialTasks} initialTasks={initialTasks}  />;
-// }else{
-//   addtask = <></>;
-// }
-//   const [tasks, setTasks] = useState(initialTasks);
-
-//   const toggleTask = e => {
-//     setTasks(prev =>
-//       prev.map(task =>
-//         task.id === e ? { ...task, checked: !task.checked } : task,
-//       ),
-//     );
-//   };
-
-//   return (
-//     <SafeAreaView style={styles.container}>
-//       <View style={styles.viewbox}>
-//         <Text style={styles.TextStyle}>
-//           Tasks ↯ <Text style={{ color: '#F21368' }}>☀︎₊⁺⋆.˚</Text>
-//         </Text>
-//         <Text
-//           onPress={
-//            toggleAddTask
-//           }
-//           style={styles.ADD}
-//         >
-//           +
-//         </Text>
-//       </View>
-//      <ScrollView showsVerticalScrollIndicator={false}>
-
-//       {/* Storyscroll */}
-//       <Storyview/>
-//       {/* Render tasks with toggleable tick */}
-//       {tasks.map(task => (
-//         <View
-//           key={task.id}
-//           style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}
-//         >
-//           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-//             <Pressable style={styles.tick} onPress={() => toggleTask(task.id)}>
-//               {task.checked && <Text style={styles.tickText}>✔</Text>}
-//             </Pressable>
-//             <View>
-//               <Text style={styles.texttodo}>{task.title}</Text>
-//               <Text>⏰ {task.time}</Text>
-//             </View>
-//           </View>
-//           <View style={[styles.dot, { backgroundColor: task.color }]}></View>
-//         </View>
-//       ))}
-
-//       {/* ADD TODO */}
-//       {addtask}
-      
-//       </ScrollView>
-   
-//     </SafeAreaView>
-   
-//   );
-// };
-
-// export default App;
- 
-
-//+++++++++++++++++++++++++++++++++
-
 import {
   View,
   Text,
@@ -141,10 +15,14 @@ import { ScrollView } from 'react-native';
 import styles from './styles';
 
 const initialTasks = [
-  { id: 1, title: "Pay for rent 💸", time: "8:00 AM", color: "red", checked: false },
-  { id: 2, title: "Buy a milk 🥛", time: "9:30 AM", color: "#B6F500", checked: false },
-  { id: 3, title: "Pickup Mickael 📍", time: "5:30 PM", color: "#56DFCF", checked: false },
-  { id: 4, title: "Buy a chocolate 🍫 for Charlotte", time: "6:00 PM", color: "#C68EFD", checked: false },
+  { id: 1, title: "Pay for rent 💸", time: "8:00 AM", color: "red", checked: false , editable:false },
+  { id: 2, title: "Buy a milk 🥛", time: "9:30 AM", color: "#B6F500", checked: false ,editable:false  },
+  { id: 3, title: "Pickup Mickael 📍", time: "5:30 PM", color: "#56DFCF", checked: false,editable:false  },
+  { id: 4, title: "Buy a chocolate 🍫", time: "6:00 PM", color: "#C68EFD", checked: false,editable:false  },
+  { id: 5, title: "Go to Office 🏢", time: "10:00 AM", color: "#0011ff", checked: false , editable:false },
+  { id: 6, title: "Music 🎶", time: "8:30 PM", color: "#ff00ff", checked: false ,editable:false  },
+  { id: 7, title: "Travel ✈️", time: "4:30 AM", color: "#15ff00", checked: false,editable:false  },
+  { id: 8, title: "Coding 🆘", time: "12:00 PM", color: "#ff8000", checked: false,editable:false  },
   
 ];
 
@@ -154,15 +32,41 @@ const App = () => {
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [newTaskTime, setNewTaskTime] = useState('');
   const [newColor, setNewColor] = useState('');
+  const [edited,setedited]= useState("");
 
-  const toggleTask = (id) => {
+  const deleteHandler = (id) => {
+  setTasks(tasks.filter(task => task.id !== id));
+}
+
+const toggleDone=(id)=>{
+  if (edited.trim() === '') {
+      Alert.alert('Please enter a Task');
+      return;
+    }
+  setTasks((prev)=>
+  prev.map((task)=>
+  task.id === id ? { ...task, title: edited, editable: !task.editable } : task
+  )
+  );
+}
+
+const toggleEdit = (id) => {
+  
+  setedited("")
     setTasks((prev) =>
       prev.map((task) =>
-        task.id === id ? { ...task, checked: !task.checked } : task
+        task.id === id ? { ...task, editable: !task.editable } : task
       )
     );
   };
 
+  const toggleTask=(id)=>{
+     setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, checked: !task.checked } : task
+      )
+    );
+  }
   const addTask = () => {
     if (newTaskTitle.trim() === '' || newTaskTime.trim() === '' || newColor.trim()==='') {
       Alert.alert('Please enter both task title and time and color');
@@ -176,6 +80,7 @@ const App = () => {
       time: newTaskTime,
       color: newColor, // default dot color, change as needed
       checked: false,
+      editable:false,
     };
 
     setTasks((prev) => [...prev, newTask]);
@@ -193,7 +98,7 @@ const App = () => {
     
     <SafeAreaView style={styles.container}>
       <View style={styles.viewbox}>
-        <Text style={styles.TextStyle}>Today's Tasks ⛅︎</Text>
+        <Text style={styles.TextStyle}>Today's <Text style={{color:"#ff0037"}}>Task</Text> ⛅✓</Text>
         <Text
           onPress={() => setModalVisible(true)}
           style={styles.ADD}
@@ -213,12 +118,35 @@ const App = () => {
             <Pressable style={styles.tick} onPress={() => toggleTask(task.id)}>
               {task.checked && <Text style={styles.tickText}>✔</Text>}
             </Pressable>
-            <View>
+            <View >
+             
+              {/* Edit box */}
+              {task.editable && <View>
+            <TextInput 
+            placeholder={task.title} 
+            style={styles.editBox} 
+            value={edited} 
+            onChangeText={setedited} />
+            <Pressable 
+            onPress={()=>toggleDone(task.id)}
+            style={styles.doneBtn}><Text style={{color:"white"}} >Done</Text>
+            </Pressable>
+            </View> }
+            
               <Text style={styles.texttodo}>{task.title}</Text>
               <View style ={styles.TexttodoView}>
               <Text>⏰ {task.time}</Text>
-              <Pressable ><Text style={styles.edit}>Edit</Text></Pressable>
-              <Pressable ><Text style={styles.delete}>Delete</Text></Pressable>
+              <Pressable
+              onPress={()=>toggleEdit(task.id)}
+              ><Text style={styles.edit}>Edit</Text>
+              </Pressable>
+              <Pressable 
+              onPress={()=>deleteHandler(task.id)}
+               >
+                <Text 
+                
+                style={styles.delete}>Delete</Text>
+                </Pressable>
               </View>
             </View>
           </View>

@@ -150,6 +150,21 @@ import{StyleSheet}from'react-native';
       paddingVertical:2,
       borderRadius:10,
       color:"white"
+    },
+    editBox:{
+      height: 45,
+      width: 320,
+      borderColor: '#a6a6a6',
+      borderWidth: 0.9,
+      borderRadius: 10,
+      paddingHorizontal: 10,
+      fontSize: 18,
+    },
+    doneBtn:{
+      marginLeft:279,
+      padding:4,
+      borderRadius:8,
+      backgroundColor:"#ff002f",
     }
     
   });
