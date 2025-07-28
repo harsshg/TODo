@@ -104,9 +104,9 @@ const toggleEdit = (id:number) => {
       <View style={styles.viewbox}>
         <Text style={styles.TextStyle}>Task's <Text style={{color:"#ff0037"}}>☣︎</Text></Text>
         <View style={{display:'flex',flexDirection:'row',gap:6,alignItems:'center'}}>
-        { searching  ?<Text onPress={()=>toggleSearch(searching)} style={{width:50,alignItems:'center',height:50,fontSize:20,borderRadius:40,padding:6,borderWidth:3, borderColor: '#ff0033',backgroundColor:'#f7f7f7'}}>🔍</Text> :<View>
-        <TextInput placeholder='Enter your Searches Here'  style={{width:200,fontSize:16,borderColor:'#b3b3b3',borderWidth:3}}></TextInput>
-       <Pressable onPress={()=>toggleSearch(searching)} style={{backgroundColor:'#878787',marginLeft:142,paddingHorizontal:6,borderRadius:8,paddingBottom:1,marginTop:2,borderColor:'#ff0033',borderWidth:1.4}}><Text style={{color:'white'}}>Search</Text></Pressable>
+        { searching  ?<Pressable style={{width:50,alignItems:'center',height:50,borderRadius:40,padding:6,borderWidth:3, borderColor: '#ff0033',backgroundColor:'#f7f7f7'}}><Text onPress={()=>toggleSearch(searching)} style={{fontSize:26,bottom:3}}>🔍</Text></Pressable> :<View>
+        <TextInput placeholder='Enter your Searches Here'  style={{width:200,fontSize:16,borderColor:'#b3b3b3',borderWidth:3,borderRadius:10}}></TextInput>
+       <Pressable onPress={()=>toggleSearch(searching)} style={{backgroundColor:'#dadada',marginLeft:142,paddingHorizontal:6,borderRadius:8,paddingBottom:1,marginTop:2,borderColor:'black',borderWidth:1.4}}><Text style={{color:'black'}}>Search</Text></Pressable>
         </View>}
         
         
@@ -218,7 +218,10 @@ const toggleEdit = (id:number) => {
           </View>
         </KeyboardAvoidingView>
       </Modal>
-
+      
+      <View style={{backgroundColor:'#dadada',height:65,width:64,borderRadius:50,alignItems:'center',justifyContent:'center',bottom:32,left:360}}>
+        <Text style={{fontSize:45,fontWeight:300,color:'#006CFF',bottom:'1.5'}}>+</Text>
+      </View>
       
       
       </ScrollView>
