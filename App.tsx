@@ -149,8 +149,7 @@ const App = () => {
                   borderRadius: 10,
                 }}
               ></TextInput>
-              <Pressable
-                onPress={() => toggleSearch(searching)}
+              <Pressable  
                 style={{
                   backgroundColor: '#dadada',
                   marginLeft: 142,
@@ -168,7 +167,7 @@ const App = () => {
           )}
 
           {/* Task Add */}
-           <>
+           
             <Pressable
               style={{
                 width: 40,
@@ -179,7 +178,7 @@ const App = () => {
                 borderWidth: 3,
                 borderColor: '#006CFF',
               }}
-              onPress={() => setModalVisible(true)}
+             onPress={() => setModalVisible(true)}
             >
               <Icon name="plus" size={25} color="#006CFF" style={{bottom:1}} />
               {/* <Text
@@ -191,7 +190,7 @@ const App = () => {
           {/* <Text onPress={() => setModalVisible(true)} style={styles.ADD}>
             +
           </Text> */}
-          </>
+          
         </View>
       </View>
 
@@ -234,6 +233,7 @@ const App = () => {
             justifyContent: 'center',
             bottom: 32,
             left: 360,
+
           }}
         >
           <Text
@@ -249,7 +249,7 @@ const App = () => {
         </View>
 
         {/* Here i will add category */}
-         <Category />
+         <Category/>
 
 
       </ScrollView>

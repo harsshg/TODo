@@ -1,10 +1,10 @@
-import { View, Text ,Modal } from 'react-native'
+import { View, Text,Modal } from 'react-native'
 import React from 'react'
 
 const Category = () => {
   return (
     <View>
-       <Modal
+    <Modal
      visible={false}
       animationType="slide"
       transparent={true}>

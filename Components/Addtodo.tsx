@@ -38,7 +38,7 @@ const Addtodo: React.FC<AddtodoProps> = ({
         animationType="slide"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)} // Android back handler
+        onRequestClose={() => setModalVisible(false)} 
       >
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
