@@ -10,7 +10,7 @@ const Categorydetails = ({setModalVisible,modalVisible,togglemodel,bg}) => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => setModalVisible(true)}
-         >
+         > 
           <View 
           style={{backgroundColor:(bg.color),height:'100%',width:'100%',top:30,borderRadius:30,padding:10,gap:30}}>
             <Pressable onPress={togglemodel} style={{backgroundColor:'black',opacity:.47,height:10,width:95,top:10,borderRadius:10,left:'39.7%'}}></Pressable>

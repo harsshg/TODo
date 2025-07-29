@@ -1,9 +1,10 @@
-import { View, Text, Pressable, TextInput } from 'react-native'
-import React from 'react'
+import { View, Text, Pressable, TextInput  } from 'react-native'
+import React, { useState } from 'react'
 import styles from '../styles'
 import { ScrollView } from 'react-native';
 
 interface Task {
+ 
   id: number;
   title: string;
   time: string;
@@ -13,6 +14,7 @@ interface Task {
 }
 
 interface AlltaskProps {
+  valsearch:string;
   tasks: Task[];
   edited: string;
   setedited: React.Dispatch<React.SetStateAction<string>>;
@@ -22,6 +24,7 @@ interface AlltaskProps {
   toggleTask: (id: number) => void;
 }
 const Alltask: React.FC<AlltaskProps> = ({
+  valsearch,
   tasks,
   edited,
   setedited,
@@ -29,7 +32,13 @@ const Alltask: React.FC<AlltaskProps> = ({
   toggleEdit,
   deleteHandler,
   toggleTask
-}) => { return(
+}) => { 
+ 
+// const[task1,settask1]=useState();
+  
+// valsearch ==''?settask1(tasks):settask1((tasks.filter((task)=>task.title.toLowerCase().includes(valsearch.toLowerCase()))))
+
+  return(
    <>
     {tasks.map((task:any) => (
         <View key={task.id} style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>

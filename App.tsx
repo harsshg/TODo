@@ -33,8 +33,9 @@ const App = () => {
   const [edited, setedited] = useState('');
   const [searching, setsearch] = useState(true);
   const [listcat, setlistcat] = useState(false);
-  const [mainview,setmainview]=useState(false);//Here change it to true
+  const [mainview,setmainview]=useState(true);
   const [selectedCity,setSelectedCity]=useState('null');
+  const [valsearch,setvalsearch]=useState('');
 
   
 
@@ -144,7 +145,7 @@ const App = () => {
               }}
               onPress={() => toggleSearch(searching)}
             >
-              <Icon name="search" size={21} style={{bottom:.5}} />
+              <Icon name="search" size={21} style={{bottom:.5}} color='#006CFF' />
               {/* <Text
                 
                 style={{ fontSize: 26, bottom: 3 }}
@@ -153,13 +154,15 @@ const App = () => {
               </Text> */}
             </Pressable>
           ) : (
-            <View>
-              <View style={{borderRadius:10,backgroundColor:'#006CFF',borderWidth:1.5,borderColor:'red',width:22,alignItems:'center',zIndex:1,position:'absolute',bottom:61,left:184
+            <View style={{alignItems:'center'}}>
+              <View style={{borderRadius:10,backgroundColor:'red',borderWidth:1.5,borderColor:'red',width:22,alignItems:'center',zIndex:1,position:'absolute',bottom:35,left:184
               }}>
               <Icon name='close' size={18} color="white" style={{bottom:1}}
               onPress={() => toggleSearch(searching)}/></View>
               <TextInput
                 placeholder="Enter your Searches Here"
+                 value={valsearch}
+                 onChangeText={setvalsearch}
                 style={{
                   zIndex:.9,
                   width: 200,
@@ -169,7 +172,7 @@ const App = () => {
                   borderRadius: 10,
                 }}
               ></TextInput>
-              <Pressable  
+              {/* <Pressable  
                 style={{
                   backgroundColor: '#dadada',
                   marginLeft: 142,
@@ -182,7 +185,7 @@ const App = () => {
                 }}
               >
                 <Text style={{ color: 'black' }}>Search</Text>
-              </Pressable>
+              </Pressable> */}
             </View>
           )}
 
@@ -217,6 +220,7 @@ const App = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Render tasks with toggle */}
         {mainview?(<Alltask
+        valsearch={valsearch}
           tasks={tasks}
           edited={edited}
           setedited={setedited}
@@ -233,7 +237,7 @@ const App = () => {
         {/* Modal for Add Todo */}
 
         <Addtodo
-        
+          
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
           newTaskTitle={newTaskTitle}

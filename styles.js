@@ -7,6 +7,7 @@ import{StyleSheet}from'react-native';
       marginTop: 50,
       padding: 10,
       fontFamily: 'SFProDisplay-Regular',
+      
     },
     viewbox: {
       borderBottomColor: '#ff0037',

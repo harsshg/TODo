@@ -17,8 +17,8 @@ const Category = () => {
     setbg (task)
     settitle(task.name)
     setModalVisible(true)
-  }
-
+  } 
+ 
   
   let obj =[
   { id: 1, color:'#dadada',name:'Inbox',fontcolor:'black' },

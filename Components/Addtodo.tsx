@@ -32,7 +32,6 @@ const Addtodo: React.FC<AddtodoProps> = ({
   newColor,
   setNewColor,
   addTask,
-  
 }) => {
   return (
     <SafeAreaView>
