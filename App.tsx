@@ -34,9 +34,15 @@ const App = () => {
   const [newColor, setNewColor] = useState('');
   const [edited,setedited]= useState("");
   const[searching,setsearch] = useState(true);
+  const[categorytoggle,setcategorytoggle] = useState('false');
 
 
-  const deleteHandler = (id:number) => {
+const catagory=()=>{
+
+}
+
+
+const deleteHandler = (id:number) => {
   setTasks(tasks.filter(task => task.id !== id));
 }
 
@@ -153,7 +159,7 @@ const toggleEdit = (id:number) => {
             
               <Text style={styles.texttodo}>{task.title}</Text>
               <View style ={styles.TexttodoView}>
-              <Text style ={styles.timediv}>⏰ {task.time}</Text>
+              <Text style ={styles.timediv}> {task.time}</Text>
               <View style={styles.editdel}>
               <Pressable
               onPress={()=>toggleEdit(task.id)}
@@ -219,9 +225,25 @@ const toggleEdit = (id:number) => {
         </KeyboardAvoidingView>
       </Modal>
       
-      <View style={{backgroundColor:'#dadada',height:65,width:64,borderRadius:50,alignItems:'center',justifyContent:'center',bottom:32,left:360}}>
-        <Text style={{fontSize:45,fontWeight:300,color:'#006CFF',bottom:'1.5'}}>+</Text>
+      <View style={{backgroundColor:'#000000',height:65,width:64,borderRadius:50,alignItems:'center',justifyContent:'center',bottom:32,left:360}}>
+        <Text style={{fontSize:45,fontWeight:300,color:'white',bottom:'1.5'}}>+</Text>
       </View>
+
+      {/* Here i will add category */}
+      <Modal
+     visible={false}
+      animationType="slide"
+      transparent={true}>
+      <View style={{backgroundColor:'rgba(224, 223, 223, 0.55)',flex:1,marginTop:300,borderTopRightRadius:50,borderTopLeftRadius:50,borderWidth:0,alignItems:'center',padding:3}}>
+      <View style={{height:8,width:90,backgroundColor:'black',marginTop:5,borderRadius:10,opacity:1,marginBottom:50}}></View>
+      <View style={{height:90,backgroundColor:'#EBEFF5',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Inbox</Text></View>
+      <View style={{height:90,backgroundColor:'#61DEA4',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Work</Text></View>
+      <View style={{height:90,backgroundColor:'#F45E6D',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Shopping</Text></View>
+      <View style={{height:90,backgroundColor:'#FFE761',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Family</Text></View>
+      <View style={{height:90,backgroundColor:'#B678FF',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Personal</Text></View>
+      
+      </View>
+      </Modal>
       
       
       </ScrollView>

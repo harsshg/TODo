@@ -9,10 +9,10 @@ import{StyleSheet}from'react-native';
     },
     viewbox: {
       borderBottomColor: '#ff0037',
-      borderBottomWidth: 2,
+      // borderBottomWidth: 2,
       borderStyle:'dashed',
       borderRadius:18,
-      marginBottom: 20,
+      marginBottom: 0,
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -79,7 +79,7 @@ import{StyleSheet}from'react-native';
     modalContainer: {
       flex: 1,
       justifyContent: 'center',
-      backgroundColor: 'rgba(0,0,0,0.5)',
+      backgroundColor: 'rgba(100,100,100,0.5)',
       padding: 20,
     },
     modalContent: {
