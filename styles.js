@@ -3,6 +3,7 @@ import{StyleSheet}from'react-native';
   const styles = StyleSheet.create({
     container: {
       width: '100%',
+      height:'100%',
       marginTop: 50,
       padding: 10,
       fontFamily: 'SFProDisplay-Regular',
@@ -51,6 +52,7 @@ import{StyleSheet}from'react-native';
       borderBottomColor: '#a6a6a6',
       alignItems: 'center',
       justifyContent: 'space-between',
+      
     },
     tick: {
       height: 30,

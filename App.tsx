@@ -14,6 +14,7 @@ import Category from './Components/Category';
 import Alltask from './Components/Alltask';
 import obj from './Components/initialtasks';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Dropdown } from 'react-native-element-dropdown';
 
 // import { Icon1 } from 'react-native-elements';
 
@@ -31,7 +32,11 @@ const App = () => {
   const [newColor, setNewColor] = useState('');
   const [edited, setedited] = useState('');
   const [searching, setsearch] = useState(true);
-  const [categorytoggle, setcategorytoggle] = useState('false');
+  const [listcat, setlistcat] = useState(false);
+  const [mainview,setmainview]=useState(false);//Here change it to true
+  const [selectedCity,setSelectedCity]=useState('null');
+
+  
 
   const deleteHandler = (id: number) => {
     setTasks(tasks.filter(task => task.id !== id));
@@ -95,6 +100,21 @@ const App = () => {
     setNewColor('');
     setModalVisible(false);
   };
+
+  const togglelistcat=()=>{
+    setlistcat(!listcat);
+  }
+  const toggleListview=()=>{
+    setlistcat(false);
+    setmainview(true)
+  }
+  const toggleCatogryview=()=>{
+    setlistcat(false);
+    setmainview(false);
+
+  }
+  
+  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -196,8 +216,7 @@ const App = () => {
 
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Render tasks with toggle */}
-
-        <Alltask
+        {mainview?(<Alltask
           tasks={tasks}
           edited={edited}
           setedited={setedited}
@@ -205,11 +224,16 @@ const App = () => {
           toggleEdit={toggleEdit}
           deleteHandler={deleteHandler}
           toggleTask={toggleTask}
-        />
+        />):<Category/>}
+        
+
+         {/* Here i will add category */}
+         
 
         {/* Modal for Add Todo */}
 
         <Addtodo
+        
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
           newTaskTitle={newTaskTitle}
@@ -223,9 +247,15 @@ const App = () => {
 
         {/* category toggle button */}
 
-        <View
+        
+
+       
+
+
+      </ScrollView>
+      <Pressable
           style={{
-            backgroundColor: 'black',
+            backgroundColor: '#006CFF',
             height: 65,
             width: 64,
             borderRadius: 50,
@@ -233,8 +263,11 @@ const App = () => {
             justifyContent: 'center',
             bottom: 32,
             left: 360,
-
+            position:'absolute',
+            top:850,
+            zIndex:1,
           }}
+          onPress={togglelistcat}
         >
           <Text
             style={{
@@ -246,13 +279,15 @@ const App = () => {
           >
             +
           </Text>
-        </View>
+        </Pressable>
 
-        {/* Here i will add category */}
-         <Category/>
+       {listcat?(<View style={{position:'absolute',top:750,height:90,width:170,backgroundColor:'rgba(107, 106, 106, 0.16)',padding:2,bottom:130,left:250,borderRadius:12,zIndex:0.5,alignItems:'center',justifyContent:'center',gap:1,borderWidth:1,borderColor:"#dadada"}}>
+        <Pressable onPress={toggleListview}  style={{backgroundColor:'rgb(238, 238, 238)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10,}}><Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ✔︎ List</Text></Pressable>
+        <Pressable onPress={toggleCatogryview} style={{backgroundColor:'rgb(238, 238, 238)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10}}><Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ⎅ Category</Text></Pressable>
+        </View>):""}
+        
 
 
-      </ScrollView>
     </SafeAreaView>
   );
 };

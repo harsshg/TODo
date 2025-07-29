@@ -1,24 +1,45 @@
-import { View, Text,Modal } from 'react-native'
-import React from 'react'
+import { View, Text,Modal, Pressable } from 'react-native'
+import React, { useState } from 'react'
+import Categorydetails from './Categorydetails';
+
 
 const Category = () => {
+  const[modalVisible,setModalVisible]=useState(false);
+  
+
+  const togglemodel=()=>{
+    setModalVisible(!modalVisible);
+  }
+  const[bg,setbg]=useState('')
+  const[title,settitle]=useState('')
+
+  const togglemodelviatask=(task)=>{
+    setbg (task)
+    settitle(task.name)
+    setModalVisible(true)
+  }
+
+  
+  let obj =[
+  { id: 1, color:'#dadada',name:'Inbox',fontcolor:'black' },
+  { id: 2, color:'#61DEA4',name:'Work',fontcolor:'white' },
+  { id: 3, color:'#F45E6D',name:'Shopping',fontcolor:'white' },
+  { id: 4, color:'#FFE761',name:'Family',fontcolor:'black' },
+  { id: 5, color:'#B678FF',name:'Personal',fontcolor:'white'}, 
+];
   return (
-    <View>
-    <Modal
-     visible={false}
-      animationType="slide"
-      transparent={true}>
-      <View style={{backgroundColor:'rgba(224, 223, 223, 0.55)',flex:1,marginTop:300,borderTopRightRadius:50,borderTopLeftRadius:50,borderWidth:0,alignItems:'center',padding:3}}>
-      <View style={{height:8,width:90,backgroundColor:'black',marginTop:5,borderRadius:10,opacity:1,marginBottom:50}}></View>
-      <View style={{height:90,backgroundColor:'#EBEFF5',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Inbox</Text></View>
-      <View style={{height:90,backgroundColor:'#61DEA4',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Work</Text></View>
-      <View style={{height:90,backgroundColor:'#F45E6D',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Shopping</Text></View>
-      <View style={{height:90,backgroundColor:'#FFE761',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Family</Text></View>
-      <View style={{height:90,backgroundColor:'#B678FF',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Personal</Text></View>
       
-      </View>
-      </Modal>
-    </View>
+     <View style={{marginTop:30}} >
+      {obj.map((task)=>(
+       <Pressable onPress={()=>togglemodelviatask(task)} key ={task.id} style={{height:90,backgroundColor:(task.color),width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:(task.fontcolor),fontSize:30,fontWeight:500}}>{task.name}</Text></Pressable>
+       
+      ))}
+      {/* <View style={{height:90,backgroundColor:'#dadada',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Inbox</Text></View> */}
+      
+     <Categorydetails modalVisible={modalVisible} setModalVisible={setModalVisible} togglemodel={togglemodel} bg ={bg} title={title}/>
+
+
+     </View>
   )
 }
 

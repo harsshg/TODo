@@ -1,6 +1,7 @@
 import { View, Text, Pressable, TextInput } from 'react-native'
 import React from 'react'
 import styles from '../styles'
+import { ScrollView } from 'react-native';
 
 interface Task {
   id: number;
@@ -57,20 +58,18 @@ const Alltask: React.FC<AlltaskProps> = ({
             </View> }
               <Text style={styles.texttodo}>{task.title}</Text>
               <View style ={styles.TexttodoView}>
-              <Text style ={styles.timediv}> {task.time}</Text>
+              <Text style ={styles.timediv}> ⏰ {task.time}</Text>
+              
+              {/* Edit&Del */}
               <View style={styles.editdel}>
-              <Pressable
-              onPress={()=>toggleEdit(task.id)}
-              ><Text style={styles.edit}>Edit</Text>
+              <Pressable onPress={()=>toggleEdit(task.id)}>
+                <Text style={styles.edit}>Edit</Text>
               </Pressable>
-              <Pressable 
-              onPress={()=>deleteHandler(task.id)}
-               >
-                <Text 
-                
-                style={styles.delete}>Delete</Text>
+              <Pressable onPress={()=>deleteHandler(task.id)} >
+                <Text style={styles.delete}>Delete</Text>
                 </Pressable>
                 </View>
+
               </View>
             </View>
           </View>

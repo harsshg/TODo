@@ -8,8 +8,9 @@ import {
   Platform, } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import styles from '../styles';
-
+// import { Dropdown } from 'react-native-element-dropdown';
 interface AddtodoProps {
+  
   modalVisible: boolean;
   setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   newTaskTitle: string;
@@ -30,7 +31,8 @@ const Addtodo: React.FC<AddtodoProps> = ({
   setNewTaskTime,
   newColor,
   setNewColor,
-  addTask
+  addTask,
+  
 }) => {
   return (
     <SafeAreaView>
@@ -65,6 +67,14 @@ const Addtodo: React.FC<AddtodoProps> = ({
               value={newColor}
               onChangeText={setNewColor}
             />
+            {/* const cities = [{name: 'New York', code: 'NY'}, {name: 'Rome', code: 'RM'}];
+            <Dropdown
+             value={selectedCity}
+             options={cities}
+             onChange={(e) => setSelectedCity(e.value)}
+             optionLabel="name"
+             placeholder="Select a Category"
+            /> */}
 
             <View style={styles.Addtaskcd}>
               <Pressable onPress={() => setModalVisible(false)}>
