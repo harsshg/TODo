@@ -1,67 +1,153 @@
-import { View, Text, TextInput } from 'react-native';
-import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native';
+// import {   View,
+//   Text,
+//   StyleSheet,
+//   Alert,
+//   Pressable,
+//   Modal,
+//   TextInput,
+//   KeyboardAvoidingView,
+//   Platform, } from 'react-native';
+// import React, { useState } from 'react';
+// import { SafeAreaView } from 'react-native';
+// import styles from '../styles';
+
+// const Addtodo = ({ modalVisible,setModalVisible,newTaskTitle,setNewTaskTitle,newTaskTime,setNewTaskTime,newColor,setNewColor,addTask }) => {
+
+//   return (
+//     <SafeAreaView>
+//     <Modal
+//         animationType="slide"
+//         transparent={true}
+//         visible={modalVisible}
+//         onRequestClose={() => setModalVisible(false)} // Android back handler
+//       >
+//         <KeyboardAvoidingView
+//           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+//           style={styles.modalContainer}
+//         >
+//           <View style={styles.modalContent}>
+//             <Text style={styles.Addtasktext}>Add Todo ☇</Text>
+
+//             <TextInput
+//               placeholder="Task Title"
+//               style={styles.Addtaskmsgbx}
+//               value={newTaskTitle}
+//               onChangeText={setNewTaskTitle}
+//             />
+//             <TextInput
+//               placeholder="Task Time (e.g. 8:00 AM)"
+//               style={styles.AddtaskTimeInput}
+//               value={newTaskTime}
+//               onChangeText={setNewTaskTime}
+//             />
+//             <TextInput
+//               placeholder="Enter color here('green')"
+//               style={styles.AddtaskTimeInput}
+//               value={newColor}
+//               onChangeText={setNewColor}
+//             />
+
+//             <View style={styles.Addtaskcd}>
+//               <Pressable onPress={() => setModalVisible(false)}>
+//                 <Text style={styles.AddtaskCreate}>Cancel</Text>
+//               </Pressable>
+//               <Pressable onPress={addTask}>
+//                 <Text style={styles.AddtaskDone}>Done</Text>
+//               </Pressable>
+//             </View>
+//           </View>
+//         </KeyboardAvoidingView>
+//       </Modal>
+//       </SafeAreaView>
+//   );
+// };
+
+// export default Addtodo;
+
+
+import {
+  View,
+  Text,
+  StyleSheet,
+  Alert,
+  Pressable,
+  Modal,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView
+} from 'react-native';
+import React from 'react';
 import styles from '../styles';
 
-const Addtodo = ({ toggleAddTask, setinitialTasks,initialTasks  }) => {
-  let[id,setid]=useState(0);
-  let [task, settask] = useState('');
-   let [color, setcolor] = useState('');
-   let [alarm, setalarm] = useState('');
-   let toggletasks =(initialTasks)=>{
-      setinitialTasks([...initialTasks,{id: id,title: task,time: alarm,color: color,checked: false,}])
-      setid(id+1);
-   }
-   
+interface AddtodoProps {
+  modalVisible: boolean;
+  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  newTaskTitle: string;
+  setNewTaskTitle: React.Dispatch<React.SetStateAction<string>>;
+  newTaskTime: string;
+  setNewTaskTime: React.Dispatch<React.SetStateAction<string>>;
+  newColor: string;
+  setNewColor: React.Dispatch<React.SetStateAction<string>>;
+  addTask: () => void;
+}
 
+const Addtodo: React.FC<AddtodoProps> = ({
+  modalVisible,
+  setModalVisible,
+  newTaskTitle,
+  setNewTaskTitle,
+  newTaskTime,
+  setNewTaskTime,
+  newColor,
+  setNewColor,
+  addTask
+}) => {
   return (
-    <SafeAreaView
-      style={{
-        position: 'absolute',
-        marginLeft: '5%',
-        backgroundColor: 'rgba(44, 23, 0, 0.77)',
-        borderRadius: 20,
-      }}
-    >
-      <View style={styles.AddTask}>
-        <Text style={styles.Addtasktext}>Add Todo ☇</Text>
-        {/* <View style={styles.Addtaskmsgbx}></View> */}
-        <View style={styles.Addtaskmsgbx}>
-          {/* For color */}
-          <TextInput
-            onChangeText={setcolor}
-            value={color}
-            style={styles.inputs}
-            placeholder="Enter color Here"
-          />
+    <SafeAreaView>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          style={styles.modalContainer}
+        >
+          <View style={styles.modalContent}>
+            <Text style={styles.Addtasktext}>Add Todo ☇</Text>
 
-          {/* For Alarm */}
-          <TextInput
-            onChangeText={setalarm}
-            value={alarm}
-            style={styles.inputs}
-            placeholder="Enter Alarm time"
-          />
-          {/* For task */}
-          <TextInput
-            onChangeText={settask}
-            value={task}
-            style={styles.inputs}
-            placeholder="Enter your task"
-          />
-        </View>
-        <View style={styles.Addtaskcd}>
-          <Text onPress={toggleAddTask} style={styles.AddtaskCreate}>
-            Cancel
-          </Text>
-          <Text
-           onPress={toggletasks}
-            style={styles.AddtaskDone}
-          >
-            Done
-          </Text>
-        </View>
-      </View>
+            <TextInput
+              placeholder="Task Title"
+              style={styles.Addtaskmsgbx}
+              value={newTaskTitle}
+              onChangeText={setNewTaskTitle}
+            />
+            <TextInput
+              placeholder="Task Time (e.g. 8:00 AM)"
+              style={styles.AddtaskTimeInput}
+              value={newTaskTime}
+              onChangeText={setNewTaskTime}
+            />
+            <TextInput
+              placeholder="Enter color here (e.g. 'green')"
+              style={styles.AddtaskTimeInput}
+              value={newColor}
+              onChangeText={setNewColor}
+            />
+
+            <View style={styles.Addtaskcd}>
+              <Pressable onPress={() => setModalVisible(false)}>
+                <Text style={styles.AddtaskCreate}>Cancel</Text>
+              </Pressable>
+              <Pressable onPress={addTask}>
+                <Text style={styles.AddtaskDone}>Done</Text>
+              </Pressable>
+            </View>
+          </View>
+        </KeyboardAvoidingView>
+      </Modal>
     </SafeAreaView>
   );
 };

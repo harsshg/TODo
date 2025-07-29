@@ -13,6 +13,9 @@ import {
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import styles from './styles';
+import Addtodo from './Components/Addtodo';
+import Category from './Components/Category';
+import Alltask from './Components/Alltask';
 
 const initialTasks = [
   { id: 1, title: "Pay for rent 💸", time: "8:00 AM", color: "red", checked: false , editable:false },
@@ -35,11 +38,6 @@ const App = () => {
   const [edited,setedited]= useState("");
   const[searching,setsearch] = useState(true);
   const[categorytoggle,setcategorytoggle] = useState('false');
-
-
-const catagory=()=>{
-
-}
 
 
 const deleteHandler = (id:number) => {
@@ -107,6 +105,8 @@ const toggleEdit = (id:number) => {
 
   return (
     <SafeAreaView style={styles.container}>
+
+      {/* Search Box */}
       <View style={styles.viewbox}>
         <Text style={styles.TextStyle}>Task's <Text style={{color:"#ff0037"}}>☣︎</Text></Text>
         <View style={{display:'flex',flexDirection:'row',gap:6,alignItems:'center'}}>
@@ -115,135 +115,56 @@ const toggleEdit = (id:number) => {
        <Pressable onPress={()=>toggleSearch(searching)} style={{backgroundColor:'#dadada',marginLeft:142,paddingHorizontal:6,borderRadius:8,paddingBottom:1,marginTop:2,borderColor:'black',borderWidth:1.4}}><Text style={{color:'black'}}>Search</Text></Pressable>
         </View>}
         
-        
-        <Text
+        {/* Task Add */}
+
+          <Text
           onPress={() => setModalVisible(true)}
-          style={styles.ADD}
-        >
+          style={styles.ADD}>
           +
-        </Text>
+          </Text>
         </View>
-      </View>
-       <ScrollView
+        </View>
+
+
+      <ScrollView
        showsVerticalScrollIndicator={false}>
-        
-       {/* <Storyview/> */}
 
       {/* Render tasks with toggle */}
-      {tasks.map((task) => (
-        <View key={task.id} style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-            <Pressable style={styles.tick} onPress={() => toggleTask(task.id)}>
-              {task.checked && <Text style={styles.tickText}>✔</Text>}
-            </Pressable>
-            <View >
-             
-              {/* Edit box */}
-              {task.editable && <View>
-            <TextInput 
-            placeholder={task.title} 
-            style={styles.editBox} 
-            value={edited} 
-            onChangeText={setedited} />
-            <View style={{display:'flex',flexDirection:'row',gap:6,marginLeft:210}}>
-            <Pressable 
-            onPress={()=>toggleDone(task.id)}
-            style={styles.doneBtn}><Text style={{color:"white"}} >Done</Text>
-            </Pressable>
-            <Pressable 
-            onPress={()=>toggleEdit(task.id)}
-            style={[styles.doneBtn,{backgroundColor:'#3d3d3d'}]}><Text style={{color:"white"}} >Cancel</Text>
-            </Pressable>
-            </View>
-            </View> }
-            
-              <Text style={styles.texttodo}>{task.title}</Text>
-              <View style ={styles.TexttodoView}>
-              <Text style ={styles.timediv}> {task.time}</Text>
-              <View style={styles.editdel}>
-              <Pressable
-              onPress={()=>toggleEdit(task.id)}
-              ><Text style={styles.edit}>Edit</Text>
-              </Pressable>
-              <Pressable 
-              onPress={()=>deleteHandler(task.id)}
-               >
-                <Text 
-                
-                style={styles.delete}>Delete</Text>
-                </Pressable>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View style={[styles.dot, { backgroundColor: task.color }]}></View>
-        </View>
-      ))}
+
+
+      <Alltask 
+        tasks={tasks}
+        edited={edited}
+        setedited={setedited}
+        toggleDone={toggleDone}
+        toggleEdit={toggleEdit}
+        deleteHandler={deleteHandler}
+        toggleTask={toggleTask}
+      />
 
       {/* Modal for Add Todo */}
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)} // Android back handler
-      >
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-          style={styles.modalContainer}
-        >
-          <View style={styles.modalContent}>
-            <Text style={styles.Addtasktext}>Add Todo ☇</Text>
-
-            <TextInput
-              placeholder="Task Title"
-              style={styles.Addtaskmsgbx}
-              value={newTaskTitle}
-              onChangeText={setNewTaskTitle}
-            />
-            <TextInput
-              placeholder="Task Time (e.g. 8:00 AM)"
-              style={styles.AddtaskTimeInput}
-              value={newTaskTime}
-              onChangeText={setNewTaskTime}
-            />
-            <TextInput
-              placeholder="Enter color here('green')"
-              style={styles.AddtaskTimeInput}
-              value={newColor}
-              onChangeText={setNewColor}
-            />
-
-            <View style={styles.Addtaskcd}>
-              <Pressable onPress={() => setModalVisible(false)}>
-                <Text style={styles.AddtaskCreate}>Cancel</Text>
-              </Pressable>
-              <Pressable onPress={addTask}>
-                <Text style={styles.AddtaskDone}>Done</Text>
-              </Pressable>
-            </View>
-          </View>
-        </KeyboardAvoidingView>
-      </Modal>
       
-      <View style={{backgroundColor:'#000000',height:65,width:64,borderRadius:50,alignItems:'center',justifyContent:'center',bottom:32,left:360}}>
-        <Text style={{fontSize:45,fontWeight:300,color:'white',bottom:'1.5'}}>+</Text>
+      <Addtodo
+      modalVisible={modalVisible} 
+      setModalVisible={setModalVisible} 
+      newTaskTitle={newTaskTitle} 
+      setNewTaskTitle={setNewTaskTitle} 
+      newTaskTime={newTaskTime} 
+      setNewTaskTime={setNewTaskTime} 
+      newColor={newColor} 
+      setNewColor={setNewColor} 
+      addTask={addTask}
+      />
+
+      {/* category toggle button */}
+
+      <View style={{backgroundColor:'black',height:65,width:64,borderRadius:50,alignItems:'center',justifyContent:'center',bottom:32,left:360}}>
+        <Text style={{fontSize:45,fontWeight:300,color:'white',bottom:1.5}}>+</Text>
       </View>
 
       {/* Here i will add category */}
-      <Modal
-     visible={false}
-      animationType="slide"
-      transparent={true}>
-      <View style={{backgroundColor:'rgba(224, 223, 223, 0.55)',flex:1,marginTop:300,borderTopRightRadius:50,borderTopLeftRadius:50,borderWidth:0,alignItems:'center',padding:3}}>
-      <View style={{height:8,width:90,backgroundColor:'black',marginTop:5,borderRadius:10,opacity:1,marginBottom:50}}></View>
-      <View style={{height:90,backgroundColor:'#EBEFF5',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Inbox</Text></View>
-      <View style={{height:90,backgroundColor:'#61DEA4',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Work</Text></View>
-      <View style={{height:90,backgroundColor:'#F45E6D',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Shopping</Text></View>
-      <View style={{height:90,backgroundColor:'#FFE761',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Family</Text></View>
-      <View style={{height:90,backgroundColor:'#B678FF',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Personal</Text></View>
-      
-      </View>
-      </Modal>
+
+      <Category/>
       
       
       </ScrollView>
