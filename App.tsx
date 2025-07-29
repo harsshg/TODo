@@ -13,6 +13,13 @@ import Addtodo from './Components/Addtodo';
 import Category from './Components/Category';
 import Alltask from './Components/Alltask';
 import obj from './Components/initialtasks';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+// import { Icon1 } from 'react-native-elements';
+
+
+
+
 
 const initialTasks = obj;
 
@@ -107,29 +114,34 @@ const App = () => {
           {searching ? (
             <Pressable
               style={{
-                width: 50,
+                width: 40,
                 alignItems: 'center',
-                height: 50,
+                height: 40,
                 borderRadius: 40,
                 padding: 6,
                 borderWidth: 3,
-                borderColor: '#ff0033',
-                backgroundColor: '#f7f7f7',
+                borderColor: '#006CFF',
               }}
               onPress={() => toggleSearch(searching)}
             >
-              <Text
+              <Icon name="search" size={21} style={{bottom:.5}} />
+              {/* <Text
                 
                 style={{ fontSize: 26, bottom: 3 }}
               >
                 🔍
-              </Text>
+              </Text> */}
             </Pressable>
           ) : (
             <View>
+              <View style={{borderRadius:10,backgroundColor:'#006CFF',borderWidth:1.5,borderColor:'red',width:22,alignItems:'center',zIndex:1,position:'absolute',bottom:61,left:184
+              }}>
+              <Icon name='close' size={18} color="white" style={{bottom:1}}
+              onPress={() => toggleSearch(searching)}/></View>
               <TextInput
                 placeholder="Enter your Searches Here"
                 style={{
+                  zIndex:.9,
                   width: 200,
                   fontSize: 16,
                   borderColor: '#b3b3b3',
@@ -159,21 +171,22 @@ const App = () => {
            <>
             <Pressable
               style={{
-                width: 25,
+                width: 40,
                 alignItems: 'center',
-                height: 25,
+                height: 40,
                 borderRadius: 40,
                 padding: 6,
                 borderWidth: 3,
-                borderColor: '#ff0033',
+                borderColor: '#006CFF',
               }}
               onPress={() => setModalVisible(true)}
             >
-              <Text
+              <Icon name="plus" size={25} color="#006CFF" style={{bottom:1}} />
+              {/* <Text
                 style={{ fontSize: 35, bottom: 10 }}
               >
                 +
-              </Text>
+              </Text> */}
             </Pressable>
           {/* <Text onPress={() => setModalVisible(true)} style={styles.ADD}>
             +
