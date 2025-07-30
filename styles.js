@@ -3,9 +3,11 @@ import{StyleSheet}from'react-native';
   const styles = StyleSheet.create({
     container: {
       width: '100%',
+      height:'100%',
       marginTop: 50,
       padding: 10,
       fontFamily: 'SFProDisplay-Regular',
+      
     },
     viewbox: {
       borderBottomColor: '#ff0037',
@@ -20,10 +22,14 @@ import{StyleSheet}from'react-native';
       height:90,
     },
     TextStyle: {
-      fontWeight: '500',
+      height:41,
+      width:100,
+      fontWeight: '700',
       letterSpacing: 0,
       fontSize: 30,
       color: 'black',
+      left:5,
+
     },
     ADD: {
       backgroundColor:'#f7f7f7',
@@ -47,6 +53,7 @@ import{StyleSheet}from'react-native';
       borderBottomColor: '#a6a6a6',
       alignItems: 'center',
       justifyContent: 'space-between',
+      
     },
     tick: {
       height: 30,
