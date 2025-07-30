@@ -1,24 +1,101 @@
 import { View, Text,Modal, Pressable } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Categorydetails from './Categorydetails';
 
 
-const Category = () => {
+const Category = ({tasks}) => {
+
+
+  const [greytasks, setGreytasks] = useState([]);
+  const [greentasks, setGreentasks] = useState([]);
+  const [redtasks, setRedtasks] = useState([]);
+  const [yellowtasks, setYellowtasks] = useState([]);
+  const [violettasks, setViolettasks] = useState([]);
+
+  const[taskcolorwise,settaskcolorwise]=useState([]);
+
+  // Use useEffect to run this logic whenever 'tasks' changes
+  useEffect(() => {
+    // 1. Initialize temporary arrays to hold categorized tasks
+    const tempGreyTasks:[] = [];
+    const tempGreenTasks:[] = [];
+    const tempRedTasks:[] = [];
+    const tempYellowTasks:[] = [];
+    const tempVioletTasks:[] = [];
+
+    // 2. Iterate over the tasks ONCE and categorize them
+    tasks.forEach((task:any) => {
+      switch (task.color) {
+        case '#dadada':
+          tempGreyTasks.push(task);
+          break;
+        case '#61DEA4':
+          tempGreenTasks.push(task);
+          break;
+        case '#F45E6D':
+          tempRedTasks.push(task);
+          break;
+        case '#FFE761':
+          tempYellowTasks.push(task);
+          break;
+        case '#B678FF':
+          tempVioletTasks.push(task);
+          break;
+        default:
+          // Handle tasks with other colors or no color, if necessary
+          break;
+      }
+    });
+
+    // 3. Update state variables once after all tasks are categorized
+    // This is more efficient as it causes only one re-render per state update (5 total, but done in one batch essentially)
+    setGreytasks(tempGreyTasks);
+    setGreentasks(tempGreenTasks);
+    setRedtasks(tempRedTasks);
+    setYellowtasks(tempYellowTasks);
+    setViolettasks(tempVioletTasks);
+
+  }, [tasks]);
+
+
   const[modalVisible,setModalVisible]=useState(false);
+
   
 
   const togglemodel=()=>{
     setModalVisible(!modalVisible);
   }
   const[bg,setbg]=useState('')
+  
   const[title,settitle]=useState('')
 
-  const togglemodelviatask=(task)=>{
+  const togglemodelviatask=(task:any)=>{
+    switch(task.color){
+      case '#dadada':
+          settaskcolorwise(greytasks);
+          break;
+        case '#61DEA4':
+          settaskcolorwise(greentasks);
+          break;
+        case '#F45E6D':
+           settaskcolorwise(redtasks);
+          break;
+        case '#FFE761':
+           settaskcolorwise(yellowtasks);
+          break;
+        case '#B678FF':
+           settaskcolorwise(violettasks);
+          break;
+        default:
+          // Handle tasks with other colors or no color, if necessary
+          break;
+    }
     setbg (task)
     settitle(task.name)
     setModalVisible(true)
   } 
- 
+
+
   
   let obj =[
   { id: 1, color:'#dadada',name:'Inbox',fontcolor:'black' },
@@ -29,14 +106,18 @@ const Category = () => {
 ];
   return (
       
-     <View style={{marginTop:30}} >
+     <View style={{marginTop:30,alignItems:'center'}} >
+      <Text style={{marginBottom:19,fontSize:30,fontWeight:700,color:'rgba(0, 98, 255, 0.8)'}}>Total <Text style={{color:'red' ,fontSize:28.3}}>Pending</Text> task's :- {tasks.length}</Text>
       {obj.map((task)=>(
-       <Pressable onPress={()=>togglemodelviatask(task)} key ={task.id} style={{height:90,backgroundColor:(task.color),width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:(task.fontcolor),fontSize:30,fontWeight:500}}>{task.name}</Text></Pressable>
+       <Pressable onPress={()=>togglemodelviatask(task)} key ={task.id} style={{height:90,backgroundColor:(task.color),width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}>
+      <Text style={{color:(task.fontcolor),fontSize:30,fontWeight:500}}>{task.name}</Text>
+     
        
+       </Pressable>
       ))}
       {/* <View style={{height:90,backgroundColor:'#dadada',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Inbox</Text></View> */}
       
-     <Categorydetails modalVisible={modalVisible} setModalVisible={setModalVisible} togglemodel={togglemodel} bg ={bg} title={title}/>
+     <Categorydetails modalVisible={modalVisible} setModalVisible={setModalVisible} togglemodel={togglemodel} bg ={bg} title={title} taskcolorwise={taskcolorwise}/>
 
 
      </View>

@@ -48,7 +48,8 @@ useEffect(() => {
   }
 }, [valsearch, tasks]);
 
-  return(
+
+  return( 
    <>
     {filterd.map((task:any) => (
         <View key={task.id} style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>

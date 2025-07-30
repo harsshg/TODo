@@ -62,10 +62,10 @@ import{StyleSheet}from'react-native';
       height: 30,
       width: 30,
       borderRadius: 50,
-      borderWidth: 2,
-      borderColor: '#006CFF',
+      borderWidth: 2.8,
+      borderColor: 'rgba(0, 0, 0, 0.14)',
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'center', 
     },
     tickText: {
       fontSize: 20,

@@ -15,9 +15,7 @@ import Alltask from './Components/Alltask';
 import obj from './Components/initialtasks';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dropdown } from 'react-native-element-dropdown';
-import Searchview from './Components/searchview';
 
-// import { Icon1 } from 'react-native-elements';
 
 
 
@@ -34,8 +32,7 @@ const App = () => {
   const [edited, setedited] = useState('');
   const [searching, setsearch] = useState(true);
   const [listcat, setlistcat] = useState(false);
-  const [mainview,setmainview]=useState(true);
-  const [selectedCity,setSelectedCity]=useState('null');
+  const [mainview,setmainview]=useState(false);//Main screen default:-true
   const [valsearch,setvalsearch]=useState('');
 
   
@@ -44,7 +41,9 @@ const App = () => {
     setTasks(tasks.filter(task => task.id !== id));
   };
 
-  const toggleSearch = (prev: boolean) => setsearch(!prev);
+  const toggleSearch = (prev: boolean) => {
+    setvalsearch('');
+    setsearch(!prev);}
 
   const toggleDone = (id: number) => {
     if (edited.trim() === '') {
@@ -69,7 +68,7 @@ const App = () => {
     setedited('');
   };
 
-  const toggleTask = (id: number) => {
+ const toggleTask = (id: number) => {
     setTasks(prev =>
       prev.map(task =>
         task.id === id ? { ...task, checked: !task.checked } : task,
@@ -231,7 +230,7 @@ const App = () => {
           toggleEdit={toggleEdit}
           deleteHandler={deleteHandler}
           toggleTask={toggleTask}
-        />):<Category/>}
+        />):<Category tasks={tasks}/>}
         
 
          {/* Here i will add category */}
@@ -288,9 +287,9 @@ const App = () => {
           </Text>
         </Pressable>
 
-       {listcat?(<View style={{position:'absolute',top:750,height:90,width:170,backgroundColor:'rgba(107, 106, 106, 0.16)',padding:2,bottom:130,left:250,borderRadius:12,zIndex:0.5,alignItems:'center',justifyContent:'center',gap:1,borderWidth:1,borderColor:"#dadada"}}>
-        <Pressable onPress={toggleListview}  style={{backgroundColor:'rgb(238, 238, 238)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10,}}><Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ✔︎ List</Text></Pressable>
-        <Pressable onPress={toggleCatogryview} style={{backgroundColor:'rgb(238, 238, 238)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10}}><Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ⎅ Category</Text></Pressable>
+       {listcat?(<View style={{position:'absolute',top:750,height:90,width:170,backgroundColor:'rgb(250, 250, 250)',padding:2,bottom:130,left:250,borderRadius:12,zIndex:0.5,alignItems:'center',justifyContent:'center',gap:1,borderWidth:1,borderColor:"#dadada"}}>
+        <Pressable onPress={toggleListview}  style={{backgroundColor:'rgba(0, 0, 0, 0.05)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10,}}><Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ✔︎ List</Text></Pressable>
+        <Pressable onPress={toggleCatogryview} style={{backgroundColor:'rgba(0, 0, 0,0.05)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10}}><Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ⎅ Category</Text></Pressable>
         </View>):""}
         
 
