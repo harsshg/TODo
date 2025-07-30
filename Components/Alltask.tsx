@@ -4,7 +4,7 @@ import styles from '../styles'
 import { ScrollView } from 'react-native';
 
 interface Task {
- 
+  right:number,
   id: number;
   title: string;
   time: string;
@@ -14,6 +14,7 @@ interface Task {
 }
 
 interface AlltaskProps {
+  toggleright:(id: number) => void;
   valsearch:string;
   tasks: Task[];
   edited: string;
@@ -24,7 +25,9 @@ interface AlltaskProps {
   toggleTask: (id: number) => void;
 }
 const Alltask: React.FC<AlltaskProps> = ({
-  
+  horizontal,
+  togglehorizontal,
+  toggleright,
   valsearch,
   tasks,
   edited,
@@ -48,10 +51,18 @@ useEffect(() => {
   }
 }, [valsearch, tasks]);
 
+useEffect(()=>{
+  if(horizontal == false){
+     setTimeout(togglehorizontal, 100);
+  }
+},[horizontal])
+
+
 
   return( 
    <>
     {filterd.map((task:any) => (
+      <ScrollView showsHorizontalScrollIndicator={false} horizontal={horizontal}  >
         <View key={task.id} style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
             <Pressable style={styles.tick} onPress={() => toggleTask(task.id)}>
@@ -59,7 +70,7 @@ useEffect(() => {
             </Pressable>
             <View >
               {/* Edit box */}
-              {task.editable && <View>
+            {task.editable && <View>
             <TextInput 
             placeholder={task.title} 
             style={styles.editBox} 
@@ -81,7 +92,25 @@ useEffect(() => {
               <Text style ={styles.timediv}> ⏰ {task.time}</Text>
               
               {/* Edit&Del */}
-              <View style={styles.editdel}>
+              {/* <View style={styles.editdel}>
+              <Pressable onPress={()=>toggleEdit(task.id)}>
+                <Text style={styles.edit}>Edit</Text>
+              </Pressable>
+              <Pressable onPress={()=>deleteHandler(task.id)} >
+                <Text style={styles.delete}>Delete</Text>
+                </Pressable>
+                </View> */}
+
+              </View>
+            </View>
+          </View>
+
+
+
+          <View style={{display:'flex',flexDirection:'row',alignItems:'center'}}>
+          <Pressable onPress={()=>toggleright(task.right)} style={[styles.dot, { backgroundColor: task.color,right:39 }]}></Pressable>
+            {/* Edit&Del */}
+            <View style={styles.editdel}>
               <Pressable onPress={()=>toggleEdit(task.id)}>
                 <Text style={styles.edit}>Edit</Text>
               </Pressable>
@@ -89,12 +118,10 @@ useEffect(() => {
                 <Text style={styles.delete}>Delete</Text>
                 </Pressable>
                 </View>
-
-              </View>
-            </View>
-          </View>
-          <View style={[styles.dot, { backgroundColor: task.color }]}></View>
+                </View>
+                
         </View>
+        </ScrollView>
       ))}
    
   </>

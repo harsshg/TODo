@@ -8,6 +8,8 @@ import {
   Platform, } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import styles from '../styles';
+import { Dropdown } from 'react-native-element-dropdown';
+import { useState } from 'react';
 // import { Dropdown } from 'react-native-element-dropdown';
 interface AddtodoProps {
   
@@ -33,6 +35,8 @@ const Addtodo: React.FC<AddtodoProps> = ({
   setNewColor,
   addTask,
 }) => {
+
+
   return (
     <SafeAreaView>
     <Modal
@@ -66,13 +70,10 @@ const Addtodo: React.FC<AddtodoProps> = ({
               value={newColor}
               onChangeText={setNewColor}
             />
-            {/* const cities = [{name: 'New York', code: 'NY'}, {name: 'Rome', code: 'RM'}];
-            <Dropdown
-             value={selectedCity}
-             options={cities}
-             onChange={(e) => setSelectedCity(e.value)}
-             optionLabel="name"
-             placeholder="Select a Category"
+
+            {/* <Dropdown onChange={function (item: any): void {
+              throw new Error('Function not implemented.');
+            } } data={[]} labelField={''} valueField={''}            
             /> */}
 
             <View style={styles.Addtaskcd}>

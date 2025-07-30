@@ -28,7 +28,7 @@ const Categorydetails = ({setModalVisible,modalVisible,togglemodel,bg,taskcolorw
           {/* Task view will be here  */}
           { taskcolorwise.map((task:any)=>
             <View style={{display:'flex',flexDirection:'row',alignItems:'center',gap:20,marginTop:10,paddingLeft:8}}>
-            <Text style={{borderWidth:4,borderRadius:50,height:30,width:30,opacity:.3}}></Text>
+            {/* <Text style={{borderWidth:4,borderRadius:50,height:30,width:30,opacity:.3}}></Text> */}
             <View style={{borderBottomColor:(bg.fontcolor),borderBottomWidth:1,paddingBottom:15,width:'100%'}}>
             <Text style={{fontSize:25,fontWeight:500,color:(bg.fontcolor)}}>{task.title}</Text>
             <Text style={{color:(bg.fontcolor),opacity:.9}}>{task.time}</Text>

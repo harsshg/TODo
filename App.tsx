@@ -32,13 +32,15 @@ const App = () => {
   const [edited, setedited] = useState('');
   const [searching, setsearch] = useState(true);
   const [listcat, setlistcat] = useState(false);
-  const [mainview,setmainview]=useState(false);//Main screen default:-true
+  const [mainview,setmainview]=useState(true);//Main screen default:-true
   const [valsearch,setvalsearch]=useState('');
 
   
 
   const deleteHandler = (id: number) => {
     setTasks(tasks.filter(task => task.id !== id));
+    togglehorizontal()
+    
   };
 
   const toggleSearch = (prev: boolean) => {
@@ -46,6 +48,7 @@ const App = () => {
     setsearch(!prev);}
 
   const toggleDone = (id: number) => {
+    togglehorizontal()
     if (edited.trim() === '') {
       Alert.alert('Please enter a Task');
       return;
@@ -57,9 +60,13 @@ const App = () => {
           : task,
       ),
     );
+   
+   
   };
 
   const toggleEdit = (id: number) => {
+     togglehorizontal()
+     setTimeout(togglehorizontal, 1000);
     setTasks(prev =>
       prev.map(task =>
         task.id === id ? { ...task, editable: !task.editable } : task,
@@ -68,6 +75,11 @@ const App = () => {
     setedited('');
   };
 
+  const[horizontal,sethorizontal]=useState(true)
+  const togglehorizontal = ()=>{
+    sethorizontal(!horizontal);
+  }
+
  const toggleTask = (id: number) => {
     setTasks(prev =>
       prev.map(task =>
@@ -75,6 +87,16 @@ const App = () => {
       ),
     );
   };
+
+const[righdist,setright]=useState(0)
+const toggleright=(right:any)=>{
+    if(right==0){
+      setright(150);
+    }else{
+      setright(0);
+    }
+}
+
   const addTask = () => {
     if (
       newTaskTitle.trim() === '' ||
@@ -93,6 +115,7 @@ const App = () => {
       color: newColor, // default dot color, change as needed
       checked: false,
       editable: false,
+      rightd:righdist,
     };
 
     setTasks(prev => [...prev, newTask]);
@@ -222,6 +245,9 @@ const App = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Render tasks with toggle */}
         {mainview?(<Alltask
+        horizontal={horizontal}
+        togglehorizontal={togglehorizontal}
+        toggleright={toggleright}
           valsearch={valsearch}
           tasks={tasks}
           edited={edited}

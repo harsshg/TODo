@@ -48,6 +48,7 @@ import{StyleSheet}from'react-native';
       borderRadius: 50,
     },
     taskContainer: {
+      width:550,
       padding: 15,
       paddingBottom: 18,
       borderRadius:15,
@@ -79,6 +80,7 @@ import{StyleSheet}from'react-native';
       fontWeight: '400',
     },
     dot: {
+      right:0,
       height: 13,
       width: 13,
       borderRadius: 50,
@@ -152,18 +154,18 @@ import{StyleSheet}from'react-native';
 
     delete:{
       backgroundColor:"#ff0000",
+     paddingHorizontal:7,
+      paddingVertical:10,
       borderRadius:10,
-      paddingHorizontal:7,
-      paddingVertical:2,
-      color:'white',
+      color:"white"
     },
     timediv:{
       width:120
     },
     edit:{
       backgroundColor:"#3d3d3d",
-      paddingHorizontal:7,
-      paddingVertical:2,
+      paddingHorizontal:10,
+      paddingVertical:10,
       borderRadius:10,
       color:"white"
     },
@@ -188,7 +190,23 @@ import{StyleSheet}from'react-native';
       paddingVertical:3,
       borderRadius:12,
       backgroundColor:"#ff002f",
-    }
+    },
+    label: {
+      position: 'absolute',
+      backgroundColor: 'white',
+      left: 22,
+      top: 8,
+      zIndex: 999,
+      paddingHorizontal: 8,
+      fontSize: 14,
+    },
+    dropdown: {
+      height: 50,
+      borderColor: 'gray',
+      borderWidth: 0.5,
+      borderRadius: 8,
+      paddingHorizontal: 8,
+    },
     
   });
   export default styles;
