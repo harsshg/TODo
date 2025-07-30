@@ -8,8 +8,9 @@ import {
   Platform, } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import styles from '../styles';
+import { SelectList } from 'react-native-dropdown-select-list'
 import { Dropdown } from 'react-native-element-dropdown';
-import { useState } from 'react';
+import React, { useState } from 'react';
 // import { Dropdown } from 'react-native-element-dropdown';
 interface AddtodoProps {
   
@@ -35,6 +36,19 @@ const Addtodo: React.FC<AddtodoProps> = ({
   setNewColor,
   addTask,
 }) => {
+    let obj =[
+  { id: 1, color:'#dadada',name:'Inbox',fontcolor:'black',colorname:'grey' },
+  { id: 2, color:'#61DEA4',name:'Work',fontcolor:'white',colorname:'green' },
+  { id: 3, color:'#F45E6D',name:'Shopping',fontcolor:'white',colorname:'red'  },
+  { id: 4, color:'#FFE761',name:'Family',fontcolor:'black',colorname:'yellow'  },
+  { id: 5, color:'#B678FF',name:'Personal',fontcolor:'white',colorname:'violet' }, 
+];
+  const [selectedCategory, setSelectedCategory] = React.useState<string>("");
+  const handleCategorySelection = (val: string) => {
+    setSelectedCategory(val);
+    // Optionally, you can setNewColor here if you want to update color in parent
+    setNewColor(val);
+  };
 
 
   return (
@@ -64,17 +78,22 @@ const Addtodo: React.FC<AddtodoProps> = ({
               value={newTaskTime}
               onChangeText={setNewTaskTime}
             />
-            <TextInput
-              placeholder="Enter color here('green')"
-              style={styles.AddtaskTimeInput}
-              value={newColor}
-              onChangeText={setNewColor}
-            />
+            
+      <SelectList
+        data={obj.map(item => ({ key: item.id.toString(), value: item.color }))}
+        setSelected={handleCategorySelection}
+        placeholder="Select Category"
+        boxStyles={{height:50,width:370,marginBottom:20}}
+        dropdownStyles={{height:150,position:'absolute',backgroundColor:'white',width:370,top:40,zIndex:3}}
+        defaultOption={
+          selectedCategory
+            ? { key: obj.find(item => item.name === selectedCategory)?.id?.toString() || "", value: selectedCategory }
+            : undefined
+        }
+        
+      />
 
-            {/* <Dropdown onChange={function (item: any): void {
-              throw new Error('Function not implemented.');
-            } } data={[]} labelField={''} valueField={''}            
-            /> */}
+            
 
             <View style={styles.Addtaskcd}>
               <Pressable onPress={() => setModalVisible(false)}>

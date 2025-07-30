@@ -2,6 +2,7 @@ import { View, Text, Pressable, TextInput  } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from '../styles'
 import { ScrollView } from 'react-native';
+// import Editmodel from './Editmodel'
 
 interface Task {
   right:number,
@@ -70,7 +71,29 @@ useEffect(()=>{
             </Pressable>
             <View >
               {/* Edit box */}
-            {task.editable && <View>
+
+            {/* {task.editable && ''} */}
+
+             {/* <Editmodel/> */}
+              <Text style={styles.texttodo}>{task.title}</Text>
+              <View style ={styles.TexttodoView}>
+              <Text style ={styles.timediv}> ⏰ {task.time}</Text>
+              
+              {/* Edit&Del */}
+              {/* <View style={styles.editdel}>
+              <Pressable onPress={()=>toggleEdit(task.id)}>
+                <Text style={styles.edit}>Edit</Text>
+              </Pressable>
+              <Pressable onPress={()=>deleteHandler(task.id)} >
+                <Text style={styles.delete}>Delete</Text>
+                </Pressable>
+                </View> */}
+
+
+
+                {/* EDIT BOX DESIGN */}
+
+                {/* <View>
             <TextInput 
             placeholder={task.title} 
             style={styles.editBox} 
@@ -86,20 +109,9 @@ useEffect(()=>{
             style={[styles.doneBtn,{backgroundColor:'#3d3d3d'}]}><Text style={{color:"white"}} >Cancel</Text>
             </Pressable>
             </View>
-            </View> }
-              <Text style={styles.texttodo}>{task.title}</Text>
-              <View style ={styles.TexttodoView}>
-              <Text style ={styles.timediv}> ⏰ {task.time}</Text>
-              
-              {/* Edit&Del */}
-              {/* <View style={styles.editdel}>
-              <Pressable onPress={()=>toggleEdit(task.id)}>
-                <Text style={styles.edit}>Edit</Text>
-              </Pressable>
-              <Pressable onPress={()=>deleteHandler(task.id)} >
-                <Text style={styles.delete}>Delete</Text>
-                </Pressable>
-                </View> */}
+            </View>  */}
+
+
 
               </View>
             </View>

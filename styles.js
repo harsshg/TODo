@@ -126,7 +126,7 @@ import{StyleSheet}from'react-native';
       borderRadius: 10,
       paddingHorizontal: 10,
       fontSize: 18,
-      marginBottom: 25,
+      marginBottom: 10,
     },
     Addtaskcd: {
       flexDirection: 'row',
