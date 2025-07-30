@@ -10,7 +10,7 @@ const Categorydetails = ({setModalVisible,modalVisible,togglemodel,bg,taskcolorw
         transparent={true}
         visible={modalVisible} //here add modalVisible
         onRequestClose={() => setModalVisible(true)}
-         > 
+> 
          
           <View 
           style={{backgroundColor:(bg.color),height:'100%',width:'100%',top:30,borderRadius:30,padding:10,gap:30}}>

@@ -65,6 +65,7 @@ const Category = ({tasks}) => {
   const togglemodel=()=>{
     setModalVisible(!modalVisible);
   }
+  
   const[bg,setbg]=useState('')
   
   const[title,settitle]=useState('')

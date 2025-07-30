@@ -1,20 +1,16 @@
-// import { View, Text } from 'react-native'
-// import React, { useState } from 'react'
-// import { Modal } from 'react-native'
+import { View, Text, KeyboardAvoidingView, Platform, TextInput, Pressable } from 'react-native'
+import React, { useState } from 'react'
+import { Modal } from 'react-native'
+import styles from '../styles'
+import { SelectList } from 'react-native-dropdown-select-list'
 
-// const Editmodel = () => {
-//     const[modalVisible,setModalVisible]=useState(true)
-//   return (
+const Editmodel = ({seteditModalVisible,editModalVisible,toggleCancelinedit ,placeholder,value,onChangeText,task,toggleDone}) => {
+   
     
-//       <Modal
-//         animationType="slide"
-//         transparent={true}
-//         visible={modalVisible}
-//         onRequestClose={() => setModalVisible(false)}>
-//       <View style={{backgroundColor:'black',flex:1}}></View>
-//       </Modal>
+  return (
+      
     
-//   )
-// }
+  )
+}
 
-// export default Editmodel
+export default Editmodel

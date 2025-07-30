@@ -1,8 +1,8 @@
-import { View, Text, Pressable, TextInput  } from 'react-native'
+import { View, Text, Pressable, TextInput, Modal, KeyboardAvoidingView, Platform, Alert  } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from '../styles'
 import { ScrollView } from 'react-native';
-// import Editmodel from './Editmodel'
+import Editmodel from './Editmodel'
 
 interface Task {
   right:number,
@@ -13,8 +13,9 @@ interface Task {
   editable: boolean;
   checked: boolean;
 }
-
 interface AlltaskProps {
+  horizontal:boolean,
+  togglehorizontal:React.Dispatch<React.SetStateAction<boolean>>;
   toggleright:(id: number) => void;
   valsearch:string;
   tasks: Task[];
@@ -26,6 +27,7 @@ interface AlltaskProps {
   toggleTask: (id: number) => void;
 }
 const Alltask: React.FC<AlltaskProps> = ({
+  
   horizontal,
   togglehorizontal,
   toggleright,
@@ -38,6 +40,27 @@ const Alltask: React.FC<AlltaskProps> = ({
   deleteHandler,
   toggleTask
 }) => { 
+const[modeltask,setmodeltask]=useState('')
+
+const[editModalVisible,seteditModalVisible]=useState(false)
+
+const toggleCancelinedit = ()=>{
+        seteditModalVisible(!editModalVisible)
+        togglehorizontal()
+}
+ 
+const toggledoneformodel=(id)=>{
+       toggleDone(id)
+      toggleCancelinedit()
+}
+
+ const toggleCancelinedit1 = (task)=>{
+        toggleCancelinedit()
+        setedited('')
+        setmodeltask(task)
+}
+
+
  
 const[filterd,setfilterd]=useState(tasks)
     
@@ -60,6 +83,9 @@ useEffect(()=>{
 
 
 
+
+
+
   return( 
    <>
     {filterd.map((task:any) => (
@@ -71,27 +97,14 @@ useEffect(()=>{
             </Pressable>
             <View >
               {/* Edit box */}
-
+{/* Here+++++++++++++++++++++++ */}
             {/* {task.editable && ''} */}
 
-             {/* <Editmodel/> */}
-              <Text style={styles.texttodo}>{task.title}</Text>
-              <View style ={styles.TexttodoView}>
-              <Text style ={styles.timediv}> ⏰ {task.time}</Text>
-              
-              {/* Edit&Del */}
-              {/* <View style={styles.editdel}>
-              <Pressable onPress={()=>toggleEdit(task.id)}>
-                <Text style={styles.edit}>Edit</Text>
-              </Pressable>
-              <Pressable onPress={()=>deleteHandler(task.id)} >
-                <Text style={styles.delete}>Delete</Text>
-                </Pressable>
-                </View> */}
+              {/* <Editmodel editModalVisible={editModalVisible} seteditModalVisible={seteditModalVisible} toggleCancelinedit={toggleCancelinedit} placeholder={task.title} value={edited} onChangeText={setedited} task={task} toggleDone ={toggleDone} /> */}
 
+      
 
-
-                {/* EDIT BOX DESIGN */}
+      {/* EDIT BOX DESIGN */}
 
                 {/* <View>
             <TextInput 
@@ -112,7 +125,21 @@ useEffect(()=>{
             </View>  */}
 
 
+      {/* Here+++++++++++++++++++++++ */}
 
+              <Text style={styles.texttodo}>{task.title}</Text>
+              <View style ={styles.TexttodoView}>
+              <Text style ={styles.timediv}> ⏰ {task.time}</Text>
+              
+              {/* Edit&Del */}
+              {/* <View style={styles.editdel}>
+              <Pressable onPress={()=>toggleEdit(task.id)}>
+                <Text style={styles.edit}>Edit</Text>
+              </Pressable>
+              <Pressable onPress={()=>deleteHandler(task.id)} >
+                <Text style={styles.delete}>Delete</Text>
+                </Pressable>
+                </View> */}
               </View>
             </View>
           </View>
@@ -123,7 +150,7 @@ useEffect(()=>{
           <Pressable onPress={()=>toggleright(task.right)} style={[styles.dot, { backgroundColor: task.color,right:39 }]}></Pressable>
             {/* Edit&Del */}
             <View style={styles.editdel}>
-              <Pressable onPress={()=>toggleEdit(task.id)}>
+              <Pressable onPress={()=>toggleCancelinedit1(task)}>
                 <Text style={styles.edit}>Edit</Text>
               </Pressable>
               <Pressable onPress={()=>deleteHandler(task.id)} >
@@ -135,7 +162,40 @@ useEffect(()=>{
         </View>
         </ScrollView>
       ))}
-   
+
+
+   <Modal
+        animationType="slide"
+        transparent={true}
+        visible={editModalVisible}
+        onRequestClose={() => seteditModalVisible(true)}>
+     <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          style={{ flex: 1,
+      justifyContent: 'center',
+      backgroundColor: 'rgba(104, 104, 104, 0.05)',
+      padding: 20,}}
+        >
+          <View style={styles.modalContent}>
+            <Text style={styles.Addtasktext}>Edit Todo ☇</Text>
+
+            <TextInput
+              placeholder= {modeltask.title}
+              style={styles.Addtaskmsgbx}
+              value={edited}
+              onChangeText={setedited}
+            />
+            <View style={styles.Addtaskcd}>
+              <Pressable onPress={toggleCancelinedit} >
+                <Text style={styles.AddtaskCreate}>Cancel</Text>
+              </Pressable>
+              <Pressable  >
+                <Text onPress={()=>toggledoneformodel(modeltask.id)} style={styles.AddtaskDone}>Done</Text>
+              </Pressable>
+            </View>
+          </View>
+        </KeyboardAvoidingView>
+      </Modal>
   </>
   )
 }

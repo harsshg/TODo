@@ -7,8 +7,6 @@ import{StyleSheet}from'react-native';
       marginTop: 0,
       padding: 10,
       fontFamily: 'SFProDisplay-Regular',
-     
-      
     },
     viewbox: {
       marginTop:0,
@@ -91,7 +89,7 @@ import{StyleSheet}from'react-native';
     modalContainer: {
       flex: 1,
       justifyContent: 'center',
-      backgroundColor: 'rgba(100,100,100,0.5)',
+      backgroundColor: 'rgba(104, 104, 104, 0.5)',
       padding: 20,
     },
     modalContent: {
@@ -109,14 +107,15 @@ import{StyleSheet}from'react-native';
       marginBottom: 15,
     },
     Addtaskmsgbx: {
-      height: 100,
+      height: 50,
       width: '100%',
       borderColor: '#a6a6a6',
       borderWidth: 0.9,
       borderRadius: 10,
       paddingHorizontal: 10,
       fontSize: 18,
-      marginBottom: 15,
+      marginBottom:15,
+      
     },
     AddtaskTimeInput: {
       height: 40,
@@ -190,7 +189,7 @@ import{StyleSheet}from'react-native';
       paddingVertical:3,
       borderRadius:12,
       backgroundColor:"#ff002f",
-    },
+    }, 
     label: {
       position: 'absolute',
       backgroundColor: 'white',

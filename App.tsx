@@ -67,8 +67,8 @@ const App = () => {
   const toggleEdit = (id: number) => {
      togglehorizontal()
      setTimeout(togglehorizontal, 1000);
-    setTasks(prev =>
-      prev.map(task =>
+     setTasks(prev =>
+     prev.map(task =>
         task.id === id ? { ...task, editable: !task.editable } : task,
       ),
     );
@@ -245,6 +245,8 @@ const toggleright=(right:any)=>{
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Render tasks with toggle */}
         {mainview?(<Alltask
+        
+       
         horizontal={horizontal}
         togglehorizontal={togglehorizontal}
         toggleright={toggleright}
