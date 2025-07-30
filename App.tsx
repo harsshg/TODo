@@ -2,27 +2,29 @@ import {
   View,
   Text,
   SafeAreaView,
+  StyleSheet,
   Alert,
   Pressable,
+  Modal,
   TextInput,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import styles from './styles';
-import Addtodo from './Components/Addtodo';
-import Category from './Components/Category';
-import Alltask from './Components/Alltask';
-import obj from './Components/initialtasks';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Dropdown } from 'react-native-element-dropdown';
 
-// import { Icon1 } from 'react-native-elements';
-
-
-
-
-
-const initialTasks = obj;
+const initialTasks = [
+  { id: 1, title: "Pay for rent 💸", time: "8:00 AM", color: "red", checked: false , editable:false },
+  { id: 2, title: "Buy a milk 🥛", time: "9:30 AM", color: "#B6F500", checked: false ,editable:false  },
+  { id: 3, title: "Pickup Mickael 📍", time: "5:30 PM", color: "#56DFCF", checked: false,editable:false  },
+  { id: 4, title: "Buy a chocolate 🍫", time: "6:00 PM", color: "#C68EFD", checked: false,editable:false  },
+  { id: 5, title: "OFFICE 📌", time: "10:00 AM", color: "#0011ff", checked: false , editable:false },
+  { id: 6, title: "Music 🎶", time: "8:30 PM", color: "#ff00ff", checked: false ,editable:false  },
+  { id: 7, title: "Travel ✈️", time: "4:30 AM", color: "#15ff00", checked: false,editable:false  },
+  { id: 8, title: "Coding 📲", time: "12:00 PM", color: "#ff8000", checked: false,editable:false  },
+  
+];
 
 const App = () => {
   const [tasks, setTasks] = useState(initialTasks);
@@ -30,57 +32,56 @@ const App = () => {
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [newTaskTime, setNewTaskTime] = useState('');
   const [newColor, setNewColor] = useState('');
-  const [edited, setedited] = useState('');
-  const [searching, setsearch] = useState(true);
-  const [listcat, setlistcat] = useState(false);
-  const [mainview,setmainview]=useState(true);
-  const [selectedCity,setSelectedCity]=useState('null');
-  const [valsearch,setvalsearch]=useState('');
+  const [edited,setedited]= useState("");
+  const[searching,setsearch] = useState(true);
+  const[categorytoggle,setcategorytoggle] = useState('false');
 
-  
 
-  const deleteHandler = (id: number) => {
-    setTasks(tasks.filter(task => task.id !== id));
-  };
+const catagory=()=>{
 
-  const toggleSearch = (prev: boolean) => setsearch(!prev);
+}
 
-  const toggleDone = (id: number) => {
-    if (edited.trim() === '') {
+
+const deleteHandler = (id:number) => {
+  setTasks(tasks.filter(task => task.id !== id));
+}
+
+const toggleSearch = (prev:boolean)=>setsearch(!prev)
+    
+
+
+const toggleDone=(id:number)=>{
+  if (edited.trim() === '') {
       Alert.alert('Please enter a Task');
       return;
     }
-    setTasks(prev =>
-      prev.map(task =>
-        task.id === id
-          ? { ...task, title: edited, editable: !task.editable }
-          : task,
-      ),
-    );
-  };
+  setTasks((prev)=>
+  prev.map((task)=>
+  task.id === id ? { ...task, title: edited, editable: !task.editable } : task
+  )
+  );
+}
 
-  const toggleEdit = (id: number) => {
-    setTasks(prev =>
-      prev.map(task =>
-        task.id === id ? { ...task, editable: !task.editable } : task,
-      ),
+const toggleEdit = (id:number) => {
+  
+    
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, editable: !task.editable } : task
+      )
     );
     setedited('');
   };
 
-  const toggleTask = (id: number) => {
-    setTasks(prev =>
-      prev.map(task =>
-        task.id === id ? { ...task, checked: !task.checked } : task,
-      ),
+  const toggleTask=(id:number)=>{
+     setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, checked: !task.checked } : task
+      )
     );
-  };
+  }
   const addTask = () => {
-    if (
-      newTaskTitle.trim() === '' ||
-      newTaskTime.trim() === '' ||
-      newColor.trim() === ''
-    ) {
+    if (newTaskTitle.trim() === '' || newTaskTime.trim() === '' || newColor.trim()==='') {
       Alert.alert('Please enter both task title and time and color');
       return;
     }
@@ -92,206 +93,160 @@ const App = () => {
       time: newTaskTime,
       color: newColor, // default dot color, change as needed
       checked: false,
-      editable: false,
+      editable:false,
     };
 
-    setTasks(prev => [...prev, newTask]);
+    setTasks((prev) => [...prev, newTask]);
     setNewTaskTitle('');
     setNewTaskTime('');
     setNewColor('');
     setModalVisible(false);
   };
 
-  const togglelistcat=()=>{
-    setlistcat(!listcat);
-  }
-  const toggleListview=()=>{
-    setlistcat(false);
-    setmainview(true)
-  }
-  const toggleCatogryview=()=>{
-    setlistcat(false);
-    setmainview(false);
 
-  }
-  
-  
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Search Box */}
       <View style={styles.viewbox}>
-        <Text style={styles.TextStyle}>
-          Today
-        </Text>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 6,
-            alignItems: 'center',
-          }}
+        <Text style={styles.TextStyle}>Task's <Text style={{color:"#ff0037"}}>☣︎</Text></Text>
+        <View style={{display:'flex',flexDirection:'row',gap:6,alignItems:'center'}}>
+        { searching  ?<Pressable style={{width:50,alignItems:'center',height:50,borderRadius:40,padding:6,borderWidth:3, borderColor: '#ff0033',backgroundColor:'#f7f7f7'}}><Text onPress={()=>toggleSearch(searching)} style={{fontSize:26,bottom:3}}>🔍</Text></Pressable> :<View>
+        <TextInput placeholder='Enter your Searches Here'  style={{width:200,fontSize:16,borderColor:'#b3b3b3',borderWidth:3,borderRadius:10}}></TextInput>
+       <Pressable onPress={()=>toggleSearch(searching)} style={{backgroundColor:'#dadada',marginLeft:142,paddingHorizontal:6,borderRadius:8,paddingBottom:1,marginTop:2,borderColor:'black',borderWidth:1.4}}><Text style={{color:'black'}}>Search</Text></Pressable>
+        </View>}
+        
+        
+        <Text
+          onPress={() => setModalVisible(true)}
+          style={styles.ADD}
         >
-          {searching ? (
-            <Pressable
-              style={{
-                width: 40,
-                alignItems: 'center',
-                height: 40,
-                borderRadius: 40,
-                padding: 6,
-                borderWidth: 3,
-                borderColor: '#006CFF',
-              }}
-              onPress={() => toggleSearch(searching)}
-            >
-              <Icon name="search" size={21} style={{bottom:.5}} color='#006CFF' />
-              {/* <Text
-                
-                style={{ fontSize: 26, bottom: 3 }}
-              >
-                🔍
-              </Text> */}
-            </Pressable>
-          ) : (
-            <View style={{alignItems:'center'}}>
-              <View style={{borderRadius:10,backgroundColor:'red',borderWidth:1.5,borderColor:'red',width:22,alignItems:'center',zIndex:1,position:'absolute',bottom:35,left:184
-              }}>
-              <Icon name='close' size={18} color="white" style={{bottom:1}}
-              onPress={() => toggleSearch(searching)}/></View>
-              <TextInput
-                placeholder="Enter your Searches Here"
-                 value={valsearch}
-                 onChangeText={setvalsearch}
-                style={{
-                  zIndex:.9,
-                  width: 200,
-                  fontSize: 16,
-                  borderColor: '#b3b3b3',
-                  borderWidth: 3,
-                  borderRadius: 10,
-                }}
-              ></TextInput>
-              {/* <Pressable  
-                style={{
-                  backgroundColor: '#dadada',
-                  marginLeft: 142,
-                  paddingHorizontal: 6,
-                  borderRadius: 8,
-                  paddingBottom: 1,
-                  marginTop: 2,
-                  borderColor: 'black',
-                  borderWidth: 1.4,
-                }}
-              >
-                <Text style={{ color: 'black' }}>Search</Text>
-              </Pressable> */}
-            </View>
-          )}
-
-          {/* Task Add */}
-           
-            <Pressable
-              style={{
-                width: 40,
-                alignItems: 'center',
-                height: 40,
-                borderRadius: 40,
-                padding: 6,
-                borderWidth: 3,
-                borderColor: '#006CFF',
-              }}
-             onPress={() => setModalVisible(true)}
-            >
-              <Icon name="plus" size={25} color="#006CFF" style={{bottom:1}} />
-              {/* <Text
-                style={{ fontSize: 35, bottom: 10 }}
-              >
-                +
-              </Text> */}
-            </Pressable>
-          {/* <Text onPress={() => setModalVisible(true)} style={styles.ADD}>
-            +
-          </Text> */}
-          
+          +
+        </Text>
         </View>
       </View>
-
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Render tasks with toggle */}
-        {mainview?(<Alltask
-        valsearch={valsearch}
-          tasks={tasks}
-          edited={edited}
-          setedited={setedited}
-          toggleDone={toggleDone}
-          toggleEdit={toggleEdit}
-          deleteHandler={deleteHandler}
-          toggleTask={toggleTask}
-        />):<Category/>}
+       <ScrollView
+       showsVerticalScrollIndicator={false}>
         
+       {/* <Storyview/> */}
 
-         {/* Here i will add category */}
-         
+      {/* Render tasks with toggle */}
+      {tasks.map((task) => (
+        <View key={task.id} style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Pressable style={styles.tick} onPress={() => toggleTask(task.id)}>
+              {task.checked && <Text style={styles.tickText}>✔</Text>}
+            </Pressable>
+            <View >
+             
+              {/* Edit box */}
+              {task.editable && <View>
+            <TextInput 
+            placeholder={task.title} 
+            style={styles.editBox} 
+            value={edited} 
+            onChangeText={setedited} />
+            <View style={{display:'flex',flexDirection:'row',gap:6,marginLeft:210}}>
+            <Pressable 
+            onPress={()=>toggleDone(task.id)}
+            style={styles.doneBtn}><Text style={{color:"white"}} >Done</Text>
+            </Pressable>
+            <Pressable 
+            onPress={()=>toggleEdit(task.id)}
+            style={[styles.doneBtn,{backgroundColor:'#3d3d3d'}]}><Text style={{color:"white"}} >Cancel</Text>
+            </Pressable>
+            </View>
+            </View> }
+            
+              <Text style={styles.texttodo}>{task.title}</Text>
+              <View style ={styles.TexttodoView}>
+              <Text style ={styles.timediv}> {task.time}</Text>
+              <View style={styles.editdel}>
+              <Pressable
+              onPress={()=>toggleEdit(task.id)}
+              ><Text style={styles.edit}>Edit</Text>
+              </Pressable>
+              <Pressable 
+              onPress={()=>deleteHandler(task.id)}
+               >
+                <Text 
+                
+                style={styles.delete}>Delete</Text>
+                </Pressable>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={[styles.dot, { backgroundColor: task.color }]}></View>
+        </View>
+      ))}
 
-        {/* Modal for Add Todo */}
-
-        <Addtodo
-          
-          modalVisible={modalVisible}
-          setModalVisible={setModalVisible}
-          newTaskTitle={newTaskTitle}
-          setNewTaskTitle={setNewTaskTitle}
-          newTaskTime={newTaskTime}
-          setNewTaskTime={setNewTaskTime}
-          newColor={newColor}
-          setNewColor={setNewColor}
-          addTask={addTask}
-        />
-
-        {/* category toggle button */}
-
-        
-
-       
-
-
-      </ScrollView>
-      <Pressable
-          style={{
-            backgroundColor: '#006CFF',
-            height: 65,
-            width: 64,
-            borderRadius: 50,
-            alignItems: 'center',
-            justifyContent: 'center',
-            bottom: 32,
-            left: 360,
-            position:'absolute',
-            top:850,
-            zIndex:1,
-          }}
-          onPress={togglelistcat}
+      {/* Modal for Add Todo */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)} // Android back handler
+      >
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          style={styles.modalContainer}
         >
-          <Text
-            style={{
-              fontSize: 45,
-              fontWeight: 300,
-              color: 'white',
-              bottom: 1.5,
-            }}
-          >
-            +
-          </Text>
-        </Pressable>
+          <View style={styles.modalContent}>
+            <Text style={styles.Addtasktext}>Add Todo ☇</Text>
 
-       {listcat?(<View style={{position:'absolute',top:750,height:90,width:170,backgroundColor:'rgba(107, 106, 106, 0.16)',padding:2,bottom:130,left:250,borderRadius:12,zIndex:0.5,alignItems:'center',justifyContent:'center',gap:1,borderWidth:1,borderColor:"#dadada"}}>
-        <Pressable onPress={toggleListview}  style={{backgroundColor:'rgb(238, 238, 238)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10,}}><Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ✔︎ List</Text></Pressable>
-        <Pressable onPress={toggleCatogryview} style={{backgroundColor:'rgb(238, 238, 238)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10}}><Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ⎅ Category</Text></Pressable>
-        </View>):""}
-        
+            <TextInput
+              placeholder="Task Title"
+              style={styles.Addtaskmsgbx}
+              value={newTaskTitle}
+              onChangeText={setNewTaskTitle}
+            />
+            <TextInput
+              placeholder="Task Time (e.g. 8:00 AM)"
+              style={styles.AddtaskTimeInput}
+              value={newTaskTime}
+              onChangeText={setNewTaskTime}
+            />
+            <TextInput
+              placeholder="Enter color here('green')"
+              style={styles.AddtaskTimeInput}
+              value={newColor}
+              onChangeText={setNewColor}
+            />
 
+            <View style={styles.Addtaskcd}>
+              <Pressable onPress={() => setModalVisible(false)}>
+                <Text style={styles.AddtaskCreate}>Cancel</Text>
+              </Pressable>
+              <Pressable onPress={addTask}>
+                <Text style={styles.AddtaskDone}>Done</Text>
+              </Pressable>
+            </View>
+          </View>
+        </KeyboardAvoidingView>
+      </Modal>
+      
+      <View style={{backgroundColor:'#000000',height:65,width:64,borderRadius:50,alignItems:'center',justifyContent:'center',bottom:32,left:360}}>
+        <Text style={{fontSize:45,fontWeight:300,color:'white',bottom:'1.5'}}>+</Text>
+      </View>
 
+      {/* Here i will add category */}
+      <Modal
+     visible={false}
+      animationType="slide"
+      transparent={true}>
+      <View style={{backgroundColor:'rgba(224, 223, 223, 0.55)',flex:1,marginTop:300,borderTopRightRadius:50,borderTopLeftRadius:50,borderWidth:0,alignItems:'center',padding:3}}>
+      <View style={{height:8,width:90,backgroundColor:'black',marginTop:5,borderRadius:10,opacity:1,marginBottom:50}}></View>
+      <View style={{height:90,backgroundColor:'#EBEFF5',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Inbox</Text></View>
+      <View style={{height:90,backgroundColor:'#61DEA4',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Work</Text></View>
+      <View style={{height:90,backgroundColor:'#F45E6D',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Shopping</Text></View>
+      <View style={{height:90,backgroundColor:'#FFE761',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Family</Text></View>
+      <View style={{height:90,backgroundColor:'#B678FF',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"white",fontSize:30}}>Personal</Text></View>
+      
+      </View>
+      </Modal>
+      
+      
+      </ScrollView>
     </SafeAreaView>
   );
 };

@@ -23,6 +23,8 @@ const Storyview = () => {
          <View style={{height:80,width:80,borderRadius:"50%",backgroundColor:"#4DFFBE"}}></View>
           <View style={{height:80,width:80,borderRadius:"50%",backgroundColor:"#EA047E"}}></View>
          <View style={{height:80,width:80,borderRadius:"50%",backgroundColor:"#4DFFBE"}}></View>
+
+         
       </ScrollView >
   )
 }
