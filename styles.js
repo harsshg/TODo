@@ -4,13 +4,16 @@ import{StyleSheet}from'react-native';
     container: {
       width: '100%',
       height:'100%',
-      marginTop: 50,
+      marginTop: 0,
       padding: 10,
       fontFamily: 'SFProDisplay-Regular',
+     
       
     },
     viewbox: {
+      marginTop:0,
       borderBottomColor: '#ff0037',
+      
       // borderBottomWidth: 2,
       borderStyle:'dashed',
       borderRadius:18,

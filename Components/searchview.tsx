@@ -1,7 +1,7 @@
-import { View, Text, Pressable, TextInput  } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import styles from '../styles'
-import { ScrollView } from 'react-native';
+import { View, Text, Pressable, TextInput } from 'react-native'
+import React, { useState } from 'react'
+import styles from '../styles';
+
 
 interface Task {
  
@@ -13,45 +13,31 @@ interface Task {
   checked: boolean;
 }
 
-interface AlltaskProps {
-  valsearch:string;
-  tasks: Task[];
-  edited: string;
-  setedited: React.Dispatch<React.SetStateAction<string>>;
-  toggleDone: (id: number) => void;
-  toggleEdit: (id: number) => void;
-  deleteHandler: (id: number) => void;
-  toggleTask: (id: number) => void;
+interface searchviewProps {
+    tasks: Task[];
+    valsearch:string;
+    edited: string;
+    setedited: React.Dispatch<React.SetStateAction<string>>;
+    toggleDone: (id: number) => void;
+    toggleEdit: (id: number) => void;
+    deleteHandler: (id: number) => void;
+    toggleTask: (id: number) => void;
 }
-const Alltask: React.FC<AlltaskProps> = ({
-  
-  valsearch,
-  tasks,
-  edited,
+
+const searchview: React.FC<searchviewProps> = ({valsearch, tasks,edited,
   setedited,
   toggleDone,
   toggleEdit,
   deleteHandler,
-  toggleTask
-}) => { 
- 
-const[filterd,setfilterd]=useState(tasks)
-    
-useEffect(() => {
-  if (valsearch === "") {
-    setfilterd(tasks); // Show all tasks if search is empty
-  } else {
-    const filtered = tasks.filter(task =>
-      task.title.toLowerCase().includes(valsearch.toLowerCase())
-    );
-    setfilterd(filtered); // Show filtered tasks
-  }
-}, [valsearch, tasks]);
+  toggleTask}) => {
 
-  return(
-   <>
-    {filterd.map((task:any) => (
-        <View key={task.id} style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>
+
+
+
+  return (
+    <>
+    {filterd.map((task:any)=>(
+     <View key={task.id} style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
             <Pressable style={styles.tick} onPress={() => toggleTask(task.id)}>
               {task.checked && <Text style={styles.tickText}>✔</Text>}
@@ -94,10 +80,10 @@ useEffect(() => {
           </View>
           <View style={[styles.dot, { backgroundColor: task.color }]}></View>
         </View>
-      ))}
-   
-  </>
+    )
+    )}
+    </>
   )
 }
 
-export default Alltask
+export default searchview

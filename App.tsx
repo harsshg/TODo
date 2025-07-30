@@ -15,6 +15,7 @@ import Alltask from './Components/Alltask';
 import obj from './Components/initialtasks';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dropdown } from 'react-native-element-dropdown';
+import Searchview from './Components/searchview';
 
 // import { Icon1 } from 'react-native-elements';
 
@@ -118,8 +119,10 @@ const App = () => {
   
 
   return (
-    <SafeAreaView style={styles.container}>
+   <SafeAreaView>
       {/* Search Box */}
+      <View style={{backgroundColor:'rgba(0, 0, 0, 0.41)',height:45,width:'100%'}}></View>
+       <SafeAreaView style={styles.container}>
       <View style={styles.viewbox}>
         <Text style={styles.TextStyle}>
           Today
@@ -220,7 +223,7 @@ const App = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Render tasks with toggle */}
         {mainview?(<Alltask
-        valsearch={valsearch}
+          valsearch={valsearch}
           tasks={tasks}
           edited={edited}
           setedited={setedited}
@@ -292,6 +295,7 @@ const App = () => {
         
 
 
+    </SafeAreaView>
     </SafeAreaView>
   );
 };
