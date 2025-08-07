@@ -134,12 +134,13 @@ const toggleright=(right:any)=>{
   }
   const toggleListview=()=>{
     setlistcat(false);
-    setmainview(true)
+    setmainview(true);
+    togglelistcat;
   }
   const toggleCatogryview=()=>{
-    setlistcat(false);
+    setlistcat(true);
     setmainview(false);
-
+    togglelistcat;
   }
   
   
