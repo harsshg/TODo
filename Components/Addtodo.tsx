@@ -1,19 +1,19 @@
-import React from 'react';
-import {
+import {   
   View,
   Text,
-  TextInput,
-  Modal,
   Pressable,
-  SafeAreaView,
+  Modal,
+  TextInput,
   KeyboardAvoidingView,
-  Platform,
-} from 'react-native';
+  Platform, } from 'react-native';
+import { SafeAreaView } from 'react-native';
+import styles from '../styles';
+import { SelectList } from 'react-native-dropdown-select-list'
 import { Dropdown } from 'react-native-element-dropdown';
-import obj from './initialtasks';
-import { styles, colors } from '../constants';
-
+import React, { useState } from 'react';
+// import { Dropdown } from 'react-native-element-dropdown';
 interface AddtodoProps {
+  
   modalVisible: boolean;
   setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   newTaskTitle: string;
@@ -36,7 +36,14 @@ const Addtodo: React.FC<AddtodoProps> = ({
   setNewColor,
   addTask,
 }) => {
-  const [selectedCategory, setSelectedCategory] = React.useState('');
+    let obj =[
+  { id: 1, color:'#dadada',name:'Inbox',fontcolor:'black',colorname:'grey' },
+  { id: 2, color:'#61DEA4',name:'Work',fontcolor:'white',colorname:'green' },
+  { id: 3, color:'#F45E6D',name:'Shopping',fontcolor:'white',colorname:'red'  },
+  { id: 4, color:'#FFE761',name:'Family',fontcolor:'black',colorname:'yellow'  },
+  { id: 5, color:'#B678FF',name:'Personal',fontcolor:'white',colorname:'violet' }, 
+];
+  const [selectedCategory, setSelectedCategory] = React.useState<string>("");
 
   const handleCategorySelection = (item: any) => {
     setSelectedCategory(item.name);
@@ -45,11 +52,11 @@ const Addtodo: React.FC<AddtodoProps> = ({
 
   return (
     <SafeAreaView>
-      <Modal
+    <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
+        onRequestClose={() => setModalVisible(false)} 
       >
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -70,17 +77,31 @@ const Addtodo: React.FC<AddtodoProps> = ({
               value={newTaskTime}
               onChangeText={setNewTaskTime}
             />
-
-            {/* Color preview */}
+            
+            {/* Color Preview */}
             {selectedCategory && (
-              <View style={styles.colorPreviewContainer}>
-                <View style={[styles.colorPreviewDot, { backgroundColor: newColor }]} />
-                <Text style={styles.colorPreviewText}>
+              <View style={{ 
+                flexDirection: 'row', 
+                alignItems: 'center', 
+                marginBottom: 10,
+                paddingHorizontal: 12,
+                paddingVertical: 8,
+                backgroundColor: '#f5f5f5',
+                borderRadius: 8
+              }}>
+                <View style={{
+                  width: 20,
+                  height: 20,
+                  borderRadius: 10,
+                  backgroundColor: newColor,
+                  marginRight: 10
+                }} />
+                <Text style={{ fontSize: 16, color: '#333' }}>
                   Selected: {selectedCategory}
                 </Text>
               </View>
             )}
-
+            
             <Dropdown
               data={obj}
               labelField="name"
@@ -88,16 +109,33 @@ const Addtodo: React.FC<AddtodoProps> = ({
               placeholder="Select Category"
               value={selectedCategory}
               onChange={handleCategorySelection}
-              style={styles.dropdownContainer}
-              containerStyle={{
-                backgroundColor: colors.background,
+              style={{
+                height: 50,
+                width: 370,
+                marginBottom: 20,
                 borderWidth: 1,
-                borderColor: colors.borderLight,
+                borderColor: '#ddd',
                 borderRadius: 8,
+                paddingHorizontal: 12
               }}
-              itemTextStyle={styles.dropdownItemText}
-              placeholderStyle={styles.dropdownPlaceholder}
-              selectedTextStyle={styles.dropdownSelectedText}
+              containerStyle={{
+                backgroundColor: 'white',
+                borderWidth: 1,
+                borderColor: '#ddd',
+                borderRadius: 8
+              }}
+              itemTextStyle={{
+                fontSize: 16,
+                color: '#333'
+              }}
+              placeholderStyle={{
+                fontSize: 16,
+                color: '#999'
+              }}
+              selectedTextStyle={{
+                fontSize: 16,
+                color: '#333'
+              }}
             />
 
             <View style={styles.Addtaskcd}>
@@ -111,7 +149,7 @@ const Addtodo: React.FC<AddtodoProps> = ({
           </View>
         </KeyboardAvoidingView>
       </Modal>
-    </SafeAreaView>
+      </SafeAreaView>
   );
 };
 

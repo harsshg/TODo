@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from 'react-native'
+import { View, Text,Modal, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Categorydetails from './Categorydetails';
 
@@ -83,7 +83,7 @@ const Category: React.FC<CategoryProps> = ({tasks, onEditTask}) => {
   
   const[bg,setbg]=useState<{color: string, name: string, fontcolor: string} | null>(null)
   
-  const[_title,settitle]=useState('')
+  const[title,settitle]=useState('')
 
   const togglemodelviatask=(task: {color: string, name: string, fontcolor: string})=>{
     switch(task.color){
@@ -133,7 +133,7 @@ const Category: React.FC<CategoryProps> = ({tasks, onEditTask}) => {
       ))}
       {/* <View style={{height:90,backgroundColor:'#dadada',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Inbox</Text></View> */}
       
-     <Categorydetails modalVisible={modalVisible} setModalVisible={setModalVisible} togglemodel={togglemodel} bg={bg} taskcolorwise={taskcolorwise} _onEditTask={onEditTask}/>
+     <Categorydetails modalVisible={modalVisible} setModalVisible={setModalVisible} togglemodel={togglemodel} bg={bg} taskcolorwise={taskcolorwise} onEditTask={onEditTask}/>
 
 
      </View>
