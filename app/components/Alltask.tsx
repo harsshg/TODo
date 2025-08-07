@@ -1,8 +1,7 @@
 import { View, Text, Pressable, TextInput, Modal, KeyboardAvoidingView, Platform, Alert  } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import styles from '../styles'
+import { styles } from '../constants'
 import { ScrollView } from 'react-native';
-import Editmodel from './Editmodel'
 
 interface Task {
   rightd: number,
@@ -22,7 +21,7 @@ interface AlltaskProps {
   edited: string;
   setedited: React.Dispatch<React.SetStateAction<string>>;
   toggleDone: (id: number) => void;
-  toggleEdit: (id: number) => void;
+  _toggleEdit: (id: number) => void;
   deleteHandler: (id: number) => void;
   toggleTask: (id: number) => void;
 }
@@ -36,7 +35,7 @@ const Alltask: React.FC<AlltaskProps> = ({
   edited,
   setedited,
   toggleDone,
-  toggleEdit,
+  _toggleEdit,
   deleteHandler,
   toggleTask
 }) => { 
@@ -81,10 +80,10 @@ useEffect(() => {
 }, [valsearch, tasks]);
 
 useEffect(()=>{
-  if(horizontal == false){
+  if(horizontal === false){
      setTimeout(() => togglehorizontal(true), 100);
   }
-},[horizontal])
+},[horizontal, togglehorizontal])
 
 
 
@@ -94,8 +93,8 @@ useEffect(()=>{
   return( 
    <>
     {filterd.map((task:any) => (
-      <ScrollView showsHorizontalScrollIndicator={false} horizontal={horizontal}  >
-        <View key={task.id} style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>
+      <ScrollView key={task.id} showsHorizontalScrollIndicator={false} horizontal={horizontal}  >
+        <View style={[styles.taskContainer, { marginTop: task.id !== 1 ? 10 : 0 }]}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
             <Pressable style={styles.tick} onPress={() => toggleTask(task.id)}>
               {task.checked && <Text style={styles.tickText}>✔</Text>}
