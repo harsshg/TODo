@@ -1,6 +1,6 @@
 import { View, Text, Pressable, TextInput, Modal, KeyboardAvoidingView, Platform, Alert  } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import styles from '../../styles';
+import { styles } from '../constants/index';
 import { ScrollView } from 'react-native';
 import Editmodel from './Editmodel'
 

@@ -7,7 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform, } from 'react-native';
 import { SafeAreaView } from 'react-native';
-import styles from '../../styles';
+import { styles } from '../constants/index';
 import { SelectList } from 'react-native-dropdown-select-list'
 import { Dropdown } from 'react-native-element-dropdown';
 import React, { useState } from 'react';

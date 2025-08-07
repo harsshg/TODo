@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
-import styles from './styles';
+import {styles} from './app/constants/index';
 // import Addtodo from './components/Addtodo';
 import {Addtodo,Category,Alltask,obj} from './app/components/index';
 // import Category from './components/Category';
@@ -286,12 +286,6 @@ const toggleright=(right:any)=>{
         />
 
         {/* category toggle button */}
-
-        
-
-       
-
-
       </ScrollView>
       <Pressable
           style={{

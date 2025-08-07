@@ -1,7 +1,7 @@
 import { View, Text, KeyboardAvoidingView, Platform, TextInput, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import { Modal } from 'react-native'
-import styles from '../../styles';
+import { styles } from '../constants/index';
 
 interface Task {
   id: number;
