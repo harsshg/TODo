@@ -9,10 +9,11 @@ import {
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import styles from './styles';
-import Addtodo from './Components/Addtodo';
-import Category from './Components/Category';
-import Alltask from './Components/Alltask';
-import obj from './Components/initialtasks';
+// import Addtodo from './components/Addtodo';
+import {Addtodo,Category,Alltask,obj} from './app/components/index';
+// import Category from './components/Category';
+// import Alltask from './components/Alltask';
+// import obj from './components/initialtasks';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dropdown } from 'react-native-element-dropdown';
 
