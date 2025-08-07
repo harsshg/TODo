@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native';
 import Editmodel from './Editmodel'
 
 interface Task {
-  right:number,
+  rightd: number,
   id: number;
   title: string;
   time: string;
@@ -40,24 +40,29 @@ const Alltask: React.FC<AlltaskProps> = ({
   deleteHandler,
   toggleTask
 }) => { 
-const[modeltask,setmodeltask]=useState('')
+const[modeltask,setmodeltask]=useState<Task | null>(null)
 
 const[editModalVisible,seteditModalVisible]=useState(false)
 
 const toggleCancelinedit = ()=>{
-        seteditModalVisible(!editModalVisible)
-        togglehorizontal()
+        seteditModalVisible(false)
+        setedited('')
+        setmodeltask(null)
 }
  
-const toggledoneformodel=(id)=>{
+const toggledoneformodel=(id: number)=>{
+       if (edited.trim() === '') {
+         Alert.alert('Please enter a task title');
+         return;
+       }
        toggleDone(id)
-      toggleCancelinedit()
+       toggleCancelinedit()
 }
 
- const toggleCancelinedit1 = (task)=>{
-        toggleCancelinedit()
-        setedited('')
+ const toggleCancelinedit1 = (task: Task)=>{
+        setedited(task.title) // Set the current task title as initial value
         setmodeltask(task)
+        seteditModalVisible(true)
 }
 
 
@@ -77,7 +82,7 @@ useEffect(() => {
 
 useEffect(()=>{
   if(horizontal == false){
-     setTimeout(togglehorizontal, 100);
+     setTimeout(() => togglehorizontal(true), 100);
   }
 },[horizontal])
 
@@ -168,7 +173,7 @@ useEffect(()=>{
         animationType="slide"
         transparent={true}
         visible={editModalVisible}
-        onRequestClose={() => seteditModalVisible(true)}>
+        onRequestClose={toggleCancelinedit}>
      <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           style={{ flex: 1,
@@ -180,7 +185,7 @@ useEffect(()=>{
             <Text style={styles.Addtasktext}>Edit Todo ☇</Text>
 
             <TextInput
-              placeholder= {modeltask.title}
+              placeholder= {modeltask?.title || ''}
               style={styles.Addtaskmsgbx}
               value={edited}
               onChangeText={setedited}
@@ -190,7 +195,7 @@ useEffect(()=>{
                 <Text style={styles.AddtaskCreate}>Cancel</Text>
               </Pressable>
               <Pressable  >
-                <Text onPress={()=>toggledoneformodel(modeltask.id)} style={styles.AddtaskDone}>Done</Text>
+                <Text onPress={()=>modeltask && toggledoneformodel(modeltask.id)} style={styles.AddtaskDone}>Done</Text>
               </Pressable>
             </View>
           </View>

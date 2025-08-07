@@ -44,12 +44,11 @@ const Addtodo: React.FC<AddtodoProps> = ({
   { id: 5, color:'#B678FF',name:'Personal',fontcolor:'white',colorname:'violet' }, 
 ];
   const [selectedCategory, setSelectedCategory] = React.useState<string>("");
-  const handleCategorySelection = (val: string) => {
-    setSelectedCategory(val);
-    // Optionally, you can setNewColor here if you want to update color in parent
-    setNewColor(val);
-  };
 
+  const handleCategorySelection = (item: any) => {
+    setSelectedCategory(item.name);
+    setNewColor(item.color);
+  };
 
   return (
     <SafeAreaView>
@@ -79,21 +78,65 @@ const Addtodo: React.FC<AddtodoProps> = ({
               onChangeText={setNewTaskTime}
             />
             
-      <SelectList
-        data={obj.map(item => ({ key: item.id.toString(), value: item.color }))}
-        setSelected={handleCategorySelection}
-        placeholder="Select Category"
-        boxStyles={{height:50,width:370,marginBottom:20}}
-        dropdownStyles={{height:150,position:'absolute',backgroundColor:'white',width:370,top:40,zIndex:3}}
-        defaultOption={
-          selectedCategory
-            ? { key: obj.find(item => item.name === selectedCategory)?.id?.toString() || "", value: selectedCategory }
-            : undefined
-        }
-        
-      />
-
+            {/* Color Preview */}
+            {selectedCategory && (
+              <View style={{ 
+                flexDirection: 'row', 
+                alignItems: 'center', 
+                marginBottom: 10,
+                paddingHorizontal: 12,
+                paddingVertical: 8,
+                backgroundColor: '#f5f5f5',
+                borderRadius: 8
+              }}>
+                <View style={{
+                  width: 20,
+                  height: 20,
+                  borderRadius: 10,
+                  backgroundColor: newColor,
+                  marginRight: 10
+                }} />
+                <Text style={{ fontSize: 16, color: '#333' }}>
+                  Selected: {selectedCategory}
+                </Text>
+              </View>
+            )}
             
+            <Dropdown
+              data={obj}
+              labelField="name"
+              valueField="name"
+              placeholder="Select Category"
+              value={selectedCategory}
+              onChange={handleCategorySelection}
+              style={{
+                height: 50,
+                width: 370,
+                marginBottom: 20,
+                borderWidth: 1,
+                borderColor: '#ddd',
+                borderRadius: 8,
+                paddingHorizontal: 12
+              }}
+              containerStyle={{
+                backgroundColor: 'white',
+                borderWidth: 1,
+                borderColor: '#ddd',
+                borderRadius: 8
+              }}
+              itemTextStyle={{
+                fontSize: 16,
+                color: '#333'
+              }}
+              placeholderStyle={{
+                fontSize: 16,
+                color: '#999'
+              }}
+              selectedTextStyle={{
+                fontSize: 16,
+                color: '#333'
+              }}
+            />
 
             <View style={styles.Addtaskcd}>
               <Pressable onPress={() => setModalVisible(false)}>

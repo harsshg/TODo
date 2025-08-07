@@ -3,28 +3,43 @@ import React, { useEffect, useState } from 'react'
 import Categorydetails from './Categorydetails';
 
 
-const Category = ({tasks}) => {
+interface Task {
+  id: number;
+  title: string;
+  time: string;
+  color: string;
+  editable: boolean;
+  checked: boolean;
+  rightd: number;
+}
+
+interface CategoryProps {
+  tasks: Task[];
+  onEditTask?: (taskId: number, newTitle: string) => void;
+}
+
+const Category: React.FC<CategoryProps> = ({tasks, onEditTask}) => {
 
 
-  const [greytasks, setGreytasks] = useState([]);
-  const [greentasks, setGreentasks] = useState([]);
-  const [redtasks, setRedtasks] = useState([]);
-  const [yellowtasks, setYellowtasks] = useState([]);
-  const [violettasks, setViolettasks] = useState([]);
+  const [greytasks, setGreytasks] = useState<Task[]>([]);
+  const [greentasks, setGreentasks] = useState<Task[]>([]);
+  const [redtasks, setRedtasks] = useState<Task[]>([]);
+  const [yellowtasks, setYellowtasks] = useState<Task[]>([]);
+  const [violettasks, setViolettasks] = useState<Task[]>([]);
 
-  const[taskcolorwise,settaskcolorwise]=useState([]);
+  const[taskcolorwise,settaskcolorwise]=useState<Task[]>([]);
 
   // Use useEffect to run this logic whenever 'tasks' changes
   useEffect(() => {
     // 1. Initialize temporary arrays to hold categorized tasks
-    const tempGreyTasks:[] = [];
-    const tempGreenTasks:[] = [];
-    const tempRedTasks:[] = [];
-    const tempYellowTasks:[] = [];
-    const tempVioletTasks:[] = [];
+    const tempGreyTasks: Task[] = [];
+    const tempGreenTasks: Task[] = [];
+    const tempRedTasks: Task[] = [];
+    const tempYellowTasks: Task[] = [];
+    const tempVioletTasks: Task[] = [];
 
     // 2. Iterate over the tasks ONCE and categorize them
-    tasks.forEach((task:any) => {
+    tasks.forEach((task: Task) => {
       switch (task.color) {
         case '#dadada':
           tempGreyTasks.push(task);
@@ -66,11 +81,11 @@ const Category = ({tasks}) => {
     setModalVisible(!modalVisible);
   }
   
-  const[bg,setbg]=useState('')
+  const[bg,setbg]=useState<{color: string, name: string, fontcolor: string} | null>(null)
   
   const[title,settitle]=useState('')
 
-  const togglemodelviatask=(task:any)=>{
+  const togglemodelviatask=(task: {color: string, name: string, fontcolor: string})=>{
     switch(task.color){
       case '#dadada':
           settaskcolorwise(greytasks);
@@ -91,7 +106,7 @@ const Category = ({tasks}) => {
           // Handle tasks with other colors or no color, if necessary
           break;
     }
-    setbg (task)
+    setbg(task)
     settitle(task.name)
     setModalVisible(true)
   } 
@@ -118,7 +133,7 @@ const Category = ({tasks}) => {
       ))}
       {/* <View style={{height:90,backgroundColor:'#dadada',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Inbox</Text></View> */}
       
-     <Categorydetails modalVisible={modalVisible} setModalVisible={setModalVisible} togglemodel={togglemodel} bg ={bg} title={title} taskcolorwise={taskcolorwise}/>
+     <Categorydetails modalVisible={modalVisible} setModalVisible={setModalVisible} togglemodel={togglemodel} bg={bg} taskcolorwise={taskcolorwise} onEditTask={onEditTask}/>
 
 
      </View>

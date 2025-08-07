@@ -98,12 +98,16 @@ const toggleright=(right:any)=>{
 }
 
   const addTask = () => {
-    if (
-      newTaskTitle.trim() === '' ||
-      newTaskTime.trim() === '' ||
-      newColor.trim() === ''
-    ) {
-      Alert.alert('Please enter both task title and time and color');
+    if (newTaskTitle.trim() === '') {
+      Alert.alert('Please enter a task title');
+      return;
+    }
+    if (newTaskTime.trim() === '') {
+      Alert.alert('Please enter a task time');
+      return;
+    }
+    if (newColor.trim() === '') {
+      Alert.alert('Please select a category');
       return;
     }
 
@@ -115,7 +119,7 @@ const toggleright=(right:any)=>{
       color: newColor, // default dot color, change as needed
       checked: false,
       editable: false,
-      rightd:righdist,
+      rightd: righdist,
     };
 
     setTasks(prev => [...prev, newTask]);
