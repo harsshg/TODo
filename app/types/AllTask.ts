@@ -13,7 +13,7 @@ export interface AlltaskProps {
   togglehorizontal: React.Dispatch<React.SetStateAction<boolean>>;
   toggleright: (id: number) => void;
   valsearch: string;
-  tasks: Task[];
+  tasks: any;
   edited: string;
   setedited: React.Dispatch<React.SetStateAction<string>>;
   toggleDone: (id: number) => void;

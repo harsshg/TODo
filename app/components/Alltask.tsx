@@ -189,6 +189,8 @@ import { styles } from '../constants/index';
 import { Task, AlltaskProps } from '../types/index';
 import {Buttons,Texts,Modals,TextInputs} from './index';
 
+
+
 const Alltask: React.FC<AlltaskProps> = ({
   horizontal,
   togglehorizontal,
@@ -231,7 +233,7 @@ const Alltask: React.FC<AlltaskProps> = ({
     if (valsearch === '') {
       setfilterd(tasks);
     } else {
-      const filtered = tasks.filter(task =>
+      const filtered = tasks.filter((task:any) =>
         task.title.toLowerCase().includes(valsearch.toLowerCase())
       );
       setfilterd(filtered);
@@ -246,6 +248,7 @@ const Alltask: React.FC<AlltaskProps> = ({
 
   return (
     <>
+   
       {filterd.map(task => (
         <ScrollView
           key={task.id}
