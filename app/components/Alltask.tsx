@@ -2,7 +2,7 @@ import { View, Text, Pressable, TextInput, Modal, KeyboardAvoidingView, Platform
 import React, { useEffect, useState } from 'react'
 import { styles } from '../constants/index';
 import { ScrollView } from 'react-native';
-import Editmodel from './Editmodel'
+
 
 interface Task {
   rightd: number,
@@ -101,50 +101,9 @@ useEffect(()=>{
               {task.checked && <Text style={styles.tickText}>✔</Text>}
             </Pressable>
             <View >
-              {/* Edit box */}
-{/* Here+++++++++++++++++++++++ */}
-            {/* {task.editable && ''} */}
-
-              {/* <Editmodel editModalVisible={editModalVisible} seteditModalVisible={seteditModalVisible} toggleCancelinedit={toggleCancelinedit} placeholder={task.title} value={edited} onChangeText={setedited} task={task} toggleDone ={toggleDone} /> */}
-
-      
-
-      {/* EDIT BOX DESIGN */}
-
-                {/* <View>
-            <TextInput 
-            placeholder={task.title} 
-            style={styles.editBox} 
-            value={edited} 
-            onChangeText={setedited} />
-            <View style={{display:'flex',flexDirection:'row',gap:6,marginLeft:210}}>
-            <Pressable 
-            onPress={()=>toggleDone(task.id)}
-            style={styles.doneBtn}><Text style={{color:"white"}} >Done</Text>
-            </Pressable>
-            <Pressable 
-            onPress={()=>toggleEdit(task.id)}
-            style={[styles.doneBtn,{backgroundColor:'#3d3d3d'}]}><Text style={{color:"white"}} >Cancel</Text>
-            </Pressable>
-            </View>
-            </View>  */}
-
-
-      {/* Here+++++++++++++++++++++++ */}
-
               <Text style={styles.texttodo}>{task.title}</Text>
               <View style ={styles.TexttodoView}>
               <Text style ={styles.timediv}> ⏰ {task.time}</Text>
-              
-              {/* Edit&Del */}
-              {/* <View style={styles.editdel}>
-              <Pressable onPress={()=>toggleEdit(task.id)}>
-                <Text style={styles.edit}>Edit</Text>
-              </Pressable>
-              <Pressable onPress={()=>deleteHandler(task.id)} >
-                <Text style={styles.delete}>Delete</Text>
-                </Pressable>
-                </View> */}
               </View>
             </View>
           </View>
@@ -167,6 +126,12 @@ useEffect(()=>{
         </View>
         </ScrollView>
       ))}
+
+    <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between',backgroundColor:'rgba(0, 0, 0, 0.09)',width:340,padding:9,alignItems:'center',borderRadius:10,position:'absolute',top:760}}>
+      <Pressable style={{backgroundColor:'blue',paddingHorizontal:10,borderRadius:10,paddingVertical:3}}> <Text style={{color:'white',fontSize:20}}>All</Text></Pressable>
+      <Pressable style={{backgroundColor:'blue',paddingHorizontal:10,borderRadius:10,paddingVertical:3}}> <Text style={{color:'white',fontSize:20}}>Pending</Text></Pressable>
+      <Pressable style={{backgroundColor:'blue',paddingHorizontal:10,borderRadius:10,paddingVertical:3}}> <Text style={{color:'white',fontSize:20}}>Done</Text></Pressable>
+    </View>
 
 
    <Modal

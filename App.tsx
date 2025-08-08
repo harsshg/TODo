@@ -10,14 +10,8 @@ import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import {styles} from './app/constants/index';
 // import Addtodo from './components/Addtodo';
-import {Addtodo,Category,Alltask,obj} from './app/components/index';
-// import Category from './components/Category';
-// import Alltask from './components/Alltask';
-// import obj from './components/initialtasks';
+import {Addtodo,Category,Alltask,obj,Buttons,Icons,Texts,TextInputs} from './app/components/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Dropdown } from 'react-native-element-dropdown';
-
-
 
 
 
@@ -152,9 +146,7 @@ const toggleright=(right:any)=>{
       <View style={{backgroundColor:'rgba(0, 0, 0, 0.41)',height:45,width:'100%'}}></View>
        <SafeAreaView style={styles.container}>
       <View style={styles.viewbox}>
-        <Text style={styles.TextStyle}>
-          Today
-        </Text>
+        <Texts style={styles.TextStyle} Value={"Today"}/>
         <View
           style={{
             display: 'flex',
@@ -164,8 +156,7 @@ const toggleright=(right:any)=>{
           }}
         >
           {searching ? (
-            <Pressable
-              style={{
+            <Buttons style={{
                 width: 40,
                 alignItems: 'center',
                 height: 40,
@@ -173,50 +164,35 @@ const toggleright=(right:any)=>{
                 padding: 6,
                 borderWidth: 3,
                 borderColor: '#006CFF',
-              }}
-              onPress={() => toggleSearch(searching)}
-            >
-              <Icon name="search" size={21} style={{bottom:.5}} color='#006CFF' />
-              {/* <Text
-                
-                style={{ fontSize: 26, bottom: 3 }}
-              >
-                🔍
-              </Text> */}
-            </Pressable>
+              }} onPress={() => toggleSearch(searching)} Value={<Icons name={"search"} size={21} style={{bottom:.5}} color={'#006CFF'} />}/>  // <Icon name="search" size={21} style={{bottom:.5}} color='#006CFF' />
           ) : (
             <View style={{alignItems:'center'}}>
               <View style={{borderRadius:10,backgroundColor:'red',borderWidth:1.5,borderColor:'red',width:22,alignItems:'center',zIndex:1,position:'absolute',bottom:35,left:184
               }}>
-              <Icon name='close' size={18} color="white" style={{bottom:1}}
-              onPress={() => toggleSearch(searching)}/></View>
-              <TextInput
-                placeholder="Enter your Searches Here"
+              <Icons name={'close'} size={18} color={"white"} style={{bottom:1}} onPress={() => toggleSearch(searching)}/>
+              </View>
+              {/* <TextInput
+                 placeholder="Enter your Searches Here"
                  value={valsearch}
                  onChangeText={setvalsearch}
-                style={{
-                  zIndex:.9,
-                  width: 200,
-                  fontSize: 16,
-                  borderColor: '#b3b3b3',
-                  borderWidth: 3,
-                  borderRadius: 10,
+                 style={{
+                 zIndex:.9,
+                 width: 200,
+                 fontSize: 16,
+                 borderColor: '#b3b3b3',
+                 borderWidth: 3,
+                 borderRadius: 10,
                 }}
-              ></TextInput>
-              {/* <Pressable  
-                style={{
-                  backgroundColor: '#dadada',
-                  marginLeft: 142,
-                  paddingHorizontal: 6,
-                  borderRadius: 8,
-                  paddingBottom: 1,
-                  marginTop: 2,
-                  borderColor: 'black',
-                  borderWidth: 1.4,
-                }}
-              >
-                <Text style={{ color: 'black' }}>Search</Text>
-              </Pressable> */}
+              /> */}
+              <TextInputs placeholder={"Enter your Searches Here"} value={valsearch} style={{
+                 zIndex:.9,
+                 width: 200,
+                 fontSize: 16,
+                 borderColor: '#b3b3b3',
+                 borderWidth: 3,
+                 borderRadius: 10,
+                }} onChangeText={setvalsearch}/>
+              
             </View>
           )}
 
@@ -235,15 +211,9 @@ const toggleright=(right:any)=>{
              onPress={() => setModalVisible(true)}
             >
               <Icon name="plus" size={25} color="#006CFF" style={{bottom:1}} />
-              {/* <Text
-                style={{ fontSize: 35, bottom: 10 }}
-              >
-                +
-              </Text> */}
+             
             </Pressable>
-          {/* <Text onPress={() => setModalVisible(true)} style={styles.ADD}>
-            +
-          </Text> */}
+        {/* <Button /> */}
           
         </View>
       </View>
@@ -251,8 +221,6 @@ const toggleright=(right:any)=>{
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Render tasks with toggle */}
         {mainview?(<Alltask
-        
-       
         horizontal={horizontal}
         togglehorizontal={togglehorizontal}
         toggleright={toggleright}
@@ -267,13 +235,9 @@ const toggleright=(right:any)=>{
         />):<Category tasks={tasks}/>}
         
 
-         {/* Here i will add category */}
-         
-
-        {/* Modal for Add Todo */}
+     
 
         <Addtodo
-          
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
           newTaskTitle={newTaskTitle}
@@ -316,7 +280,8 @@ const toggleright=(right:any)=>{
         </Pressable>
 
        {listcat?(<View style={{position:'absolute',top:750,height:90,width:170,backgroundColor:'rgb(250, 250, 250)',padding:2,bottom:130,left:250,borderRadius:12,zIndex:0.5,alignItems:'center',justifyContent:'center',gap:1,borderWidth:1,borderColor:"#dadada"}}>
-        <Pressable onPress={toggleListview}  style={{backgroundColor:'rgba(0, 0, 0, 0.05)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10,}}><Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ✔︎ List</Text></Pressable>
+        <Buttons onPress={toggleListview} style={{backgroundColor:'rgba(0, 0, 0, 0.05)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10,}} Value={<Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ✔︎ List</Text>}/>
+        {/* <Pressable onPress={toggleListview}  style={{backgroundColor:'rgba(0, 0, 0, 0.05)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10,}}><Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ✔︎ List</Text></Pressable> */}
         <Pressable onPress={toggleCatogryview} style={{backgroundColor:'rgba(0, 0, 0,0.05)',width:"100%",height:"50%",paddingVertical:4,borderRadius:10}}><Text style={{color:'#006CFF',fontSize:25,fontWeight:500}}> ⎅ Category</Text></Pressable>
         </View>):""}
         
