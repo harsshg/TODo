@@ -1,16 +1,15 @@
+import React, { useState } from 'react';
 import {
   View,
   Text,
   SafeAreaView,
   Alert,
-  Pressable,
   TextInput,
+  ScrollView,
 } from 'react-native';
 
-import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
-import { styles } from './app/constants/index';
-// import Addtodo from './components/Addtodo';
+import {styles} from './app/constants/index'; 
+
 import {
   Addtodo,
   Category,
@@ -20,7 +19,9 @@ import {
   Icons,
   Texts,
   TextInputs,
+  Header,
 } from './app/components/index';
+
 
 
 
@@ -144,67 +145,13 @@ const App = () => {
 
   return (
     <SafeAreaView>
-      {/* Search Box */}
+      {/* Top View */}
       <View
         style={styles.topBarfortimeandbattery}
       ></View>
       <SafeAreaView style={styles.container}>
-        <View style={styles.viewbox}>
-          <Texts style={styles.TextStyle} Value={'Today'} />
-          <View
-            style={styles.srcaddcontainer}
-          >
-            {searching ? (
-              <Buttons
-                style={styles.searchBtn}
-                onPress={() => toggleSearch(searching)}
-                Value={
-                  <Icons
-                    name={'search'}
-                    size={21}
-                    style={{ bottom: 0.5 }}
-                    color={'#006CFF'}
-                  />
-                }
-              />
-            ) : (
-              <View style={{ alignItems: 'center' }}>
-                <View
-                  style={styles.searchbxcross}
-                >
-                  <Icons
-                    name={'close'}
-                    size={18}
-                    color={'white'}
-                    style={{ bottom: 1 }}
-                    onPress={() => toggleSearch(searching)}
-                  />
-                </View>
-
-                <TextInputs
-                  placeholder={'Enter your Searches Here'}
-                  value={valsearch}
-                  style={styles.searchbox}
-                  onChangeText={setvalsearch}
-                />
-              </View>
-            )}
-
-            {/* Task Add */}
-            <Buttons
-            style={styles.addBtn}
-            onPress={() => setModalVisible(true)}
-            Value={<Icons
-              name={"plus"}
-              size={25}
-              color={"#006CFF"}
-              style={{ bottom: 1 }}
-            />}
-            />
-            
-          </View>
-        </View>
-
+        
+        <Header searching={searching} toggleSearch={toggleSearch} valsearch = {valsearch} setvalsearch={setvalsearch} setModalVisible={setModalVisible}/>
         <ScrollView showsVerticalScrollIndicator={false}>
           {/* Render tasks with toggle */}
           {mainview ? (<View>
@@ -239,55 +186,45 @@ const App = () => {
           />
 
           {/* category toggle button */}
-        </ScrollView>
-        <Buttons
-         style={styles.togglecatnlist}
-         onPress={togglelistcat}
-         Value={<Texts style={{
-              fontSize: 45,
-              fontWeight: 300,
-              color: 'white',
-              bottom: 1.5,
-            }}
-            Value={'+'}/>}
-        />
-        
 
-        {listcat ? (
-          <View
-            style={styles.listcat}
-          >
-            <Buttons
-              onPress={toggleListview}
-              style={styles.listcatbtn}
-              Value={
-                <Texts
-                  style={styles.liscatbtntxt}
-                  Value={
-                 '✔︎ List'}
-                />
-                  
-                
-              }
-            />
-            <Buttons
-              onPress={toggleCatogryview}
-              style={styles.catview}
-              Value={
-                <Texts
-                style={styles.catviewtxt}
-                  Value={
-                 '⎅ Category'}
-                />
-               
-              }
-            />
-          </View>
-        ) : ('')
-      }
+        </ScrollView>
+        
+         <Buttons
+             style={styles.togglecatnlist}
+             onPress={togglelistcat}
+             Value={
+               <Texts
+                 style={{
+                   fontSize: 45,
+                   fontWeight: '300', // must be string in RN
+                   color: 'white',
+                   bottom: 1.5,
+                 }}
+                 Value="+"
+               />
+             }
+           />
+     
+           {listcat && (
+             <View style={styles.listcat}>
+               <Buttons
+                 onPress={toggleListview}
+                 style={styles.listcatbtn}
+                 Value={<Texts style={styles.liscatbtntxt} Value="✔︎ List" />}
+               />
+               <Buttons
+                 onPress={toggleCatogryview}
+                 style={styles.catview}
+                 Value={<Texts style={styles.catviewtxt} Value="⎅ Category" />}
+               />
+             </View>
+           )}
+
       </SafeAreaView>
     </SafeAreaView>
   );
 };
 
 export default App;
+
+

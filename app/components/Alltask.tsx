@@ -187,6 +187,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { styles } from '../constants/index';
 import { Task, AlltaskProps } from '../types/index';
+import {Buttons,Texts,Modals,TextInputs} from './index';
 
 const Alltask: React.FC<AlltaskProps> = ({
   horizontal,
@@ -252,29 +253,32 @@ const Alltask: React.FC<AlltaskProps> = ({
           horizontal={horizontal}>
           <View style={styles.taskContainer}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <Pressable style={styles.tick} onPress={() => toggleTask(task.id)}>
-                {task.checked && <Text style={styles.tickText}>✔</Text>}
-              </Pressable>
+              <Buttons style={styles.tick} onPress={()=> toggleTask(task.id)} Value={task.checked && <Text style={styles.tickText}>✔</Text>}/>
               <View>
                 <Text style={styles.texttodo}>{task.title}</Text>
                 <View style={styles.TexttodoView}>
-                  <Text style={styles.timediv}> ⏰ {task.time}</Text>
+                  <Texts style={styles.timediv} Value={`⏰ ${task.time}`}/>
                 </View>
               </View>
             </View>
 
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Pressable
+              {/* <Buttons
                 onPress={() => toggleright(task.right)}
                 style={[styles.dot, { backgroundColor: task.color, right: 39 }]}
+              /> */}
+
+              <Buttons
+               onPress={() => toggleright(task.right)}
+               style={[styles.dot, { backgroundColor: task.color, right: 39 }]}
+               Value={''}
               />
+
               <View style={styles.editdel}>
-                <Pressable onPress={() => toggleCancelinedit1(task)}>
-                  <Text style={styles.edit}>Edit</Text>
-                </Pressable>
-                <Pressable onPress={() => deleteHandler(task.id)}>
-                  <Text style={styles.delete}>Delete</Text>
-                </Pressable>
+                <Buttons onPress={() => toggleCancelinedit1(task)} Value={<Texts style={styles.edit} Value={'Edit'}/>}/>
+                   
+                <Buttons onPress={() => deleteHandler(task.id)} Value={<Texts style={styles.delete} Value={'Delete'}/>}/>
+              
               </View>
             </View>
           </View>
@@ -282,45 +286,35 @@ const Alltask: React.FC<AlltaskProps> = ({
       ))}
 
       <View style={styles.togglepagescontainer}>
-        <Pressable style={styles.togglePages}>
-          <Text style={styles.togglePagestxt}>All</Text>
-        </Pressable>
-        <Pressable style={styles.togglePages}>
-          <Text style={styles.togglePagestxt}>Pending</Text>
-        </Pressable>
-        <Pressable style={styles.togglePages}>
-          <Text style={styles.togglePagestxt}>Done</Text>
-        </Pressable>
+        <Buttons style ={styles.togglePages} Value={<Texts style={styles.togglePagestxt} Value={'All'}/>}/>
+        <Buttons style ={styles.togglePages} Value={<Texts style={styles.togglePagestxt} Value={'Pending'}/>}/>
+         <Buttons style ={styles.togglePages} Value={<Texts style={styles.togglePagestxt} Value={'Done'}/>}/>
       </View>
 
-      <Modal
-        animationType="slide"
+      <Modals
+        animationType={"slide"}
         transparent={true}
         visible={editModalVisible}
-        onRequestClose={toggleCancelinedit}>
-        <KeyboardAvoidingView
+        onRequestClose={toggleCancelinedit} 
+        Value={<KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           style={styles.keyboardavoiding}>
           <View style={styles.modalContent}>
-            <Text style={styles.Addtasktext}>Edit Todo ☇</Text>
-            <TextInput
+            <Texts style={styles.Addtasktext} Value={'Edit Todo ☇'}/>
+            <TextInputs
               placeholder={modeltask?.title || ''}
               style={styles.Addtaskmsgbx}
               value={edited}
               onChangeText={setedited}
             />
             <View style={styles.Addtaskcd}>
-              <Pressable onPress={toggleCancelinedit}>
-                <Text style={styles.AddtaskCreate}>Cancel</Text>
-              </Pressable>
-              <Pressable
-                onPress={() => modeltask && toggledoneformodel(modeltask.id)}>
-                <Text style={styles.AddtaskDone}>Done</Text>
-              </Pressable>
+               <Buttons onPress={()=>toggleCancelinedit} Value={<Texts style={styles.AddtaskCreate} Value={'Cancel'}/>}/>
+               <Buttons onPress={() => modeltask && toggledoneformodel(modeltask.id)} Value={<Texts style={styles.AddtaskCreate} Value={'Done'}/>}/>
             </View>
           </View>
-        </KeyboardAvoidingView>
-      </Modal>
+        </KeyboardAvoidingView>}/>
+        
+      
     </>
   );
 };

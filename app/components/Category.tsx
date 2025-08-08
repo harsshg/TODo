@@ -1,7 +1,8 @@
 import { View, Text,Modal, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import Categorydetails from './Categorydetails';
-import { styles } from '../constants';
+import {Categorydetails} from './index';
+import { styles } from '../constants/index';
+import {Buttons} from './index';
 
 
 interface Task {
@@ -126,11 +127,7 @@ const Category: React.FC<CategoryProps> = ({tasks, onEditTask}) => {
      <View style={styles.categorypagecontainer} >
       <Text style={styles.catergorydetails}>Total <Text style={styles.catergorytext}>Pending</Text> task's :- {tasks.length}</Text>
       {obj.map((task)=>(
-
-       <Pressable onPress={()=>togglemodelviatask(task)} key ={task.id} style={{height:90,backgroundColor:(task.color),width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}>
-       <Text style={{color:(task.fontcolor),fontSize:30,fontWeight:500}}>{task.name}</Text>
-       </Pressable>
-
+        <Buttons onPress={()=>togglemodelviatask(task)} style={{height:90,backgroundColor:(task.color),width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}} key ={task.id} Value={ <Text style={{color:(task.fontcolor),fontSize:30,fontWeight:500}}>{task.name}</Text>} />
       ))}
       
      <Categorydetails modalVisible={modalVisible} setModalVisible={setModalVisible} togglemodel={togglemodel} bg={bg} taskcolorwise={taskcolorwise} onEditTask={onEditTask}/>

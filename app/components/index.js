@@ -9,5 +9,8 @@ import Icons from './coustome/Icons';
 import Texts from './coustome/Texts';
 import TextInputs from './coustome/TextInputs';
 import Modals from './coustome/Modals';
+import Header from './Header';
+import Dropdowns from './coustome/Dropdowns';
+// import ListnCatView from './ListnCatView';
 
-export{Addtodo,Alltask,Category,Categorydetails,Editmodel,obj,Buttons,Icons,Texts,TextInputs,Modals}
+export{Addtodo,Alltask,Category,Categorydetails,Editmodel,obj,Buttons,Icons,Texts,TextInputs,Modals,Header,Dropdowns}

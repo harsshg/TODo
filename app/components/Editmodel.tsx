@@ -2,6 +2,7 @@ import { View, Text, KeyboardAvoidingView, Platform, TextInput, Pressable } from
 import React, { useState } from 'react'
 import { Modal } from 'react-native'
 import { styles } from '../constants/index';
+import {Modals,Texts,TextInputs, Buttons} from './index';
 
 interface Task {
   id: number;
@@ -48,20 +49,19 @@ const Editmodel: React.FC<EditModelProps> = ({
   };
 
   return (
-    <Modal
-      animationType="slide"
+    <Modals
+      animationType={"slide"}
       transparent={true}
       visible={editModalVisible}
       onRequestClose={() => seteditModalVisible(false)}
-    >
-      <KeyboardAvoidingView
+      Value={<KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={{ flex: 1, justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)', padding: 20 }}
       >
         <View style={styles.modalContent}>
-          <Text style={styles.Addtasktext}>Edit Todo ☇</Text>
+          <Texts style={styles.Addtasktext} Value={'Edit Todo ☇'}/>
           
-          <TextInput
+          <TextInputs
             placeholder={placeholder}
             style={styles.Addtaskmsgbx}
             value={editText}
@@ -69,16 +69,14 @@ const Editmodel: React.FC<EditModelProps> = ({
           />
           
           <View style={styles.Addtaskcd}>
-            <Pressable onPress={handleCancel}>
-              <Text style={styles.AddtaskCreate}>Cancel</Text>
-            </Pressable>
-            <Pressable onPress={handleSave}>
-              <Text style={styles.AddtaskDone}>Save</Text>
-            </Pressable>
+            <Buttons onPress={handleCancel} Value={<Texts style={styles.AddtaskCreate} Value={'Cancel'}/>}/>
+            <Buttons onPress={handleSave} Value={<Texts style={styles.AddtaskDone} Value={'Save'}/>}/>
           </View>
         </View>
-      </KeyboardAvoidingView>
-    </Modal>
+      </KeyboardAvoidingView>}
+    />
+      
+
   )
 }
 

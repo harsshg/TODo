@@ -1,5 +1,6 @@
 import { View, Text,Modal ,Pressable, SafeAreaView, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
 import React, { useState } from 'react'
+import {Modals, Texts} from './index'
 
 interface Task {
   id: number;
@@ -44,14 +45,12 @@ const Categorydetails: React.FC<CategoryDetailsProps> = ({setModalVisible,modalV
 
   return (
     <View>
-       <Modal
-       animationType="slide"
+       <Modals
+       animationType={"slide"}
         transparent={true}
         visible={modalVisible} //here add modalVisible
         onRequestClose={() => setModalVisible(true)}
-> 
-         
-          <View 
+        Value={<View 
           style={{backgroundColor:(bg?.color || '#dadada'),height:'100%',width:'100%',top:30,borderRadius:30,padding:10,gap:30}}>
 
             {/* HEAD */}
@@ -61,20 +60,17 @@ const Categorydetails: React.FC<CategoryDetailsProps> = ({setModalVisible,modalV
             <Text style={{fontSize:35,fontWeight:800,letterSpacing:1,opacity:.9,color:(bg?.fontcolor || 'black')}}>{bg?.name || 'Category'}</Text>
             <Text style={{fontSize:28,color:(bg?.fontcolor || 'black'),fontWeight:500}}>✎</Text>
             </View>
-            
-           
-
+    
           {/* Task view will be here  */}
           { taskcolorwise.map((task:any)=>
             <View style={{display:'flex',flexDirection:'row',alignItems:'center',gap:20,marginTop:10,paddingLeft:8}}>
-            {/* <Text style={{borderWidth:4,borderRadius:50,height:30,width:30,opacity:.3}}></Text> */}
             <View style={{borderBottomColor:(bg?.fontcolor || 'black'),borderBottomWidth:1,paddingBottom:15,width:'100%'}}>
-            <Text style={{fontSize:25,fontWeight:500,color:(bg?.fontcolor || 'black')}}>{task.title}</Text>
-            <Text style={{color:(bg?.fontcolor || 'black'),opacity:.9}}>{task.time}</Text>
+            <Texts style={{fontSize:25,fontWeight:500,color:(bg?.fontcolor || 'black')}} Value={`${task.title}`}/>
+            <Texts style={{color:(bg?.fontcolor || 'black'),opacity:.9}} Value={`${task.time}`}/>
             </View>
             </View>)}
-         </View>
-      </Modal>
+         </View>}
+         /> 
     </View>
   )
 }

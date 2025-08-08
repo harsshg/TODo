@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Dropdown } from 'react-native-element-dropdown';
 
 const styles = StyleSheet.create({
   container: {
@@ -323,28 +324,79 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
   },
 
-  togglePagestxt: { 
-    color: 'white', fontSize: 20
-   },
+  togglePagestxt: {
+    color: 'white',
+    fontSize: 20,
+  },
 
-   keyboardavoiding:{ flex: 1,
+  keyboardavoiding: {
+    flex: 1,
     justifyContent: 'center',
     backgroundColor: 'rgba(104, 104, 104, 0.05)',
-    padding: 20},
-    
-    categorypagecontainer:{
-      marginTop:30,alignItems:'center'
-    },
+    padding: 20,
+  },
 
-    catergorydetails:{
-      marginBottom:19,fontSize:30,fontWeight:700,color:'rgba(0, 98, 255, 0.8)'
-    },
-    catergorytext:{color:'red' ,fontSize:28.3},
+  categorypagecontainer: {
+    marginTop: 30,
+    alignItems: 'center',
+  },
 
-    
+  catergorydetails: {
+    marginBottom: 19,
+    fontSize: 30,
+    fontWeight: 700,
+    color: 'rgba(0, 98, 255, 0.8)',
+  },
+  catergorytext: {
+    color: 'red',
+    fontSize: 28.3,
+  },
+  Addtodocategory: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 8,
+  },
+  Addtodoselected: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
 
-
-
-
+    marginRight: 10,
+  },
+  Addtodoselectedtxt: {
+    fontSize: 16,
+    color: '#333',
+  },
+  Dropdown: {
+    height: 50,
+    width: 370,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+  },
+  DropdownContainer: {
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+  },
+  DropdownItemtextstyle: {
+    fontSize: 16,
+    color: '#333',
+  },
+  DDplaceholde: {
+    fontSize: 16,
+    color: '#999',
+  },
+  DDselectedtxt: {
+    fontSize: 16,
+    color: '#333',
+  },
 });
 export default styles;
