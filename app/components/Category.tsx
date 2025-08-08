@@ -1,6 +1,7 @@
 import { View, Text,Modal, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Categorydetails from './Categorydetails';
+import { styles } from '../constants';
 
 
 interface Task {
@@ -122,16 +123,15 @@ const Category: React.FC<CategoryProps> = ({tasks, onEditTask}) => {
 ];
   return (
       
-     <View style={{marginTop:30,alignItems:'center'}} >
-      <Text style={{marginBottom:19,fontSize:30,fontWeight:700,color:'rgba(0, 98, 255, 0.8)'}}>Total <Text style={{color:'red' ,fontSize:28.3}}>Pending</Text> task's :- {tasks.length}</Text>
+     <View style={styles.categorypagecontainer} >
+      <Text style={styles.catergorydetails}>Total <Text style={styles.catergorytext}>Pending</Text> task's :- {tasks.length}</Text>
       {obj.map((task)=>(
+
        <Pressable onPress={()=>togglemodelviatask(task)} key ={task.id} style={{height:90,backgroundColor:(task.color),width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}>
-      <Text style={{color:(task.fontcolor),fontSize:30,fontWeight:500}}>{task.name}</Text>
-     
-       
+       <Text style={{color:(task.fontcolor),fontSize:30,fontWeight:500}}>{task.name}</Text>
        </Pressable>
+
       ))}
-      {/* <View style={{height:90,backgroundColor:'#dadada',width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}}><Text style={{color:"black",fontSize:30}}>Inbox</Text></View> */}
       
      <Categorydetails modalVisible={modalVisible} setModalVisible={setModalVisible} togglemodel={togglemodel} bg={bg} taskcolorwise={taskcolorwise} onEditTask={onEditTask}/>
 

@@ -12,18 +12,8 @@ import { SelectList } from 'react-native-dropdown-select-list'
 import { Dropdown } from 'react-native-element-dropdown';
 import React, { useState } from 'react';
 // import { Dropdown } from 'react-native-element-dropdown';
-interface AddtodoProps {
-  
-  modalVisible: boolean;
-  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  newTaskTitle: string;
-  setNewTaskTitle: React.Dispatch<React.SetStateAction<string>>;
-  newTaskTime: string;
-  setNewTaskTime: React.Dispatch<React.SetStateAction<string>>;
-  newColor: string;
-  setNewColor: React.Dispatch<React.SetStateAction<string>>;
-  addTask: () => void;
-}
+import { AddtodoProps } from '../types/index';
+import Modals from './coustome/Modals';
 
 const Addtodo: React.FC<AddtodoProps> = ({
   modalVisible,
@@ -52,13 +42,12 @@ const Addtodo: React.FC<AddtodoProps> = ({
 
   return (
     <SafeAreaView>
-    <Modal
-        animationType="slide"
+      <Modals
+        animationType={'slide'}
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)} 
-      >
-        <KeyboardAvoidingView
+        Value={ <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           style={styles.modalContainer}
         >
@@ -78,7 +67,7 @@ const Addtodo: React.FC<AddtodoProps> = ({
               onChangeText={setNewTaskTime}
             />
             
-            {/* Color Preview */}
+           
             {selectedCategory && (
               <View style={{ 
                 flexDirection: 'row', 
@@ -140,15 +129,15 @@ const Addtodo: React.FC<AddtodoProps> = ({
 
             <View style={styles.Addtaskcd}>
               <Pressable onPress={() => setModalVisible(false)}>
-                <Text style={styles.AddtaskCreate}>Cancel</Text>
+              <Text style={styles.AddtaskCreate}>Cancel</Text>
               </Pressable>
               <Pressable onPress={addTask}>
                 <Text style={styles.AddtaskDone}>Done</Text>
               </Pressable>
             </View>
           </View>
-        </KeyboardAvoidingView>
-      </Modal>
+        </KeyboardAvoidingView>}
+      />
       </SafeAreaView>
   );
 };
