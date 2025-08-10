@@ -1,18 +1,11 @@
 import {
   View,
-  Text,
-  Pressable,
-  Modal,
-  TextInput,
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import { styles } from '../constants/index';
-import { SelectList } from 'react-native-dropdown-select-list';
-import { Dropdown } from 'react-native-element-dropdown';
 import React, { useState } from 'react';
-// import { Dropdown } from 'react-native-element-dropdown';
 import { AddtodoProps } from '../types/index';
 import { Buttons, Icons, Texts, TextInputs, Modals, Dropdowns } from './index';
 

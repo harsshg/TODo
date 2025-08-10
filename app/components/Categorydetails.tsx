@@ -100,14 +100,6 @@ const Categorydetails: React.FC<CategoryDetailsProps> = ({setModalVisible,modalV
     </View>
   </View>
 ))}
-
-          {/* { taskcolorwise.map((task:any)=>
-            <View style={{display:'flex',flexDirection:'row',alignItems:'center',gap:20,marginTop:10,paddingLeft:8}}>
-            <View  style={{borderBottomColor:(bg?.fontcolor || 'black'),borderBottomWidth:1,paddingBottom:15,width:'100%'}}>
-            <Texts style={{fontSize:25,fontWeight:500,color:(bg?.fontcolor || 'black')}} Value={`${task.title}`}/>
-            <Texts style={{color:(bg?.fontcolor || 'black'),opacity:.9}} Value={`${task.time}`}/>
-            </View>
-            </View>)} */}
          </View>}
          /> 
     </View>

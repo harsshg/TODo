@@ -266,11 +266,6 @@ const Alltask: React.FC<AlltaskProps> = ({
             </View>
 
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              {/* <Buttons
-                onPress={() => toggleright(task.right)}
-                style={[styles.dot, { backgroundColor: task.color, right: 39 }]}
-              /> */}
-
               <Buttons
                onPress={() => toggleright(task.right)}
                style={[styles.dot, { backgroundColor: task.color, right: 39 }]}
