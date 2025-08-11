@@ -328,6 +328,7 @@ import { TodoProvider } from './app/components/TodoContext'
 import { Home } from './app/screens/Home'
 import { Pending } from './app/screens/Pending'
 import { Done } from './app/screens/Done'
+import { Text, View } from 'react-native'
 
 export type RootStackParamList = {
   Home: undefined;
@@ -339,6 +340,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 
 function App() {
   return (
+
     <TodoProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
@@ -348,6 +350,7 @@ function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </TodoProvider>
+
   )
 }
 export default App

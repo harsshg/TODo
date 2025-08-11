@@ -309,19 +309,22 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: 'rgba(0, 0, 0, 0.09)',
+    backgroundColor: 'rgba(0, 0, 0, 0.08)',
     width: 340,
     padding: 9,
+    paddingHorizontal:10,
     alignItems: 'center',
     borderRadius: 10,
     position: 'absolute',
-    top: 700,
+    top: 694,
   },
   togglePages: {
     backgroundColor: '#006CFF',
     paddingHorizontal: 10,
     borderRadius: 6,
-    paddingVertical: 4,
+    width:92.9,
+    paddingVertical: 6,
+    alignItems:'center'
   },
 
   togglePagestxt: {
