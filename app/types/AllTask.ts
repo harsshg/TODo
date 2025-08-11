@@ -20,4 +20,7 @@ export interface AlltaskProps {
   toggleEdit: (id: number) => void;
   deleteHandler: (id: number) => void;
   toggleTask: (id: number) => void;
+    onPressHome: () => void;
+  onPressDone: () => void;
+  onPressPending: () => void;
 }

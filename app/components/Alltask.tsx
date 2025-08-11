@@ -73,10 +73,10 @@
 //   if (valsearch === "") {
 //     setfilterd(tasks); // Show all tasks if search is empty
 //   } else {
-//     const filtered = tasks.filter(task =>
+//     const tasks = tasks.filter(task =>
 //       task.title.toLowerCase().includes(valsearch.toLowerCase())
 //     );
-//     setfilterd(filtered); // Show filtered tasks
+//     setfilterd(tasks); // Show tasks tasks
 //   }
 // }, [valsearch, tasks]);
 
@@ -176,18 +176,16 @@
 import {
   View,
   Text,
-  Pressable,
-  TextInput,
-  Modal,
   KeyboardAvoidingView,
   Platform,
   Alert,
-  ScrollView
+  ScrollView,
 } from 'react-native';
+
 import React, { useEffect, useState } from 'react';
 import { styles } from '../constants/index';
 import { Task, AlltaskProps } from '../types/index';
-import {Buttons,Texts,Modals,TextInputs} from './index';
+import {Buttons,Texts,Modals,TextInputs,PageTogggle} from './index';
 
 
 
@@ -202,7 +200,10 @@ const Alltask: React.FC<AlltaskProps> = ({
   toggleDone,
   toggleEdit,
   deleteHandler,
-  toggleTask
+  toggleTask,
+  onPressHome,
+  onPressDone,
+  onPressPending,
 }) => {
   const [modeltask, setmodeltask] = useState<Task | null>(null);
   const [editModalVisible, seteditModalVisible] = useState(false);
@@ -233,10 +234,10 @@ const Alltask: React.FC<AlltaskProps> = ({
     if (valsearch === '') {
       setfilterd(tasks);
     } else {
-      const filtered = tasks.filter((task:any) =>
+       tasks = tasks.filter((task:any) =>
         task.title.toLowerCase().includes(valsearch.toLowerCase())
       );
-      setfilterd(filtered);
+      setfilterd(tasks);
     }
   }, [valsearch, tasks]);
 
@@ -248,7 +249,6 @@ const Alltask: React.FC<AlltaskProps> = ({
 
   return (
     <>
-   
       {filterd.map(task => (
         <ScrollView
           key={task.id}
@@ -283,11 +283,10 @@ const Alltask: React.FC<AlltaskProps> = ({
         </ScrollView>
       ))}
 
-      <View style={styles.togglepagescontainer}>
-        <Buttons style ={styles.togglePages} Value={<Texts style={styles.togglePagestxt} Value={'All'}/>}/>
-        <Buttons style ={styles.togglePages} Value={<Texts style={styles.togglePagestxt} Value={'Pending'}/>}/>
-         <Buttons style ={styles.togglePages} Value={<Texts style={styles.togglePagestxt} Value={'Done'}/>}/>
-      </View>
+
+
+      <PageTogggle onPressHome = {onPressHome} onPressDone = {onPressDone} onPressPending ={onPressPending} />
+
 
       <Modals
         animationType={"slide"}

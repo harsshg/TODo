@@ -261,12 +261,12 @@ const styles = StyleSheet.create({
     bottom: 32,
     left: 360,
     position: 'absolute',
-    top: 850,
+    top: 790,
     zIndex: 1,
   },
   listcat: {
     position: 'absolute',
-    top: 750,
+    top: 697,
     height: 90,
     width: 170,
     backgroundColor: 'rgb(250, 250, 250)',
@@ -315,13 +315,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     position: 'absolute',
-    top: 760,
+    top: 700,
   },
   togglePages: {
     backgroundColor: '#006CFF',
     paddingHorizontal: 10,
-    borderRadius: 10,
-    paddingVertical: 3,
+    borderRadius: 6,
+    paddingVertical: 4,
   },
 
   togglePagestxt: {

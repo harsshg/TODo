@@ -1,7 +1,7 @@
 import { View, Text,Modal, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import {Categorydetails} from './index';
-import { styles } from '../constants/index';
+import { objCat, styles } from '../constants/index';
 import {Buttons} from './index';
 
 
@@ -115,20 +115,14 @@ const Category: React.FC<CategoryProps> = ({tasks, onEditTask}) => {
 
 
   
-let obj =[
-  { id: 1, color:'#dadada',name:'Inbox',fontcolor:'black' },
-  { id: 2, color:'#61DEA4',name:'Work',fontcolor:'white' },
-  { id: 3, color:'#F45E6D',name:'Shopping',fontcolor:'white' },
-  { id: 4, color:'#FFE761',name:'Family',fontcolor:'black' },
-  { id: 5, color:'#B678FF',name:'Personal',fontcolor:'white'}, 
-];
+
 
 
   return (
       
      <View style={styles.categorypagecontainer} >
       <Text style={styles.catergorydetails}>Total <Text style={styles.catergorytext}>Pending</Text> task's :- {tasks.length}</Text>
-      {obj.map((task)=>(
+      {objCat.map((task)=>(
         <Buttons onPress={()=>togglemodelviatask(task)} style={{height:90,backgroundColor:(task.color),width:'100%',borderRadius:10,alignItems:'center',justifyContent:'center',marginBottom:20}} key ={task.id} Value={ <Text style={{color:(task.fontcolor),fontSize:30,fontWeight:500}}>{task.name}</Text>} />
       ))}
       

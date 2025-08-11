@@ -41,7 +41,7 @@ export function useTodoApp() {
       )
     );
   };
-
+ 
   const toggleEdit = (id: number) => {
     toggleHorizontal();
     setTimeout(toggleHorizontal, 1000);
@@ -102,7 +102,7 @@ export function useTodoApp() {
     setMainview(true);
   };
   const toggleCategoryview = () => {
-    setListcat(true);
+    setListcat(false);
     setMainview(false);
   };
 

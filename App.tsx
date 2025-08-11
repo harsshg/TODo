@@ -228,74 +228,126 @@
 
 // export default App;
 
-import React from 'react';
-import { View, SafeAreaView, ScrollView } from 'react-native';
-import {
-  Header,
-  Alltask,
-  Category,
-  Addtodo,
-  ToggleListCategory,
-} from './app/components/index';
-import { styles } from './app/constants';
-import { useTodoApp } from './app/components/UseTodo';
 
-export default function App() {
-  const state = useTodoApp();
 
+
+// import React from 'react';
+
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+// import { Home } from './app/screens/Home'
+// import { Done } from './app/screens/Done'
+// import { Pending } from './app/screens/Pending'
+
+// import { useTodoApp } from './app/components/UseTodo';
+// import { View } from 'react-native';
+
+// // Define the param list for navigation
+// export type RootStackParamList = {
+//   Home: undefined;
+//   Done: undefined;
+//   Pending: undefined;
+// };
+
+// const Stack = createNativeStackNavigator<RootStackParamList>();
+
+// export default function App() {
+//   const state = useTodoApp();
+
+//   return (
+//     <View>
+//     <NavigationContainer>
+//       <Stack.Navigator initialRouteName="Home">
+//         <Stack.Screen
+//           name="Home"
+//           component={Home}
+//           options={{
+//             title: 'Home Page',
+//           }}
+//         />
+//         <Stack.Screen
+//           name="Done"
+//           component={Done}
+//           options={{
+//             title: 'Done tasks',
+//           }}
+//         />
+//         <Stack.Screen
+//           name="Pending"
+//           component={Pending}
+//           options={{
+//             title: 'Pending Tasks',
+//           }}
+//         />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//     </View>
+//   );
+// }
+
+//+++++++++++++++++++++++++++++++++++++++
+// import React from 'react'
+// import { Home} from './app/screens/Home'
+// import { Pending } from './app/screens/Pending'
+// import { Done } from './app/screens/Done'
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
+// export type RootStackParamList = {
+//   Home: undefined;
+//   Done: undefined;
+//   Pending: undefined;
+// };
+
+// const Stack = createNativeStackNavigator<RootStackParamList>();
+
+// function App() {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator initialRouteName="Home">
+//         <Stack.Screen name="Home" component={Home} />
+//         <Stack.Screen name="Done" component={Done} />
+//         <Stack.Screen name="Pending" component={Pending} />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+    
+//   )
+// }
+
+// export default App
+
+//+++++++++++++++++++++++++++++++++++++++
+
+
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { TodoProvider } from './app/components/TodoContext'
+import { Home } from './app/screens/Home'
+import { Pending } from './app/screens/Pending'
+import { Done } from './app/screens/Done'
+
+export type RootStackParamList = {
+  Home: undefined;
+  Done: undefined;
+  Pending: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>()
+
+function App() {
   return (
-    <SafeAreaView>
-      <View style={styles.topBarfortimeandbattery}></View>
-      <View style={styles.container}>
-        <Header
-          searching={state.searching}
-          toggleSearch={state.toggleSearch}
-          valsearch={state.valsearch}
-          setvalsearch={state.setValsearch}
-          setModalVisible={state.setModalVisible}
-        />
-
-        <ScrollView showsVerticalScrollIndicator={false}>
-          {state.mainview ? (
-            <Alltask
-              horizontal={state.horizontal}
-              togglehorizontal={state.toggleHorizontal}
-              toggleright={state.toggleRight}
-              valsearch={state.valsearch}
-              tasks={state.tasks}
-              edited={state.edited}
-              setedited={state.setEdited}
-              toggleDone={state.toggleDone}
-              toggleEdit={state.toggleEdit}
-              deleteHandler={state.deleteHandler}
-              toggleTask={state.toggleTask}
-            />
-          ) : (
-            <Category tasks={state.tasks} />
-          )}
-
-          <Addtodo
-            modalVisible={state.modalVisible}
-            setModalVisible={state.setModalVisible}
-            newTaskTitle={state.newTaskTitle}
-            setNewTaskTitle={state.setNewTaskTitle}
-            newTaskTime={state.newTaskTime}
-            setNewTaskTime={state.setNewTaskTime}
-            newColor={state.newColor}
-            setNewColor={state.setNewColor}
-            addTask={state.addTask}
-          />
-        </ScrollView>
-
-        <ToggleListCategory
-          listcat={state.listcat}
-          toggleListcat={state.toggleListcat}
-          toggleListview={state.toggleListview}
-          toggleCategoryview={state.toggleCategoryview}
-        />
-
-        
-      </View>
-    </SafeAreaView>
-  );
+    <TodoProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Done" component={Done} />
+          <Stack.Screen name="Pending" component={Pending} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </TodoProvider>
+  )
 }
+export default App
