@@ -72,24 +72,22 @@
 // export default Home
 
 //++++++++++++++++++++++++++++++++++++++++
+
 // import React from 'react';
 // import { View, ScrollView, SafeAreaView } from 'react-native';
 // import { Addtodo, Alltask, Category, Header, ToggleListCategory } from '../components';
-// import { useTodoApp } from '../components/UseTodo';
 // import { styles } from '../constants';
 // import { NativeStackScreenProps } from '@react-navigation/native-stack';
 // import { RootStackParamList } from '../../App';
+// import { useTodo } from '../components/TodoContext';
 
-// // ✅ Strongly typed props for Home
 // type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 // export const Home = ({ navigation }: Props) => {
-//   const state = useTodoApp();
+//   const state = useTodo();
 
 //   return (
 //     <SafeAreaView>
-//       {/* <View style={styles.topBarfortimeandbattery}></View> */}
-
 //       <View style={styles.container}>
 //         <Header
 //           searching={state.searching}
@@ -133,7 +131,6 @@
 //             addTask={state.addTask}
 //           />
 //         </ScrollView>
-
 //         <ToggleListCategory
 //           listcat={state.listcat}
 //           toggleListcat={state.toggleListcat}
@@ -145,17 +142,20 @@
 //   );
 // };
 
+
 //++++++++++++++++++++++++++++++++++++++++
 
+//Bottom Tabs implementation
 import React from 'react';
 import { View, ScrollView, SafeAreaView } from 'react-native';
 import { Addtodo, Alltask, Category, Header, ToggleListCategory } from '../components';
 import { styles } from '../constants';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../App';
+import { TabsParamList } from '../components/TabsNavigator';
 import { useTodo } from '../components/TodoContext';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type Props = BottomTabScreenProps<TabsParamList, 'Home'>;
 
 export const Home = ({ navigation }: Props) => {
   const state = useTodo();
@@ -185,9 +185,9 @@ export const Home = ({ navigation }: Props) => {
               toggleEdit={state.toggleEdit}
               deleteHandler={state.deleteHandler}
               toggleTask={state.toggleTask}
-              onPressHome={()=>{}}
-              onPressDone={()=>navigation.push('Done')}
-              onPressPending={()=>navigation.push('Pending')}
+              onPressHome={() => navigation.navigate('Home')}
+              onPressDone={() => navigation.navigate('Done')}
+              onPressPending={() => navigation.navigate('Pending')}
             />
           ) : (
             <Category tasks={state.tasks} />
@@ -205,6 +205,7 @@ export const Home = ({ navigation }: Props) => {
             addTask={state.addTask}
           />
         </ScrollView>
+
         <ToggleListCategory
           listcat={state.listcat}
           toggleListcat={state.toggleListcat}

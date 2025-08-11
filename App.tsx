@@ -286,14 +286,19 @@
 //   );
 // }
 
+
+
+// Here Native Stack implemented
 //+++++++++++++++++++++++++++++++++++++++
+
 // import React from 'react'
-// import { Home} from './app/screens/Home'
+// import { NavigationContainer } from '@react-navigation/native'
+// import { createNativeStackNavigator } from '@react-navigation/native-stack'
+// import { TodoProvider } from './app/components/TodoContext'
+// import { Home } from './app/screens/Home'
 // import { Pending } from './app/screens/Pending'
 // import { Done } from './app/screens/Done'
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+// import { Text, View } from 'react-native'
 
 // export type RootStackParamList = {
 //   Home: undefined;
@@ -301,56 +306,54 @@
 //   Pending: undefined;
 // };
 
-// const Stack = createNativeStackNavigator<RootStackParamList>();
+// const Stack = createNativeStackNavigator<RootStackParamList>()
 
 // function App() {
 //   return (
-//     <NavigationContainer>
-//       <Stack.Navigator initialRouteName="Home">
-//         <Stack.Screen name="Home" component={Home} />
-//         <Stack.Screen name="Done" component={Done} />
-//         <Stack.Screen name="Pending" component={Pending} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-    
+
+//     <TodoProvider>
+//       <NavigationContainer>
+//         <Stack.Navigator initialRouteName="Home">
+//           <Stack.Screen name="Home" component={Home} />
+//           <Stack.Screen name="Done" component={Done} />
+//           <Stack.Screen name="Pending" component={Pending} />
+//         </Stack.Navigator>
+//       </NavigationContainer>
+//     </TodoProvider>
+
 //   )
 // }
-
 // export default App
 
 //+++++++++++++++++++++++++++++++++++++++
 
 
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { TodoProvider } from './app/components/TodoContext'
-import { Home } from './app/screens/Home'
-import { Pending } from './app/screens/Pending'
-import { Done } from './app/screens/Done'
-import { Text, View } from 'react-native'
+
+//Bottom Tabs implementation started
+
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { TodoProvider } from './app/components/TodoContext';
+import { TabsNavigator } from './app/components/TabsNavigator';
+
 
 export type RootStackParamList = {
-  Home: undefined;
-  Done: undefined;
-  Pending: undefined;
+  MainTabs: undefined;
 };
 
-const Stack = createNativeStackNavigator<RootStackParamList>()
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
   return (
-
     <TodoProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Done" component={Done} />
-          <Stack.Screen name="Pending" component={Pending} />
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {/* Main tabs as the root for now */}
+          <Stack.Screen name="MainTabs" component={TabsNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
     </TodoProvider>
-
-  )
+  );
 }
-export default App
+export default App;

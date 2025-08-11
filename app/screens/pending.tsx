@@ -109,27 +109,24 @@
 
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 // import React from 'react';
 // import { View, ScrollView, SafeAreaView } from 'react-native';
 // import { Addtodo, Alltask, Category, Header, ToggleListCategory } from '../components';
-// import { useTodoApp } from '../components/UseTodo';
 // import { styles } from '../constants';
 // import { NativeStackScreenProps } from '@react-navigation/native-stack';
 // import { RootStackParamList } from '../../App';
+// import { useTodo } from '../components/TodoContext';
 
-// //  Strongly typed props for Pending
 // type Props = NativeStackScreenProps<RootStackParamList, 'Pending'>;
 
 // export const Pending = ({ navigation }: Props) => {
-//   const state = useTodoApp();
-
-//   //  Filter only tasks that are NOT completed
+//   const state = useTodo();
 //   const filtered = state.tasks.filter(task => task.checked === false);
 
 //   return (
 //     <SafeAreaView>
-//       {/* <View style={styles.topBarfortimeandbattery}></View> */}
-
 //       <View style={styles.container}>
 //         <Header
 //           searching={state.searching}
@@ -153,8 +150,8 @@
 //               toggleEdit={state.toggleEdit}
 //               deleteHandler={state.deleteHandler}
 //               toggleTask={state.toggleTask}
-//                onPressHome={()=>navigation.popToTop()}
-//                onPressDone={()=>navigation.push('Done')}
+//               onPressHome={()=>navigation.popToTop()}
+//               onPressDone={()=>navigation.push('Done')}
 //               onPressPending={()=>{}}
 //             />
 //           ) : (
@@ -173,7 +170,6 @@
 //             addTask={state.addTask}
 //           />
 //         </ScrollView>
-
 //         <ToggleListCategory
 //           listcat={state.listcat}
 //           toggleListcat={state.toggleListcat}
@@ -184,17 +180,20 @@
 //     </SafeAreaView>
 //   );
 // };
+
+
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
 
+//Bottom Tabs implementation
 import React from 'react';
 import { View, ScrollView, SafeAreaView } from 'react-native';
 import { Addtodo, Alltask, Category, Header, ToggleListCategory } from '../components';
 import { styles } from '../constants';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../App';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { TabsParamList } from '../components/TabsNavigator';
 import { useTodo } from '../components/TodoContext';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Pending'>;
+type Props = BottomTabScreenProps<TabsParamList, 'Pending'>;
 
 export const Pending = ({ navigation }: Props) => {
   const state = useTodo();
@@ -225,9 +224,9 @@ export const Pending = ({ navigation }: Props) => {
               toggleEdit={state.toggleEdit}
               deleteHandler={state.deleteHandler}
               toggleTask={state.toggleTask}
-              onPressHome={()=>navigation.popToTop()}
-              onPressDone={()=>navigation.push('Done')}
-              onPressPending={()=>{}}
+              onPressHome={() => navigation.navigate('Home')}
+              onPressDone={() => navigation.navigate('Done')}
+              onPressPending={() => navigation.navigate('Pending')}
             />
           ) : (
             <Category tasks={state.tasks} />
@@ -245,6 +244,7 @@ export const Pending = ({ navigation }: Props) => {
             addTask={state.addTask}
           />
         </ScrollView>
+
         <ToggleListCategory
           listcat={state.listcat}
           toggleListcat={state.toggleListcat}

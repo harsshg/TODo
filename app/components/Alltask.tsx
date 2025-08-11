@@ -284,8 +284,7 @@ const Alltask: React.FC<AlltaskProps> = ({
       ))}
 
 
-
-      <PageTogggle onPressHome = {onPressHome} onPressDone = {onPressDone} onPressPending ={onPressPending} />
+{/* <PageTogggle onPressHome = {onPressHome} onPressDone = {onPressDone} onPressPending ={onPressPending} /> */}
 
 
       <Modals

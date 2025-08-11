@@ -108,24 +108,19 @@
 // import React from 'react';
 // import { View, ScrollView, SafeAreaView } from 'react-native';
 // import { Addtodo, Alltask, Category, Header, ToggleListCategory } from '../components';
-// import { useTodoApp } from '../components/UseTodo';
 // import { styles } from '../constants';
 // import { NativeStackScreenProps } from '@react-navigation/native-stack';
 // import { RootStackParamList } from '../../App';
+// import { useTodo } from '../components/TodoContext';
 
-// // ✅ Strongly typed props for Done
 // type Props = NativeStackScreenProps<RootStackParamList, 'Done'>;
 
 // export const Done = ({ navigation }: Props) => {
-//   const state = useTodoApp();
-
-//   // ✅ Only show completed tasks
+//   const state = useTodo();
 //   const filtered = state.tasks.filter(task => task.checked === true);
 
 //   return (
 //     <SafeAreaView>
-//       {/* <View style={styles.topBarfortimeandbattery}></View> */}
-
 //       <View style={styles.container}>
 //         <Header
 //           searching={state.searching}
@@ -149,7 +144,6 @@
 //               toggleEdit={state.toggleEdit}
 //               deleteHandler={state.deleteHandler}
 //               toggleTask={state.toggleTask}
-
 //               onPressHome={()=>navigation.popToTop()}
 //               onPressDone={()=>{}}
 //               onPressPending={()=>navigation.push('Pending')}
@@ -170,7 +164,6 @@
 //             addTask={state.addTask}
 //           />
 //         </ScrollView>
-
 //         <ToggleListCategory
 //           listcat={state.listcat}
 //           toggleListcat={state.toggleListcat}
@@ -182,18 +175,20 @@
 //   );
 // };
 
+
 //++++++++++++++++++++++++++++++++++++++++
 
 
+//Bottom Tabs implementation
 import React from 'react';
 import { View, ScrollView, SafeAreaView } from 'react-native';
 import { Addtodo, Alltask, Category, Header, ToggleListCategory } from '../components';
 import { styles } from '../constants';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../App';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { TabsParamList } from '../components/TabsNavigator';
 import { useTodo } from '../components/TodoContext';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Done'>;
+type Props = BottomTabScreenProps<TabsParamList, 'Done'>;
 
 export const Done = ({ navigation }: Props) => {
   const state = useTodo();
@@ -224,9 +219,9 @@ export const Done = ({ navigation }: Props) => {
               toggleEdit={state.toggleEdit}
               deleteHandler={state.deleteHandler}
               toggleTask={state.toggleTask}
-              onPressHome={()=>navigation.popToTop()}
-              onPressDone={()=>{}}
-              onPressPending={()=>navigation.push('Pending')}
+              onPressHome={() => navigation.navigate('Home')}
+              onPressDone={() => navigation.navigate('Done')}
+              onPressPending={() => navigation.navigate('Pending')}
             />
           ) : (
             <Category tasks={state.tasks} />
@@ -244,6 +239,7 @@ export const Done = ({ navigation }: Props) => {
             addTask={state.addTask}
           />
         </ScrollView>
+
         <ToggleListCategory
           listcat={state.listcat}
           toggleListcat={state.toggleListcat}
