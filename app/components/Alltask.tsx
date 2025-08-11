@@ -227,7 +227,7 @@ const Alltask: React.FC<AlltaskProps> = ({
   const toggleCancelinedit1 = (task: Task) => {
     setedited(task.title);
     setmodeltask(task);
-    seteditModalVisible(true);
+    seteditModalVisible(!editModalVisible);
   };
 
   useEffect(() => {
@@ -243,7 +243,7 @@ const Alltask: React.FC<AlltaskProps> = ({
 
   useEffect(() => {
     if (!horizontal) {
-      setTimeout(() => togglehorizontal(true), 100);
+      setTimeout(() => togglehorizontal(false), 100);
     }
   }, [horizontal]);
 
@@ -304,7 +304,7 @@ const Alltask: React.FC<AlltaskProps> = ({
               onChangeText={setedited}
             />
             <View style={styles.Addtaskcd}>
-               <Buttons onPress={()=>toggleCancelinedit} Value={<Texts style={styles.AddtaskCreate} Value={'Cancel'}/>}/>
+               <Buttons onPress={()=>toggleCancelinedit()} Value={<Texts style={styles.AddtaskCreate} Value={'Cancel'}/>}/>
                <Buttons onPress={() => modeltask && toggledoneformodel(modeltask.id)} Value={<Texts style={styles.AddtaskCreate} Value={'Done'}/>}/>
             </View>
           </View>
