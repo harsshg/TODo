@@ -1,33 +1,3 @@
-// import React from 'react';
-// import { Alltask } from '../components/index';
-// import { useTodoApp } from '../components/UseTodo';
-
-// const Pending = () => {
-//   const state = useTodoApp();
-
-//   // Filter only completed tasks
-//   const filtered = state.tasks.filter(task => task.checked === false);
-
-//   return (
-//     <Alltask
-//       horizontal={state.horizontal}
-//       togglehorizontal={state.toggleHorizontal}
-//       toggleright={state.toggleRight}
-//       valsearch={state.valsearch}
-//       tasks={filtered} // Directly pass filtered tasks
-//       edited={state.edited}
-//       setedited={state.setEdited}
-//       toggleDone={state.toggleDone}
-//       toggleEdit={state.toggleEdit}
-//       deleteHandler={state.deleteHandler}
-//       toggleTask={state.toggleTask}
-//     />
-//   );
-// };
-
-// export default Pending;
-
-
 
 // import { View, Text, ScrollView, SafeAreaView } from 'react-native'
 // import React from 'react'
@@ -184,7 +154,7 @@
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
 
-//Bottom Tabs implementation
+// Bottom Tabs implementation
 // import React from 'react';
 // import { View, ScrollView, SafeAreaView } from 'react-native';
 // import { Addtodo, Alltask, Category, Header, Texts, ToggleListCategory } from '../components';
@@ -261,7 +231,9 @@
 // };
 
 
-//Drawer layout
+//Drawer Layout
+
+
 
 import React from 'react';
 import { View, ScrollView, SafeAreaView } from 'react-native';

@@ -171,6 +171,153 @@
 
 
 //+++++++++++++++++++++++++++++++
+//BOttom Tab
+
+// import {
+//   View,
+//   Text,
+//   KeyboardAvoidingView,
+//   Platform,
+//   Alert,
+//   ScrollView,
+// } from 'react-native';
+
+// import React, { useEffect, useState } from 'react';
+// import { styles } from '../constants/index';
+// import { Task, AlltaskProps } from '../types/index';
+// import {Buttons,Texts,Modals,TextInputs,PageTogggle} from './index';
+
+
+
+// const Alltask: React.FC<AlltaskProps> = ({
+//   horizontal,
+//   togglehorizontal,
+//   toggleright,
+//   valsearch,
+//   tasks,
+//   edited,
+//   setedited,
+//   toggleDone,
+//   toggleEdit,
+//   deleteHandler,
+//   toggleTask,
+//   onPressHome,
+//   onPressDone,
+//   onPressPending,
+// }) => {
+//   const [modeltask, setmodeltask] = useState<Task | null>(null);
+//   const [editModalVisible, seteditModalVisible] = useState(false);
+//   const [filterd, setfilterd] = useState<Task[]>(tasks);
+
+//   const toggleCancelinedit = () => {
+//     seteditModalVisible(false);
+//     setedited('');
+//     setmodeltask(null);
+//   };
+
+//   const toggledoneformodel = (id: number) => {
+//     if (edited.trim() === '') {
+//       Alert.alert('Please enter a task title');
+//       return;
+//     }
+//     toggleDone(id);
+//     toggleCancelinedit();
+//   };
+
+//   const toggleCancelinedit1 = (task: Task) => {
+//     setedited(task.title);
+//     setmodeltask(task);
+//     seteditModalVisible(!editModalVisible);
+//   };
+
+//   useEffect(() => {
+//     if (valsearch === '') {
+//       setfilterd(tasks);
+//     } else {
+//        tasks = tasks.filter((task:any) =>
+//         task.title.toLowerCase().includes(valsearch.toLowerCase())
+//       );
+//       setfilterd(tasks);
+//     }
+//   }, [valsearch, tasks]);
+
+//   useEffect(() => {
+//     if (!horizontal) {
+//       setTimeout(() => togglehorizontal(false), 100);
+//     }
+//   }, [horizontal]);
+
+//   return (
+//     <>
+//       {filterd.map(task => (
+//         <ScrollView
+//           key={task.id}
+//           showsHorizontalScrollIndicator={false}
+//           horizontal={horizontal}>
+//           <View style={styles.taskContainer}>
+//             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+//               <Buttons style={styles.tick} onPress={()=> toggleTask(task.id)} Value={task.checked && <Text style={styles.tickText}>✔</Text>}/>
+//               <View>
+//                 <Text style={styles.texttodo}>{task.title}</Text>
+//                 <View style={styles.TexttodoView}>
+//                   <Texts style={styles.timediv} Value={`⏰ ${task.time}`}/>
+//                 </View>
+//               </View>
+//             </View>
+
+//             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+//               <Buttons
+//                onPress={() => toggleright(task.right)}
+//                style={[styles.dot, { backgroundColor: task.color, right: 39 }]}
+//                Value={''}
+//               />
+
+//               <View style={styles.editdel}>
+//                 <Buttons onPress={() => toggleCancelinedit1(task)} Value={<Texts style={styles.edit} Value={'Edit'}/>}/>
+                   
+//                 <Buttons onPress={() => deleteHandler(task.id)} Value={<Texts style={styles.delete} Value={'Delete'}/>}/>
+              
+//               </View>
+//             </View>
+//           </View>
+//         </ScrollView>
+//       ))}
+
+
+// {/* <PageTogggle onPressHome = {onPressHome} onPressDone = {onPressDone} onPressPending ={onPressPending} /> */}
+
+
+//       <Modals
+//         animationType={"slide"}
+//         transparent={true}
+//         visible={editModalVisible}
+//         onRequestClose={toggleCancelinedit} 
+//         Value={<KeyboardAvoidingView
+//           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+//           style={styles.keyboardavoiding}>
+//           <View style={styles.modalContent}>
+//             <Texts style={styles.Addtasktext} Value={'Edit Todo ☇'}/>
+//             <TextInputs
+//               placeholder={modeltask?.title || ''}
+//               style={styles.Addtaskmsgbx}
+//               value={edited}
+//               onChangeText={setedited}
+//             />
+//             <View style={styles.Addtaskcd}>
+//                <Buttons onPress={()=>toggleCancelinedit()} Value={<Texts style={styles.AddtaskCreate} Value={'Cancel'}/>}/>
+//                <Buttons onPress={() => modeltask && toggledoneformodel(modeltask.id)} Value={<Texts style={styles.AddtaskCreate} Value={'Done'}/>}/>
+//             </View>
+//           </View>
+//         </KeyboardAvoidingView>}/>
+        
+      
+//     </>
+//   );
+// };
+
+// export default Alltask;
+
+
 
 
 import {

@@ -145,7 +145,7 @@
 
 //++++++++++++++++++++++++++++++++++++++++
 
-//Bottom Tabs implementation
+// Bottom Tabs implementation
 // import React from 'react';
 // import { View, ScrollView, SafeAreaView } from 'react-native';
 // import { Addtodo, Alltask, Category, Header, Texts, ToggleListCategory } from '../components';
@@ -299,3 +299,4 @@ export const Home = ({ navigation }: Props) => {
     </SafeAreaView>
   );
 };
+

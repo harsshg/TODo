@@ -67,3 +67,4 @@ searching,toggleSearch,valsearch,setvalsearch,setModalVisible}) => {
 }
 
 export default Header
+
