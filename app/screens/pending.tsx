@@ -234,16 +234,16 @@
 //Drawer Layout
 
 
-
+// app/screens/Pending.tsx
 import React from 'react';
 import { View, ScrollView, SafeAreaView } from 'react-native';
 import { Addtodo, Alltask, Category, Header, Texts, ToggleListCategory } from '../components';
 import { styles } from '../constants';
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { TabsParamList } from '../components/TabsNavigator';
 import { useTodo } from '../components/TodoContext';
+import type { DrawerScreenProps } from '@react-navigation/drawer';
+import type { DrawerParamList } from '../../App';
 
-type Props = BottomTabScreenProps<TabsParamList, 'Pending'>;
+type Props = DrawerScreenProps<DrawerParamList, 'Pending'>;
 
 export const Pending = ({ navigation }: Props) => {
   const state = useTodo();
@@ -252,10 +252,10 @@ export const Pending = ({ navigation }: Props) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        {filtered.length==0? (<Texts
-        Value={'No Pending Task'}
-        style={styles.Notaskview}
-        />): ""}
+        {filtered.length === 0 ? (
+          <Texts Value={'No Pending Task'} style={styles.Notaskview} />
+        ) : null}
+
         <Header
           searching={state.searching}
           toggleSearch={state.toggleSearch}

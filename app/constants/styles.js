@@ -408,6 +408,25 @@ const styles = StyleSheet.create({
     fontSize:20,
     fontWeight:400
 
+  },
+  navDrawer1:{
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center',
+    gap:19
+  },
+  screenOptions:{
+    drawerActiveTintColor: 'green',           // Active item text/icon color
+    drawerInactiveTintColor: '#333333',       // Inactive item color
+    drawerActiveBackgroundColor: '#e6f0ff',   // Active item background
+    drawerLabelStyle: {
+      fontWeight: 'bold',
+      fontSize: 36,
+    },
+    drawerStyle: {
+      backgroundColor: '#f0f8ff',             // Drawer background color
+      width: 240,
+    },
   }
 });
 export default styles;

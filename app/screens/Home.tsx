@@ -224,17 +224,16 @@
 
 
 //Drawer layout
-
+// app/screens/Home.tsx
 import React from 'react';
 import { View, ScrollView, SafeAreaView } from 'react-native';
 import { Addtodo, Alltask, Category, Header, Texts, ToggleListCategory } from '../components';
 import { styles } from '../constants';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { TabsParamList } from '../components/TabsNavigator';
 import { useTodo } from '../components/TodoContext';
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import type { DrawerScreenProps } from '@react-navigation/drawer';
+import type { DrawerParamList } from '../../App';
 
-type Props = BottomTabScreenProps<TabsParamList, 'Home'>;
+type Props = DrawerScreenProps<DrawerParamList, 'Home'>;
 
 export const Home = ({ navigation }: Props) => {
   const state = useTodo();
@@ -242,10 +241,10 @@ export const Home = ({ navigation }: Props) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        {state.tasks.length==0? (<Texts
-        Value={'  No Task Added'}
-        style={styles.Notaskview}
-        />): ""}
+        {state.tasks.length === 0 ? (
+          <Texts Value={'  No Task Added'} style={styles.Notaskview} />
+        ) : null}
+
         <Header
           searching={state.searching}
           toggleSearch={state.toggleSearch}
@@ -299,4 +298,3 @@ export const Home = ({ navigation }: Props) => {
     </SafeAreaView>
   );
 };
-

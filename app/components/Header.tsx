@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { styles } from '../constants/index'
+import  styles  from '../constants/styles'
 import {Buttons,Texts,Icons,TextInputs} from './index'
 import {HeaderProps} from '../types/index'
 
@@ -9,7 +9,10 @@ const Header: React.FC<HeaderProps> = ({
 searching,toggleSearch,valsearch,setvalsearch,setModalVisible}) => {
   return (
     <View style={styles.viewbox}>
+   
+
           <Texts style={styles.TextStyle} Value={'Today'} />
+  
           <View
             style={styles.srcaddcontainer}
           >

@@ -259,29 +259,28 @@
 
 
 
-
+// app/screens/Done.tsx
 import React from 'react';
 import { View, ScrollView, SafeAreaView } from 'react-native';
 import { Addtodo, Alltask, Category, Header, Texts, ToggleListCategory } from '../components';
 import { styles } from '../constants';
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { TabsParamList } from '../components/TabsNavigator';
 import { useTodo } from '../components/TodoContext';
+import type { DrawerScreenProps } from '@react-navigation/drawer';
+import type { DrawerParamList } from '../../App';
 
-type Props = BottomTabScreenProps<TabsParamList, 'Done'>;
+type Props = DrawerScreenProps<DrawerParamList, 'Done'>;
 
 export const Done = ({ navigation }: Props) => {
   const state = useTodo();
   const filtered = state.tasks.filter(task => task.checked === true);
-  
+
   return (
     <SafeAreaView>
       <View style={styles.container}>
-      {filtered.length==0? (<Texts
-        Value={' No Done Task'}
-        style={styles.Notaskview}
-        />): ""}
-        
+        {filtered.length === 0 ? (
+          <Texts Value={' No Done Task'} style={styles.Notaskview} />
+        ) : null}
+
         <Header
           searching={state.searching}
           toggleSearch={state.toggleSearch}
@@ -335,4 +334,3 @@ export const Done = ({ navigation }: Props) => {
     </SafeAreaView>
   );
 };
-
