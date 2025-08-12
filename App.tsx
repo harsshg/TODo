@@ -331,6 +331,35 @@
 
 //Bottom Tabs implementation started
 
+// import React from 'react';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import { TodoProvider } from './app/components/TodoContext';
+// import { TabsNavigator } from './app/components/TabsNavigator';
+
+
+// export type RootStackParamList = {
+//   MainTabs: undefined;
+// };
+
+// const Stack = createNativeStackNavigator<RootStackParamList>();
+
+// function App() {
+//   return (
+//     <TodoProvider>
+//       <NavigationContainer>
+//         <Stack.Navigator screenOptions={{ headerShown: false }}>
+//           {/* Main tabs as the root for now */}
+//           <Stack.Screen name="MainTabs" component={TabsNavigator} />
+//         </Stack.Navigator>
+//       </NavigationContainer>
+//     </TodoProvider>
+//   );
+// }
+// export default App;
+
+//Drawer layout
+
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
