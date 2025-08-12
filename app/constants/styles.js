@@ -401,5 +401,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333',
   },
+  Notaskview:{
+    position:'absolute',
+    marginTop:460,
+    marginLeft:150,
+    fontSize:20,
+    fontWeight:400
+
+  }
 });
 export default styles;

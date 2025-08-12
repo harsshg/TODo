@@ -182,7 +182,7 @@
 //Bottom Tabs implementation
 import React from 'react';
 import { View, ScrollView, SafeAreaView } from 'react-native';
-import { Addtodo, Alltask, Category, Header, ToggleListCategory } from '../components';
+import { Addtodo, Alltask, Category, Header, Texts, ToggleListCategory } from '../components';
 import { styles } from '../constants';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { TabsParamList } from '../components/TabsNavigator';
@@ -193,10 +193,15 @@ type Props = BottomTabScreenProps<TabsParamList, 'Done'>;
 export const Done = ({ navigation }: Props) => {
   const state = useTodo();
   const filtered = state.tasks.filter(task => task.checked === true);
-
+  
   return (
     <SafeAreaView>
       <View style={styles.container}>
+      {filtered.length==0? (<Texts
+        Value={' No Done Task'}
+        style={styles.Notaskview}
+        />): ""}
+        
         <Header
           searching={state.searching}
           toggleSearch={state.toggleSearch}

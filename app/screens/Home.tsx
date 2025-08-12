@@ -148,7 +148,7 @@
 //Bottom Tabs implementation
 import React from 'react';
 import { View, ScrollView, SafeAreaView } from 'react-native';
-import { Addtodo, Alltask, Category, Header, ToggleListCategory } from '../components';
+import { Addtodo, Alltask, Category, Header, Texts, ToggleListCategory } from '../components';
 import { styles } from '../constants';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { TabsParamList } from '../components/TabsNavigator';
@@ -163,6 +163,10 @@ export const Home = ({ navigation }: Props) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
+        {state.tasks.length==0? (<Texts
+        Value={'  No Task Added'}
+        style={styles.Notaskview}
+        />): ""}
         <Header
           searching={state.searching}
           toggleSearch={state.toggleSearch}

@@ -187,7 +187,7 @@
 //Bottom Tabs implementation
 import React from 'react';
 import { View, ScrollView, SafeAreaView } from 'react-native';
-import { Addtodo, Alltask, Category, Header, ToggleListCategory } from '../components';
+import { Addtodo, Alltask, Category, Header, Texts, ToggleListCategory } from '../components';
 import { styles } from '../constants';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { TabsParamList } from '../components/TabsNavigator';
@@ -202,6 +202,10 @@ export const Pending = ({ navigation }: Props) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
+        {filtered.length==0? (<Texts
+        Value={'No Pending Task'}
+        style={styles.Notaskview}
+        />): ""}
         <Header
           searching={state.searching}
           toggleSearch={state.toggleSearch}
