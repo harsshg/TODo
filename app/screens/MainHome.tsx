@@ -48,10 +48,10 @@ function MainHome() {
   const drawerStyles = dstyle(); // ✅ call hook/function here
 
   return (
-    <Drawer.Navigator initialRouteName={Homename} screenOptions={drawerStyles}>
-      <Drawer.Screen name={Homename} component={Home} />
-      <Drawer.Screen name="Done" component={Done} />
-      <Drawer.Screen name="Pending" component={Pending} />
+    <Drawer.Navigator initialRouteName={'🏡 Home'} screenOptions={drawerStyles}>
+      <Drawer.Screen name="🏡 Home" component={Home} />
+      <Drawer.Screen name="✔︎ Done" component={Done} />
+      <Drawer.Screen name="∞ Pending" component={Pending} />
     </Drawer.Navigator>
   );
 }
