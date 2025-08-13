@@ -231,7 +231,7 @@ import { Addtodo, Alltask, Category, Header, Texts, ToggleListCategory } from '.
 import { styles } from '../constants';
 import { useTodo } from '../components/TodoContext';
 import type { DrawerScreenProps } from '@react-navigation/drawer';
-import type { DrawerParamList } from '../../App';
+import type { DrawerParamList } from '../types';
 
 type Props = DrawerScreenProps<DrawerParamList, 'Home'>;
 

@@ -324,31 +324,31 @@
 
 //Bottom Tabs implementation started
 
-// import React from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import { TodoProvider } from './app/components/TodoContext';
-// import { TabsNavigator } from './app/components/TabsNavigator';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { TodoProvider } from './app/components/TodoContext';
+import { TabsNavigator } from './app/components/TabsNavigator';
 
-// export type RootStackParamList = {
-//   MainTabs: undefined;
-// };
+export type RootStackParamList = {
+  MainTabs: undefined;
+};
 
-// const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-// function App() {
-//   return (
-//     <TodoProvider>
-//       <NavigationContainer>
-//         <Stack.Navigator screenOptions={{ headerShown: false }}>
-//           {/* Main tabs as the root for now */}
-//           <Stack.Screen name="MainTabs" component={TabsNavigator} />
-//         </Stack.Navigator>
-//       </NavigationContainer>
-//     </TodoProvider>
-//   );
-// }
-// export default App;
+function App() {
+  return (
+    <TodoProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {/* Main tabs as the root for now */}
+          <Stack.Screen name="MainTabs" component={TabsNavigator} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </TodoProvider>
+  );
+}
+export default App;
 
 
 
@@ -359,35 +359,35 @@
 
 //Drawer layout
 
-// App.tsx
-import 'react-native-gesture-handler';
-import 'react-native-reanimated';
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { TodoProvider } from './app/components/TodoContext';
-// Screens
-import { Home } from './app/screens/Home';
-import { Done } from './app/screens/Done';
-import { Pending } from './app/screens/Pending';
-import { dstyle } from './app/constants/index';
-// ✅ Drawer param list type
-import { DrawerParamList } from './app/types';
+// // App.tsx
+// import 'react-native-gesture-handler';
+// import 'react-native-reanimated';
+// import React from 'react';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createDrawerNavigator } from '@react-navigation/drawer';
+// import { TodoProvider } from './app/components/TodoContext';
+// // Screens
+// import { Home } from './app/screens/Home';
+// import { Done } from './app/screens/Done';
+// import { Pending } from './app/screens/Pending';
+// import { dstyle } from './app/constants/index';
+// // ✅ Drawer param list type
+// import { DrawerParamList } from './app/types';
 
-const Drawer = createDrawerNavigator<DrawerParamList>();
-const Homename = 'Home';
-function App() {
-  return (
-    <TodoProvider>
-      <NavigationContainer>
-        <Drawer.Navigator initialRouteName={Homename} screenOptions={dstyle}>
-          <Drawer.Screen name={Homename} component={Home} />
-          <Drawer.Screen name="Done" component={Done} />
-          <Drawer.Screen name="Pending" component={Pending} />
-        </Drawer.Navigator>
-      </NavigationContainer>
-    </TodoProvider>
-  );
-}
+// const Drawer = createDrawerNavigator<DrawerParamList>();
+// const Homename = 'Home';
+// function App() {
+//   return (
+//     <TodoProvider>
+//       <NavigationContainer>
+//         <Drawer.Navigator initialRouteName={Homename} screenOptions={dstyle}>
+//           <Drawer.Screen name={Homename} component={Home} />
+//           <Drawer.Screen name="Done" component={Done} />
+//           <Drawer.Screen name="Pending" component={Pending} />
+//         </Drawer.Navigator>
+//       </NavigationContainer>
+//     </TodoProvider>
+//   );
+// }
 
-export default App;
+// export default App;

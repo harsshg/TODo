@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MainHome from '../screens/MainHome';
 import { Home } from '../screens/Home';
 import { Pending } from '../screens/Pending';
 import { Done } from '../screens/Done';
@@ -29,8 +30,8 @@ export function TabsNavigator() {
         tabBarActiveTintColor: '#007AFF',
         tabBarInactiveTintColor: 'gray',
       })}
-    >
-      <Tab.Screen name="Home" component={Home} />
+    > 
+      <Tab.Screen name="Home" component={MainHome} />
       <Tab.Screen name="Pending" component={Pending} />
       <Tab.Screen name="Done" component={Done} />
     </Tab.Navigator>
