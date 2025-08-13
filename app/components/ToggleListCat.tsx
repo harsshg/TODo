@@ -15,31 +15,27 @@ export default function ToggleListCategory({
       <Buttons
         style={styles.togglecatnlist as StyleProp<ViewStyle>}
         onPress={toggleListcat}
-        Value={
-          <Texts
-            style={{
+        
+            Textstyle={{
               fontSize: 45,
               fontWeight: '300',
               color: 'white',
               bottom: 1.5,
             }}
-            Value="+"
+            TextValue="+"
           />
-        }
-      />
 
       {listcat && (
         <View style={styles.listcat}>
           <Buttons
             onPress={toggleListview}
             style={styles.listcatbtn as StyleProp<ViewStyle>}
-            Value={<Texts style={styles.liscatbtntxt} Value="✔︎ List" />}
-          />
+            Textstyle={styles.liscatbtntxt} TextValue="✔︎ List" />
+        
           <Buttons
             onPress={toggleCategoryview}
             style={styles.catview as StyleProp<ViewStyle>}
-            Value={<Texts style={styles.catviewtxt} Value="⎅ Category" />}
-          />
+           Textstyle={styles.catviewtxt} TextValue="⎅ Category" />
         </View>
       )}
     </>

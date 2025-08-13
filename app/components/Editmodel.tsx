@@ -56,12 +56,12 @@ const Editmodel: React.FC<EditModelProps> = ({
             <View style={styles.Addtaskcd}>
               <Buttons
                 onPress={handleCancel}
-                Value={<Texts style={styles.AddtaskCreate} Value={'Cancel'} />}
-              />
+               Textstyle={styles.AddtaskCreate} TextValue={'Cancel'} />
+              
               <Buttons
                 onPress={handleSave}
-                Value={<Texts style={styles.AddtaskDone} Value={'Save'} />}
-              />
+               Textstyle={styles.AddtaskDone} TextValue={'Save'} />
+              
             </View>
           </View>
         </KeyboardAvoidingView>

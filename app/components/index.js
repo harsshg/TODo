@@ -14,4 +14,20 @@ import Dropdowns from './coustome/Dropdowns';
 import ToggleListCategory from './ToggleListCat';
 import PageTogggle from './PageTogggle';
 
-export{Addtodo,Alltask,Category,Categorydetails,Editmodel,obj,Buttons,Icons,Texts,TextInputs,Modals,Header,Dropdowns,ToggleListCategory,PageTogggle}
+export {
+  Addtodo,
+  Alltask,
+  Category,
+  Categorydetails,
+  Editmodel,
+  obj,
+  Buttons,
+  Icons,
+  Texts,
+  TextInputs,
+  Modals,
+  Header,
+  Dropdowns,
+  ToggleListCategory,
+  PageTogggle,
+};

@@ -4,7 +4,7 @@ import {
   Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native';
-import { styles } from '../constants/index';
+import { objCat, styles } from '../constants';
 import React, { useState } from 'react';
 import { AddtodoProps } from '../types/index';
 import { Buttons, Icons, Texts, TextInputs, Modals, Dropdowns } from './index';
@@ -20,43 +20,7 @@ const Addtodo: React.FC<AddtodoProps> = ({
   setNewColor,
   addTask,
 }) => {
-  let obj = [
-    {
-      id: 1,
-      color: '#dadada',
-      name: 'Inbox',
-      fontcolor: 'black',
-      colorname: 'grey',
-    },
-    {
-      id: 2,
-      color: '#61DEA4',
-      name: 'Work',
-      fontcolor: 'white',
-      colorname: 'green',
-    },
-    {
-      id: 3,
-      color: '#F45E6D',
-      name: 'Shopping',
-      fontcolor: 'white',
-      colorname: 'red',
-    },
-    {
-      id: 4,
-      color: '#FFE761',
-      name: 'Family',
-      fontcolor: 'black',
-      colorname: 'yellow',
-    },
-    {
-      id: 5,
-      color: '#B678FF',
-      name: 'Personal',
-      fontcolor: 'white',
-      colorname: 'violet',
-    },
-  ];
+
   const [selectedCategory, setSelectedCategory] = React.useState<string>('');
 
   const handleCategorySelection = (item: any) => {
@@ -103,14 +67,14 @@ const Addtodo: React.FC<AddtodoProps> = ({
               )}
 
               <Dropdowns
-                obj={obj}
+                obj={objCat}
                 selectedCategory={selectedCategory}
                 handleCategorySelection={handleCategorySelection}
               />
 
               <View style={styles.Addtaskcd}>
-                <Buttons onPress={() => setModalVisible(false)} Value={<Texts style={styles.AddtaskCreate} Value={'Cancel'}/>}/>
-                 <Buttons onPress={addTask} Value={<Texts style={styles.AddtaskDone} Value={'Done'}/>}/>
+                <Buttons onPress={() => setModalVisible(false)} Textstyle={styles.AddtaskCreate} TextValue={'Cancel'}/>
+                 <Buttons onPress={addTask}  Textstyle={styles.AddtaskDone} TextValue={'Done'}/>
               </View>
             </View>
           </KeyboardAvoidingView>

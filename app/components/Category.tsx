@@ -96,11 +96,8 @@ const Category: React.FC<CategoryProps> = ({ tasks, onEditTask }) => {
             justifyContent: 'center',
             marginBottom: 20,
           }}
-          Value={
-            <Text style={{ color: task.fontcolor, fontSize: 30, fontWeight: '500' }}>
-              {task.name}
-            </Text>
-          }
+          Textstyle={{ color: task.fontcolor, fontSize: 30, fontWeight: '500' }}
+          TextValue= {task.name}  
         />
       ))}
 

@@ -20,14 +20,11 @@ searching,toggleSearch,valsearch,setvalsearch,setModalVisible}) => {
               <Buttons
                 style={styles.searchBtn}
                 onPress={() => toggleSearch(searching)}
-                Value={
-                  <Icons
-                    name={'search'}
-                    size={21}
-                    style={{ bottom: 0.5 }}
-                    color={'#006CFF'}
-                  />
-                }
+                
+                    Iconname={'search'}
+                    Iconsize={21}
+                    Iconstyle={{ bottom: 0.5 }}
+                    Iconcolor={'#006CFF'}
               />
             ) : (
               <View style={{ alignItems: 'center' }}>
@@ -56,12 +53,10 @@ searching,toggleSearch,valsearch,setvalsearch,setModalVisible}) => {
             <Buttons
             style={styles.addBtn}
             onPress={() => setModalVisible(true)}
-            Value={<Icons
-              name={"plus"}
-              size={25}
-              color={"#006CFF"}
-              style={{ bottom: 1 }}
-            />}
+            Iconname={"plus"}
+            Iconsize={25}
+            Iconcolor={"#006CFF"}
+            Iconstyle={{ bottom: 1 }}
             />
             
           </View>

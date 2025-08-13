@@ -416,13 +416,12 @@ const Alltask: React.FC<AlltaskProps> = ({
               <Buttons
                onPress={() => toggleright(task.right)}
                style={[styles.dot, { backgroundColor: task.color, right: 39 }]}
-               Value={''}
               />
 
               <View style={styles.editdel}>
-                <Buttons onPress={() => toggleCancelinedit1(task)} Value={<Texts style={styles.edit} Value={'Edit'}/>}/>
+                <Buttons onPress={() => toggleCancelinedit1(task)} Textstyle={styles.edit} TextValue={'Edit'}/>
                    
-                <Buttons onPress={() => deleteHandler(task.id)} Value={<Texts style={styles.delete} Value={'Delete'}/>}/>
+                <Buttons onPress={() => deleteHandler(task.id)} Textstyle={styles.delete} TextValue={'Delete'}/>
               
               </View>
             </View>
@@ -451,8 +450,8 @@ const Alltask: React.FC<AlltaskProps> = ({
               onChangeText={setedited}
             />
             <View style={styles.Addtaskcd}>
-               <Buttons onPress={()=>toggleCancelinedit()} Value={<Texts style={styles.AddtaskCreate} Value={'Cancel'}/>}/>
-               <Buttons onPress={() => modeltask && toggledoneformodel(modeltask.id)} Value={<Texts style={styles.AddtaskCreate} Value={'Done'}/>}/>
+               <Buttons onPress={()=>toggleCancelinedit()} Textstyle={styles.AddtaskCreate} TextValue={'Cancel'}/>
+               <Buttons onPress={() => modeltask && toggledoneformodel(modeltask.id)} Textstyle={styles.AddtaskCreate} TextValue={'Done'}/>
             </View>
           </View>
         </KeyboardAvoidingView>}/>

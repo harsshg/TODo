@@ -228,9 +228,6 @@
 
 // export default App;
 
-
-
-
 // import React from 'react';
 
 // import { NavigationContainer } from '@react-navigation/native';
@@ -286,8 +283,6 @@
 //   );
 // }
 
-
-
 // Here Native Stack implemented
 //+++++++++++++++++++++++++++++++++++++++
 
@@ -327,8 +322,6 @@
 
 //+++++++++++++++++++++++++++++++++++++++
 
-
-
 //Bottom Tabs implementation started
 
 // import React from 'react';
@@ -336,7 +329,6 @@
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import { TodoProvider } from './app/components/TodoContext';
 // import { TabsNavigator } from './app/components/TabsNavigator';
-
 
 // export type RootStackParamList = {
 //   MainTabs: undefined;
@@ -362,11 +354,14 @@
 
 
 
+
+
+
 //Drawer layout
 
 // App.tsx
-import 'react-native-gesture-handler'; 
-import 'react-native-reanimated';     
+import 'react-native-gesture-handler';
+import 'react-native-reanimated';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -375,20 +370,17 @@ import { TodoProvider } from './app/components/TodoContext';
 import { Home } from './app/screens/Home';
 import { Done } from './app/screens/Done';
 import { Pending } from './app/screens/Pending';
-import {dstyle} from './app/constants/index';
+import { dstyle } from './app/constants/index';
 // ✅ Drawer param list type
 import { DrawerParamList } from './app/types';
 
-
-
 const Drawer = createDrawerNavigator<DrawerParamList>();
-const Homename = ('Home');
+const Homename = 'Home';
 function App() {
   return (
     <TodoProvider>
-      <NavigationContainer >
-        <Drawer.Navigator initialRouteName={Homename} 
-           screenOptions={dstyle} >
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName={Homename} screenOptions={dstyle}>
           <Drawer.Screen name={Homename} component={Home} />
           <Drawer.Screen name="Done" component={Done} />
           <Drawer.Screen name="Pending" component={Pending} />

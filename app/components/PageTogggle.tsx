@@ -6,9 +6,9 @@ import {Buttons,Texts} from './index'
 const PageTogggle = ({onPressHome,onPressDone,onPressPending}:any) => {
   return (
          <View style={styles.togglepagescontainer}>
-           <Buttons onPress={onPressHome} style ={styles.togglePages} Value={<Texts style={styles.togglePagestxt} Value={'All'}/>}/>
-           <Buttons onPress={onPressPending} style ={styles.togglePages} Value={<Texts style={styles.togglePagestxt} Value={'Pending'}/>}/>
-            <Buttons onPress={onPressDone} style ={styles.togglePages} Value={<Texts style={styles.togglePagestxt} Value={'Done'}/>}/>
+           <Buttons onPress={onPressHome} style ={styles.togglePages}  Textstyle={styles.togglePagestxt} TextValue={'All'}/>
+           <Buttons onPress={onPressPending} style ={styles.togglePages} Textstyle={styles.togglePagestxt} TextValue={'Pending'}/>
+            <Buttons onPress={onPressDone} style ={styles.togglePages} Textstyle={styles.togglePagestxt} TextValue={'Done'}/>
          </View>
   )
 }
