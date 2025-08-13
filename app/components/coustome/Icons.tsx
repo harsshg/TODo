@@ -1,11 +1,17 @@
-import { View, Text,StyleProp,ViewStyle } from 'react-native'
-import React from 'react'
+import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { IconsProps } from '../../types';
 
-const Icons = ({name,size,color,style,onPress}:{name:string,size:number,color:string,style:StyleProp<ViewStyle>,onPress?:()=>void}) => {
+const Icons: React.FC<IconsProps> = ({ name, size, color, style, onPress }) => {
   return (
-    <Icon name={name} size={size} style={style} color={color} onPress={onPress} />
-  )
-}
+    <Icon
+      name={name}
+      size={size}
+      style={style}
+      color={color}
+      onPress={onPress}
+    />
+  );
+};
 
-export default Icons
+export default Icons;

@@ -1,13 +1,7 @@
 import React from 'react';
 import { Dropdown } from 'react-native-element-dropdown';
-import { styles } from '../../constants/index';
-
-// Props interface in the same file
-interface DropdownsProps {
-  obj: { name: string }[]; // array of objects with 'name'
-  selectedCategory: string;
-  handleCategorySelection: (item: { name: string }) => void;
-}
+import { styles } from '../../constants';
+import { DropdownsProps } from '../../types';
 
 const Dropdowns: React.FC<DropdownsProps> = ({
   obj,

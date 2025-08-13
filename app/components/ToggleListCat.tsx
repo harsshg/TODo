@@ -1,20 +1,14 @@
-import React from "react";
-import { View, StyleProp, ViewStyle } from "react-native";
-import { Buttons, Texts } from "./index";
-import { styles } from "../constants";
-
-interface ToggleListCategoryProps {
-  listcat: boolean;
-  toggleListcat: () => void;
-  toggleListview: () => void;
-  toggleCategoryview: () => void;
-}
+import React from 'react';
+import { View, StyleProp, ViewStyle } from 'react-native';
+import { Buttons, Texts } from './index';
+import { styles } from '../constants';
+import { ToggleListCategoryProps } from '../types';
 
 export default function ToggleListCategory({
   listcat,
   toggleListcat,
   toggleListview,
-  toggleCategoryview
+  toggleCategoryview,
 }: ToggleListCategoryProps) {
   return (
     <>
@@ -23,7 +17,12 @@ export default function ToggleListCategory({
         onPress={toggleListcat}
         Value={
           <Texts
-            style={{ fontSize: 45, fontWeight: "300", color: "white", bottom: 1.5 }}
+            style={{
+              fontSize: 45,
+              fontWeight: '300',
+              color: 'white',
+              bottom: 1.5,
+            }}
             Value="+"
           />
         }

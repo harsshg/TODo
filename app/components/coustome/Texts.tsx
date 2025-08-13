@@ -1,10 +1,9 @@
-import { View, Text,StyleProp,TextStyle } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { Text } from 'react-native';
+import { TextsProps } from '../../types';
 
-const Texts = ({style,Value}:{style:StyleProp<TextStyle>,Value:any}) => {
-  return (
-    <Text style={style}>{Value}</Text>
-  )
-}
+const Texts: React.FC<TextsProps> = ({ style, Value }) => {
+  return <Text style={style}>{Value}</Text>;
+};
 
-export default Texts
+export default Texts;

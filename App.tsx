@@ -371,20 +371,15 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { TodoProvider } from './app/components/TodoContext';
-
 // Screens
 import { Home } from './app/screens/Home';
 import { Done } from './app/screens/Done';
 import { Pending } from './app/screens/Pending';
 import {dstyle} from './app/constants/index';
-
 // ✅ Drawer param list type
+import { DrawerParamList } from './app/types';
 
-export type DrawerParamList = {
-  Home: undefined;
-  Done: undefined;
-  Pending: undefined;
-};
+
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
 const Homename = ('Home');

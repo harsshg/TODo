@@ -1,14 +1,13 @@
-import { View, Text, TextInput, StyleProp, ViewStyle, TextStyle } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { TextInput } from 'react-native';
+import { TextInputsProps } from '../../types/index';
 
-interface TextInputsProps {
-  placeholder?: string
-  value?: string
-  onChangeText?: (text: string) => void
-  style?: StyleProp<TextStyle>
-}
-
-const TextInputs = ({placeholder, value, onChangeText, style}: TextInputsProps) => {
+const TextInputs: React.FC<TextInputsProps> = ({
+  placeholder,
+  value,
+  onChangeText,
+  style,
+}) => {
   return (
     <TextInput
       placeholder={placeholder}
@@ -16,7 +15,7 @@ const TextInputs = ({placeholder, value, onChangeText, style}: TextInputsProps) 
       onChangeText={onChangeText}
       style={style}
     />
-  )
-}
+  );
+};
 
-export default TextInputs
+export default TextInputs;

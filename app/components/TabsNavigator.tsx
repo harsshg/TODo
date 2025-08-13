@@ -1,22 +1,16 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Home } from '../screens/Home';
 import { Pending } from '../screens/Pending';
 import { Done } from '../screens/Done';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
-export type TabsParamList = {
-  Home: undefined;
-  Pending: undefined;
-  Done: undefined;
-};
+import { TabsParamList } from '../types';
 
 const Tab = createBottomTabNavigator<TabsParamList>();
 
 export function TabsNavigator() {
   return (
     <Tab.Navigator
-    
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarIcon: ({ focused, color, size }) => { 

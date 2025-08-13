@@ -1,24 +1,13 @@
-import { View, Text, Pressable, PressableProps, StyleProp, ViewStyle,TextStyle } from 'react-native'
-import React from 'react'
+import { Pressable } from 'react-native';
+import React from 'react';
+import { ButtonProps } from '../../types';
 
-
-interface ButtonProps {
-  style?: StyleProp<ViewStyle>;
-  textStyle?: StyleProp<TextStyle>;
-  onPress?: PressableProps['onPress']
-  Value: React.ReactNode
-}
-
-
-const Buttons = ({style, onPress, Value}: ButtonProps) => {
+const Buttons: React.FC<ButtonProps> = ({ style, onPress, Value }) => {
   return (
-    <Pressable
-    style={style}
-    onPress={onPress}
-    >
-     {Value}
+    <Pressable style={style} onPress={onPress}>
+      {Value}
     </Pressable>
-  )
-}
+  );
+};
 
-export default Buttons
+export default Buttons;

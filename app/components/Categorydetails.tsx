@@ -1,31 +1,20 @@
-import { View, Text,Modal ,Pressable, SafeAreaView, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
-import React, { useState } from 'react'
-import {Modals, Texts} from './index'
+import React, { useState } from 'react';
+import { View, Text, Pressable } from 'react-native';
+import { Modals, Texts } from './index';
+import { Taskcatdetail, CategoryDetailsProps } from '../types';
 
-interface Task {
-  id: number;
-  title: string;
-  time: string;
-  color: string;
-  editable: boolean;
-  checked: boolean;
-  rightd: number;
-}
-
-interface CategoryDetailsProps {
-  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  modalVisible: boolean;
-  togglemodel: () => void;
-  bg: { color: string; name: string; fontcolor: string } | null;
-  taskcolorwise: Task[];
-  onEditTask?: (taskId: number, newTitle: string) => void;
-}
-
-const Categorydetails: React.FC<CategoryDetailsProps> = ({setModalVisible,modalVisible,togglemodel,bg,taskcolorwise,onEditTask}) => {
-  const [editingTask, setEditingTask] = useState<Task | null>(null);
+const Categorydetails: React.FC<CategoryDetailsProps> = ({
+  setModalVisible,
+  modalVisible,
+  togglemodel,
+  bg,
+  taskcolorwise,
+  onEditTask,
+}) => {
+  const [editingTask, setEditingTask] = useState<Taskcatdetail | null>(null);
   const [editText, setEditText] = useState('');
 
-  const startEdit = (task: Task) => {
+  const startEdit = (task: Taskcatdetail) => {
     setEditingTask(task);
     setEditText(task.title);
   };
@@ -45,65 +34,111 @@ const Categorydetails: React.FC<CategoryDetailsProps> = ({setModalVisible,modalV
 
   return (
     <View>
-       <Modals
-       animationType={"slide"}
+      <Modals
+        animationType="slide"
         transparent={true}
-        visible={modalVisible} //here add modalVisible
+        visible={modalVisible}
         onRequestClose={() => setModalVisible(true)}
-        Value={<View 
-          style={{backgroundColor:(bg?.color || '#dadada'),height:'100%',width:'100%',top:30,borderRadius:30,padding:10,gap:30}}>
-
-            {/* HEAD */}
-
-            <Pressable onPress={togglemodel} style={{backgroundColor:'black',opacity:.47,height:10,width:95,top:10,borderRadius:10,left:'39.7%'}}></Pressable>
-            <View style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-between',paddingHorizontal:40}}>
-            <Text style={{fontSize:35,fontWeight:800,letterSpacing:1,opacity:.9,color:(bg?.fontcolor || 'black')}}>{bg?.name || 'Category'}</Text>
-            <Text style={{fontSize:28,color:(bg?.fontcolor || 'black'),fontWeight:500}}>✎</Text>
+        Value={
+          <View
+            style={{
+              backgroundColor: bg?.color || '#dadada',
+              height: '100%',
+              width: '100%',
+              top: 30,
+              borderRadius: 30,
+              padding: 10,
+              gap: 30,
+            }}
+          >
+            {/* Header */}
+            <Pressable
+              onPress={togglemodel}
+              style={{
+                backgroundColor: 'black',
+                opacity: 0.47,
+                height: 10,
+                width: 95,
+                top: 10,
+                borderRadius: 10,
+                left: '39.7%',
+              }}
+            />
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                paddingHorizontal: 40,
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 35,
+                  fontWeight: '800',
+                  letterSpacing: 1,
+                  opacity: 0.9,
+                  color: bg?.fontcolor || 'black',
+                }}
+              >
+                {bg?.name || 'Category'}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 28,
+                  color: bg?.fontcolor || 'black',
+                  fontWeight: '500',
+                }}
+              >
+                ✎
+              </Text>
             </View>
-    
-          {/* Task view will be here  */}
-         {taskcolorwise.map((task: Task) => (
-  <View 
-    key={task.id} 
-    style={{
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: 20,
-      marginTop: 10,
-      paddingLeft: 8
-    }}
-  >
-    <View  
-      style={{
-        borderBottomColor: (bg?.fontcolor || 'black'),
-        borderBottomWidth: 1,
-        paddingBottom: 15,
-        width: '100%'
-      }}
-    >
-      <Texts 
-        style={{
-          fontSize: 25,
-          fontWeight: 500,
-          color: (bg?.fontcolor || 'black')
-        }} 
-        Value={task.title}
-      />
-      <Texts 
-        style={{
-          color: (bg?.fontcolor || 'black'),
-          opacity: .9
-        }} 
-        Value={task.time}
-      />
-    </View>
-  </View>
-))}
-         </View>}
-         /> 
-    </View>
-  )
-}
 
-export default Categorydetails
+            {/* Task list */}
+            {taskcolorwise.map((task) => (
+              <View
+                key={task.id}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 20,
+                  marginTop: 10,
+                  paddingLeft: 8,
+                }}
+              >
+                <View
+                  style={{
+                    borderBottomColor: bg?.fontcolor || 'black',
+                    borderBottomWidth: 1,
+                    paddingBottom: 15,
+                    width: '100%',
+                  }}
+                >
+                  <Texts
+                    style={{
+                      fontSize: 25,
+                      fontWeight: '500',
+                      color: bg?.fontcolor || 'black',
+                    }}
+                    Value={task.title}
+                  />
+                  <Texts
+                    style={{
+                      color: bg?.fontcolor || 'black',
+                      opacity: 0.9,
+                    }}
+                    Value={task.time}
+                  />
+                </View>
+              </View>
+            ))}
+          </View>
+        }
+      />
+    </View>
+  );
+};
+
+export default Categorydetails;
