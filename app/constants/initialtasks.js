@@ -1,4 +1,4 @@
-let obj = [
+const obj = [
   {
     id: 1,
     title: 'Pay for rent 💸',
