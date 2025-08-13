@@ -330,10 +330,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { TodoProvider } from './app/components/TodoContext';
 import { TabsNavigator } from './app/components/TabsNavigator';
 
-export type RootStackParamList = {
-  MainTabs: undefined;
-};
 
+import { RootStackParamList } from './app/types';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
@@ -348,7 +346,9 @@ function App() {
     </TodoProvider>
   );
 }
+
 export default App;
+
 
 
 

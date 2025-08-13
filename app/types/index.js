@@ -14,6 +14,7 @@ import DrawerParamList from './DrawerNavigationProps'
 import {Taskeditmodel, EditModelProps} from './EditmodelProps'
 import TabsParamList from './TabsNavigatorProps'
 import ToggleListCategoryProps from './ToggleListCatProps'
+import RootStackParamList from './bottomnav'
 
 export {
   ModalProps,
@@ -36,5 +37,6 @@ export {
   EditModelProps,
   TabsParamList,
   ToggleListCategoryProps,
+  RootStackParamList
   
 };
