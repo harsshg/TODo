@@ -1,3 +1,5 @@
 import styles from './Styles';
 import objCat from './Category';
-export { styles,objCat}
+import dstyle from './drawerstyle';
+
+export { styles,objCat,dstyle}

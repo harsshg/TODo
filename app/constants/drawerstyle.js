@@ -1,16 +1,18 @@
-let dstyle={
-    drawerActiveTintColor: 'green',           // Active item text/icon color
-    drawerInactiveTintColor: 'rgb(194, 194, 194)',       // Inactive item color
-    drawerActiveBackgroundColor: '#e6f0ff',   // Active item background
-    drawerLabelStyle: {
-      fontWeight: 'bold',
-      fontSize: 19,
-    },
-    drawerStyle: {
-      backgroundColor: 'rgba(0, 0, 0, 0.81)',             // Drawer background color
-      width: 280,
-    },
-    
-  }
-  
-  export default dstyle;
+import { useWindowDimensions } from 'react-native';
+ const dimensions = useWindowDimensions();
+const dstyle = {
+  drawerActiveTintColor: 'green',
+  drawerInactiveTintColor: 'rgb(194,194,194)',
+  drawerActiveBackgroundColor: '#e6f0ff',
+  drawerLabelStyle: {
+    // fontWeight:900,
+    fontSize: 19,
+  },
+  drawerStyle: {
+    backgroundColor: 'rgba(0,0,0,0.81)',
+    width: 280,
+  },
+  //  drawerType: dimensions.width >= 768 ? 'permanent' : 'slide',
+};
+
+export default dstyle;

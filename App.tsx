@@ -376,9 +376,10 @@ import { TodoProvider } from './app/components/TodoContext';
 import { Home } from './app/screens/Home';
 import { Done } from './app/screens/Done';
 import { Pending } from './app/screens/Pending';
-import dstyle from './app/constants/drawerstyle';
+import {dstyle} from './app/constants/index';
 
 // ✅ Drawer param list type
+
 export type DrawerParamList = {
   Home: undefined;
   Done: undefined;
@@ -386,17 +387,16 @@ export type DrawerParamList = {
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
-const Homename = ('🏡Home');
+const Homename = ('Home');
 function App() {
   return (
     <TodoProvider>
       <NavigationContainer >
         <Drawer.Navigator initialRouteName={Homename} 
-             
            screenOptions={dstyle} >
           <Drawer.Screen name={Homename} component={Home} />
-          <Drawer.Screen name="✔︎ Done" component={Done} />
-          <Drawer.Screen name="∞ Pending" component={Pending} />
+          <Drawer.Screen name="Done" component={Done} />
+          <Drawer.Screen name="Pending" component={Pending} />
         </Drawer.Navigator>
       </NavigationContainer>
     </TodoProvider>
